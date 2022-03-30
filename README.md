@@ -6,3 +6,31 @@ The main use-case is to add additional applications which are not integrated int
 For a more advanced example repo see the [flux2-kustomize-helm-example](https://github.com/fluxcd/flux2-kustomize-helm-example) repo.
 This repo's directory structure is similar to the `flux2-kustomize-helm-example`
 one.
+
+## Basic configuration
+
+We'll start with a very basic configuration:
+
+* It uses a public git repo
+* No secrets are included
+* No forking/modifications needed, install as it is
+
+Apply it to your cluster:
+
+```sh
+basic/install.sh
+```
+
+List the resource created by this flux repo:
+
+```sh
+kubectl -n flux-system get gitrepositories
+kubectl -n flux-system get kustomizations
+kubectl -n example get helmreleases
+```
+
+Show output of the one and only app applied, [podinfo](https://github.com/stefanprodan/podinfo)
+
+```sh
+curl --resolve podinfo.local:80:CLUSTER_IPV4_ADDRESS http://podinfo.local
+```
