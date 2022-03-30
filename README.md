@@ -34,3 +34,11 @@ Show output of the one and only app applied, [podinfo](https://github.com/stefan
 ```sh
 curl --resolve podinfo.local:80:CLUSTER_IPV4_ADDRESS http://podinfo.local
 ```
+
+## What's next ?
+
+* Fork this repo to a private git remote
+* Configure flux to use ssh instead of https for cloning
+* Add private ssh key for git pulling to flux
+* Add public ssh key for git pulling to your git remote
+* [Encrypt your secrets using sops](https://github.com/fluxcd/flux2-kustomize-helm-example#encrypt-kubernetes-secrets)
