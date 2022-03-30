@@ -1,0 +1,13 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: custom-apps
+  namespace: flux-system
+spec:
+  interval: 24h
+  sourceRef:
+    kind: GitRepository
+    name: custom-flux-example
+  path: ./basic/apps
+  prune: true
+  validation: client
