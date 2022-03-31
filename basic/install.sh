@@ -7,8 +7,8 @@ flux create source git stackspin-flux-example \
   --branch=main \
   --interval=1h
 
-echo "Creating / updating kustomization stackspin-flux-example-basic in namespace example-basic"
-flux create kustomization stackspin-flux-example-basic \
+echo "Creating / updating kustomization stackspin-flux-example in namespace example-basic"
+flux create kustomization stackspin-flux-example \
   --namespace=example-basic \
   --source=GitRepository/stackspin-flux-example \
   --path="./basic/clusters/production/" \
