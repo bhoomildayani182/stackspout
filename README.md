@@ -37,7 +37,7 @@ curl --resolve podinfo.local:80:CLUSTER_IPV4_ADDRESS http://podinfo.local
 
 ## What's next ?
 
-* Fork this repo to a private git remote
+* Fork this repo to a private git remote (Github, Gitab, etc.)
 * Configure flux to use ssh instead of https for cloning
 * Add private ssh key for git pulling to flux
 * Add public ssh key for git pulling to your git remote
