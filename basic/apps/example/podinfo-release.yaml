@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: podinfo
-        namespace: flux-system
+        namespace: example-basic
   interval: 60m
   # Default values
   # https://github.com/stefanprodan/podinfo/blob/master/charts/podinfo/values.yaml
