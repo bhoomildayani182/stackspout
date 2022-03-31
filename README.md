@@ -42,10 +42,24 @@ curl --resolve podinfo.local:80:CLUSTER_IPV4_ADDRESS http://podinfo.local
 
 ## What's next ?
 
-There are two ways of using a custom flux
+There are two ways of using a custom flux repo to host your custom config/apps
+on a Stackspin cluster.
 
-* Fork this repo to a private git remote (Github, Gitab, etc.)
-* Configure flux to use ssh instead of https for cloning
-* Add private ssh key for git pulling to flux
-* Add public ssh key for git pulling to your git remote
-* [Encrypt your secrets using sops](https://github.com/fluxcd/flux2-kustomize-helm-example#encrypt-kubernetes-secrets)
+### A) Manage secrets manually
+
+This approach is easier to start with,
+because you don't need to configure your cluster to handle encrypted secrets
+and access to a private git repository.
+
+* Fork this repository into a public git repo, cloneable via `https://`
+
+### Everything in version control, including secrets
+
+* Fork this repository into a private git repo, cloneable via `ssh://`
+* [Configure flux to use ssh instead of https for cloning](https://fluxcd.io/docs/components/source/gitrepositories/#ssh-authentication)
+* You shouln't rely solely on transport encryption for your git repository
+  but rather end-to-end encrypt your secrets.
+  Different methods are available for flux:
+  * [Sops](https://fluxcd.io/docs/guides/mozilla-sops/)
+    [Sops section in flux2-kustomize-helm-example](https://github.com/fluxcd/flux2-kustomize-helm-example#encrypt-kubernetes-secrets)
+  * [Sealed Secrets](https://fluxcd.io/docs/guides/sealed-secrets/)
