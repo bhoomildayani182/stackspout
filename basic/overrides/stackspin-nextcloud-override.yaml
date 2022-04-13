@@ -17,8 +17,8 @@ data:
         enabled: true
       - name: polls #or forms?
         enabled: true
-        #- name: spreed
-        #  enabled: true
+      #- name: spreed
+      #  enabled: true
       - name: appointments
         enabled: true
       # Management
@@ -38,8 +38,6 @@ data:
       #  enabled: true
       - name: notes
         enabled: true
-        #- name: quicknotes
-        #  enabled: true
       #- name: files_mindmap
       #  enabled: true
       - name: files_markdown
@@ -49,8 +47,6 @@ data:
       - name: maps
         enabled: true
       # Personal
-      - name: files_ebookreader
-        enabled: true
       - name: ocsms
         enabled: true
       - name: apporder
