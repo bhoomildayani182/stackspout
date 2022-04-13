@@ -17,7 +17,7 @@ data:
         enabled: true
       - name: forms
         enabled: true
-      - name: talk
+      - name: spreed
         enabled: true
       - name: appointments
         enabled: true
