@@ -7,9 +7,56 @@ metadata:
 data:
   values.yaml: |
     apps:
-      - name: groupfolders
-        enabled: true
+      # Basics
+      - name: photos
+        enabled: false
       - name: contacts
         enabled: true
-      - name: bruteforcesettings
-        enabled: false
+      # Common Apps
+      - name: external
+        enabled: true
+      - name: forms
+        enabled: true
+      - name: talk
+        enabled: true
+      - name: appointments
+        enabled: true
+      # Management
+      - name: deck
+        enabled: true
+      - name: tasks
+        enabled: true
+      # Convenience
+      - name: files_rightclick
+        enabled: true
+      - name: metadata
+        enabled: true
+      - name: extract
+        enabled: true
+      # Collaborative apps
+      - name: drawio
+        enabled: true
+      - name: notes
+        enabled: true
+      - name: quicknotes
+        enabled: true
+      - name: files_mindmap
+        enabled: true
+      - name: files_markdown
+        enabled: true
+      - name: files_texteditor
+        enabled: true
+      - name: maps
+        enabled: true
+      # Personal
+      - name: files_ebookreader
+        enabled: true
+      - name: ocsms
+        enabled: true
+      - name: apporder
+        enabled: true
+      # Aesthetics
+      - name: breezedark
+        enabled: true
+      - name: unsplash
+        enabled: true
