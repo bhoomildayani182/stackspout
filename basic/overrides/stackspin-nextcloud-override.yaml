@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: stackspin-apps
+  name: stackspin-nextcloud-override
+data:
+  values.yaml: |
+    apps:
+      - name: groupfolders
+        enabled: true
+      - name: contacts
+        enabled: true
+      - name: bruteforcesettings
+        enabled: false

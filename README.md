@@ -28,10 +28,10 @@ basic/install.sh
 List the resource created by this flux repo:
 
 ```sh
-kubectl -n example-basic get gitrepositories
-kubectl -n example-basic get kustomizations
-kubectl -n example-basic get helmreleases
-kubectl -n example-basic get pods
+kubectl -n stackspout get gitrepositories
+kubectl -n stackspout get kustomizations
+kubectl -n stackspout get helmreleases
+kubectl -n stackspout get pods
 ```
 
 Show output of the single app applied, [podinfo](https://github.com/stefanprodan/podinfo)

@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-echo "Creating / updating gitRepository stackspin-flux-example-basic in namespace example-basic"
-flux create source git stackspin-flux-example \
-  --namespace=example-basic \
-  --url=https://open.greenhost.net/stackspin/stackspin-flux-example.git \
-  --branch=main \
-  --interval=1h
+kubectl get namespace stackspout 2>/dev/null || kubectl create namespace stackspout
 
-echo "Creating / updating kustomization stackspin-flux-example in namespace example-basic"
-flux create kustomization stackspin-flux-example \
-  --namespace=example-basic \
-  --source=GitRepository/stackspin-flux-example \
+echo "Creating / updating gitRepository stackspout in namespace stackspout"
+flux create source git stackspout \
+  --namespace=stackspout \
+  --url=https://open.greenhost.net/xeruf/stackspout.git \
+  --branch=main \
+  --interval=10m
+
+echo "Creating / updating kustomization stackspout in namespace stackspout"
+flux create kustomization stackspout \
+  --namespace=stackspout \
+  --source=GitRepository/stackspout \
   --path="./basic/clusters/production/" \
   --prune=true \
-  --interval=1h
+  --interval=10m

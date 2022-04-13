@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: podinfo
+  name: gitea
   namespace: stackspout
 spec:
   interval: 1h
-  url: https://stefanprodan.github.io/podinfo
+  url: https://dl.gitea.io/charts/
