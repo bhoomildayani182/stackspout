@@ -33,6 +33,8 @@ data:
         enabled: true
       - name: extract
         enabled: true
+      #- name: ocsms
+      #  enabled: true
       # Collaborative apps
       #- name: drawio
       #  enabled: true
@@ -46,12 +48,15 @@ data:
         enabled: true
       - name: maps
         enabled: true
-      # Personal
-      - name: ocsms
+      - name: jitsi
+        enabled: true
+      # Aesthetics
+      - name: theming
         enabled: true
       - name: apporder
         enabled: true
-      # Aesthetics
+      - name: side_menu
+        enabled: true
       - name: breezedark
         enabled: true
       - name: unsplash
