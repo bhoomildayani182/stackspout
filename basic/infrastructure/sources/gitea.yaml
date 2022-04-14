@@ -4,5 +4,5 @@ metadata:
   name: gitea
   namespace: stackspout
 spec:
-  interval: 1h
+  interval: 10m
   url: https://dl.gitea.io/charts/
