@@ -34,11 +34,10 @@ kubectl -n stackspout get helmreleases
 kubectl -n stackspout get pods
 ```
 
-Show output of the single app applied, [podinfo](https://github.com/stefanprodan/podinfo)
+## Customizations
 
-```sh
-curl --resolve podinfo.local:80:CLUSTER_IPV4_ADDRESS http://podinfo.local
-```
+- Nextcloud apps overrides
+- Gitea installed
 
 ## What's next ?
 

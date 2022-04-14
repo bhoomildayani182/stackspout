@@ -4,7 +4,7 @@ metadata:
   name: overrides
   namespace: stackspout
 spec:
-  interval: 5m
+  interval: 2m
   sourceRef:
     kind: GitRepository
     name: stackspout
