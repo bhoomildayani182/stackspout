@@ -16,11 +16,13 @@ data:
       - name: external
         enabled: true
       - name: polls
-        enabled: false #unsure - maybe redundant to forms?
+        enabled: false
+        #unsure - maybe redundant to forms?
       - name: forms
         enabled: true
       - name: spreed
-        enabled: false # redundant to Zulip & Jitsi
+        enabled: false
+        # redundant to Zulip & Jitsi
       - name: appointments
         enabled: true
       # Management
@@ -35,15 +37,15 @@ data:
         enabled: true
       - name: extract
         enabled: true
-      - name: ocsms
-        enabled: true #unsure
       # Collaborative apps
       - name: drawio
-        enabled: false #buggy
+        enabled: false
+        #buggy
       - name: notes
         enabled: true
       - name: files_mindmap
-        enabled: false #buggy
+        enabled: false
+        #buggy
       - name: files_markdown
         enabled: true
       - name: files_texteditor
