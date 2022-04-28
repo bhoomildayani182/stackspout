@@ -6,6 +6,17 @@ metadata:
   name: stackspin-nextcloud-override
 data:
   values.yaml: |
+    nextcloud:
+      configs:
+        defaults.config.php: |-
+          <?php
+          $CONFIG = array (
+            'allow_user_to_change_display_name' => false,
+            'default_phone_region' => 'DE',
+            'default_locale' => 'de',
+            #'defaultapp' => 'dashboard,files',
+            #'default_language' => 'en',
+          );
     apps:
       # Basics
       - name: password_policy
