@@ -7,16 +7,10 @@ metadata:
 data:
   values.yaml: |
     nextcloud:
-      configs:
-        defaults.config.php: |-
-          <?php
-          $CONFIG = array (
-            'allow_user_to_change_display_name' => false,
-            'default_phone_region' => 'DE',
-            'default_locale' => 'de',
-            #'defaultapp' => 'dashboard,files',
-            #'default_language' => 'en',
-          );
+      # https://artifacthub.io/packages/helm/nextcloud/nextcloud#configuration
+      # https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#user-experience
+      #'defaultapp' => 'dashboard,files',
+      #'default_language' => 'en',
       nextcloud:
         configs:
           defaults.config.php: |-
@@ -25,8 +19,7 @@ data:
               'allow_user_to_change_display_name' => false,
               'default_phone_region' => 'DE',
               'default_locale' => 'de',
-              #'defaultapp' => 'dashboard,files',
-              #'default_language' => 'en',
+              'lost_password_link' => 'https://sso.ftt.gmbh/login/recovery',
             );
     apps:
       # Basics
