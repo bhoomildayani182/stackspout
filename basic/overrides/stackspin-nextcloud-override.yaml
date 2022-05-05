@@ -10,7 +10,6 @@ data:
       # https://artifacthub.io/packages/helm/nextcloud/nextcloud#configuration
       # https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#user-experience
       #'defaultapp' => 'dashboard,files',
-      #'default_language' => 'en',
       nextcloud:
         configs:
           defaults.config.php: |-
@@ -18,9 +17,10 @@ data:
             $CONFIG = array (
               'allow_user_to_change_display_name' => false,
               'default_phone_region' => 'DE',
-              'default_locale' => 'de',
+              'default_locale' => 'en_gb', # https://github.com/moment/moment/tree/2.18.1/locale
+              'default_language' => 'en_de', # https://www.transifex.com/explore/languages/
               'lost_password_link' => 'https://sso.ftt.gmbh/login/recovery',
-              'theme' => 'dark',
+              #'theme' => 'dark',
             );
     apps:
       # Basics
@@ -28,6 +28,8 @@ data:
         enabled: false
       - name: photos
         enabled: false
+        #- name: passwords
+        #  enabled: true
       - name: contacts
         enabled: true
       # Common Apps
