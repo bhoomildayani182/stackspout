@@ -20,6 +20,7 @@ data:
               'default_phone_region' => 'DE',
               'default_locale' => 'de',
               'lost_password_link' => 'https://sso.ftt.gmbh/login/recovery',
+              'theme' => 'dark',
             );
     apps:
       # Basics
