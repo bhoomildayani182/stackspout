@@ -17,8 +17,8 @@ data:
             $CONFIG = array (
               'allow_user_to_change_display_name' => false,
               'default_phone_region' => 'DE',
-              'default_locale' => 'en_gb', # https://github.com/moment/moment/tree/2.18.1/locale
-              'default_language' => 'en_de', # https://www.transifex.com/explore/languages/
+              'default_locale' => 'en_uk', # https://github.com/moment/moment/tree/2.18.1/locale
+              #'default_language' => 'en_de', # https://www.transifex.com/explore/languages/
               'lost_password_link' => 'https://sso.ftt.gmbh/login/recovery',
               #'theme' => 'dark',
             );
