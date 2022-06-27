@@ -1,0 +1,44 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vikunja
+  namespace: stackspout
+spec:
+  releaseName: vikunja
+  chart:
+    spec:
+      chart: vikunja
+      version: 5.0.4
+      sourceRef:
+        kind: HelmRepository
+        name: vikunja
+        namespace: stackspout
+  interval: 10m
+  values:
+    # https://github.com/k8s-at-home/charts/blob/master/charts/stable/vikunja/values.yaml
+    vikunja:
+      # TODO https://vikunja.io/docs/config-options/#openid
+      config: |-
+        auth:
+          local:
+            enabled: true
+          openid:
+            enabled: true
+            providers:
+              - name: Stackspin
+                authurl: "https://sso.${domain}"
+                clientid: vikunja
+                clientsecret: "${client_secret}"
+    ingress:
+      main:
+        enabled: true
+        primary: false
+        hosts:
+          - host: do.ftt.gmbh
+            paths:
+               - path: /
+                 pathType: Prefix
+        tls:
+          - secretName: vikunja
+            hosts:
+              - do.ftt.gmbh
