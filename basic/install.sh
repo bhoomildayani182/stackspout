@@ -16,3 +16,6 @@ flux create kustomization stackspout \
   --path="./basic/clusters/production/" \
   --prune=true \
   --interval=10m
+
+python ../../stackspin/install/generate_secrets.py vikunja
+python ../../stackspin/install/generate_secrets.py gitea

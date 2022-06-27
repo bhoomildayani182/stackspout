@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-vikunja-values
+  namespace: stackspout
+data:
+  # Defaults: https://github.com/k8s-at-home/charts/blob/master/charts/stable/vikunja/values.yaml
+  # Inherits: https://github.com/k8s-at-home/library-charts/blob/main/charts/stable/common/values.yaml
+  values.yaml: |
+    vikunja:
+      config: |-
+        auth:
+          openid:
+            # https://vikunja.io/docs/config-options/#openid
+            # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
+            enabled: true
+            providers:
+              - name: Stackspin
+                authurl: "https://sso.${domain}"
+                clientid: vikunja
+                clientsecret: "${client_secret}"
+          local:
+            enabled: false
+    ingress:
+      main:
+        enabled: true
+        primary: false
+        hosts:
+          - host: "https://do.${domain}"
+            paths:
+               - path: /
+                 pathType: Prefix
+        tls:
+          - secretName: vikunja
+            hosts:
+              - "https://do.${domain}"
