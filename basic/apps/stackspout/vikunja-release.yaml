@@ -7,11 +7,11 @@ spec:
   releaseName: vikunja
   chart:
     spec:
-      chart: vikunja
-      version: 5.0.4
+      chart: k8s-at-home/vikunja
+      version: 5.5.3
       sourceRef:
         kind: HelmRepository
-        name: vikunja
+        name: k8s-at-home
         namespace: stackspout
   interval: 10m
   values:
