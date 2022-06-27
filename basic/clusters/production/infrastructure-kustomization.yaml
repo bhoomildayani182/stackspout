@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: example-infrastructure
+  name: sources
   namespace: stackspout
 spec:
   interval: 10m
