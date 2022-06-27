@@ -18,7 +18,11 @@ spec:
     ingress:
       enabled: true
     hosts:
-      - host: git.ftt.gmbh
+      - host: dev.ftt.gmbh
         paths:
            - path: /
              pathType: Prefix
+    tls:
+      - secretName: gitea
+        hosts:
+          - dev.ftt.gmbh
