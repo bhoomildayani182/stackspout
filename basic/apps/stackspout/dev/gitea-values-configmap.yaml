@@ -5,7 +5,7 @@ metadata:
   name: stackspin-gitea-values
   namespace: stackspout
 data:
-  values.yaml:
+  values.yaml: |
     ingress:
       enabled: true
       annotations:
