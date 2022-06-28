@@ -7,7 +7,7 @@ flux create source git stackspout \
   --namespace=stackspout \
   --url=https://open.greenhost.net/xeruf/stackspout.git \
   --branch=main \
-  --interval=10m
+  --interval=3m
 
 echo "Creating / updating kustomization stackspout in namespace stackspout"
 flux create kustomization stackspout \
@@ -15,7 +15,7 @@ flux create kustomization stackspout \
   --source=GitRepository/stackspout \
   --path="./basic/clusters/production/" \
   --prune=true \
-  --interval=10m
+  --interval=3m
 
 python $STACKSPIN/install/generate_secrets.py vikunja
 python $STACKSPIN/install/generate_secrets.py gitea
