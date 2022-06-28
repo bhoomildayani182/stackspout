@@ -26,12 +26,14 @@ data:
       main:
         enabled: true
         primary: false
+        annotations:
+          kubernetes.io/tls-acme: "true"
         hosts:
-          - host: "https://do.${domain}"
+          - host: "do.${domain}"
             paths:
                - path: /
                  pathType: Prefix
         tls:
           - secretName: vikunja
             hosts:
-              - "https://do.${domain}"
+              - "do.${domain}"
