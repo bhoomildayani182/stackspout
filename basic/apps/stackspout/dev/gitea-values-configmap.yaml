@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-gitea-values
+  namespace: stackspout
+data:
+  values.yaml:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: "dev.${domain}"
+          paths:
+             - path: /
+               pathType: Prefix
+      tls:
+        - secretName: gitea-tls
+          hosts:
+            - "dev.${domain}"
