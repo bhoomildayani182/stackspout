@@ -9,7 +9,7 @@ data:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/tls-acme: "true"
+        kubernetes.io/tls-acme: true
       hosts:
         - host: "dev.${domain}"
           paths:
@@ -25,5 +25,4 @@ data:
           provider: 'openidConnect'
           key: "${client_id}"
           secret: "${client_secret}"
-          customAuthUrl: "https://sso.${domain}"
-          #autoDiscoverUrl: 'https://gitea.example.com/.well-known/openid-configuration'
+          autoDiscoverUrl: 'https://sso.${domain}/.well-known/openid-configuration'
