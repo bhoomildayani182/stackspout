@@ -1,8 +1,8 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: overrides
-  namespace: stackspout
+  name: stackspout-overrides
+  namespace: flux-system
 spec:
   interval: 2m
   sourceRef:
