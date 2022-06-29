@@ -12,7 +12,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./basic/apps/gitea
+  path: ./basic/apps/dev
   prune: true
   # TODO what does this mean?
   #validation: client
