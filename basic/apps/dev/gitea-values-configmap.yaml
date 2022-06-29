@@ -11,19 +11,19 @@ data:
       annotations:
         kubernetes.io/tls-acme: "true"
       hosts:
-        - host: "dev.ftt.gmbh"
+        - host: "dev.${domain}"
           paths:
              - path: /
                pathType: Prefix
       tls:
         - secretName: gitea-tls
           hosts:
-            - "dev.ftt.gmbh"
+            - "dev.${domain}"
     gitea:
       oauth:
         - name: Stackspin
           provider: 'openidConnect'
           key: "${client_id}"
           secret: "${client_secret}"
-          customAuthUrl: "https://sso.ftt.gmbh"
+          customAuthUrl: "https://sso.${domain}"
           #autoDiscoverUrl: 'https://gitea.example.com/.well-known/openid-configuration'

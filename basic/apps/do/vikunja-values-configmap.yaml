@@ -17,8 +17,8 @@ data:
             enabled: true
             providers:
               - name: Stackspin
-                authurl: "https://sso.ftt.gmbh"
-                clientid: vikunja
+                authurl: "https://sso.${domain}/"
+                clientid: "${client_id}"
                 clientsecret: "${client_secret}"
           local:
             enabled: false
@@ -29,11 +29,11 @@ data:
         annotations:
           kubernetes.io/tls-acme: "true"
         hosts:
-          - host: "do.ftt.gmbh"
+          - host: "do.${domain}"
             paths:
                - path: /
                  pathType: Prefix
         tls:
           - secretName: vikunja
             hosts:
-              - "do.ftt.gmbh"
+              - "do.${domain}"
