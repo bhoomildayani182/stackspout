@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
-        namespace: stackspout
+        namespace: flux-system
   interval: 10m
   valuesFrom:
     - kind: ConfigMap

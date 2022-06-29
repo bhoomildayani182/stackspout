@@ -23,7 +23,7 @@ data:
       oauth:
         - name: Stackspin
           provider: 'openidConnect'
-          key: gitea
+          key: "${client_id}"
           secret: "${client_secret}"
           customAuthUrl: "https://sso.ftt.gmbh"
           #autoDiscoverUrl: 'https://gitea.example.com/.well-known/openid-configuration'
