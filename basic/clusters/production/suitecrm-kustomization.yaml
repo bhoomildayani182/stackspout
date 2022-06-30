@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  timeout: 30m
+  timeout: 12h
   dependsOn:
     - name: single-sign-on
   sourceRef:
@@ -14,8 +14,6 @@ spec:
     name: stackspout
   path: ./basic/apps/people
   prune: true
-  # TODO what does this mean?
-  #validation: client
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
@@ -25,13 +23,15 @@ spec:
       kind: Deployment
       name: suitecrm
       namespace: stackspout
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: suitecrm-mariadb
+      namespace: stackspout
   postBuild:
     substituteFrom:
-      - kind: Secret
-        name: stackspin-suitecrm-variables
-        optional: true
-      - kind: Secret
-        name: stackspin-suitecrm-oauth-variables
-        optional: true
+      #- kind: Secret
+      #  name: stackspin-suitecrm-variables
+      #- kind: Secret
+      #  name: stackspin-suitecrm-oauth-variables
       - kind: Secret
         name: stackspin-cluster-variables

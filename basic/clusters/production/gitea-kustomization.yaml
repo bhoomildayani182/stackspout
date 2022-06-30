@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
-  timeout: 30m
+  timeout: 12h
   dependsOn:
     - name: single-sign-on
   sourceRef:
@@ -14,8 +14,6 @@ spec:
     name: stackspout
   path: ./basic/apps/dev
   prune: true
-  # TODO what does this mean?
-  #validation: client
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
@@ -23,6 +21,14 @@ spec:
       namespace: stackspout
     - apiVersion: apps/v1
       kind: Deployment
+      name: gitea-memcached
+      namespace: stackspout
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      name: gitea-postgresql
+      namespace: stackspout
+    - apiVersion: apps/v1
+      kind: StatefulSet
       name: gitea
       namespace: stackspout
   postBuild:
