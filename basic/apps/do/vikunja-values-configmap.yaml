@@ -16,7 +16,7 @@ data:
             # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
             enabled: true
             providers:
-              - name: Stackspin
+              - name: StackspinSSO
                 authurl: "https://sso.${domain}/"
                 clientid: "${client_id}"
                 clientsecret: "${client_secret}"
