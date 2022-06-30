@@ -16,6 +16,6 @@ spec:
     - code
   scope: "openid profile email stackspin_roles"
   secretName: stackspin-gitea-oauth-variables
-  #redirectUris:
-  #  - https://dev.${domain}/oauth/openid/
+  redirectUris:
+    - https://dev.${domain}/user/oauth2/Stackspin/callback
   tokenEndpointAuthMethod: client_secret_post
