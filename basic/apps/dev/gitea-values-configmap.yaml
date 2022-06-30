@@ -9,7 +9,7 @@ data:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/tls-acme: true
+        kubernetes.io/tls-acme: "true"
       hosts:
         - host: "dev.${domain}"
           paths:

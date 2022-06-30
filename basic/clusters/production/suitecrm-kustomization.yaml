@@ -27,9 +27,11 @@ spec:
       namespace: stackspout
   postBuild:
     substituteFrom:
-      #- kind: Secret
-      #  name: stackspin-suitecrm-variables
+      - kind: Secret
+        name: stackspin-suitecrm-variables
+        optional: true
       - kind: Secret
         name: stackspin-suitecrm-oauth-variables
+        optional: true
       - kind: Secret
         name: stackspin-cluster-variables

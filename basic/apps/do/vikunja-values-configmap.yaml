@@ -27,7 +27,7 @@ data:
         enabled: true
         primary: false
         annotations:
-          kubernetes.io/tls-acme: true
+          kubernetes.io/tls-acme: "true"
         hosts:
           - host: "do.${domain}"
             paths:
