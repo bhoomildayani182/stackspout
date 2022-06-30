@@ -8,8 +8,8 @@ data:
   values.yaml: |
     ingress:
       enabled: true
-      #annotations:
-      #  kubernetes.io/tls-acme: "true"
+      annotations:
+        kubernetes.io/tls-acme: "true"
       hosts:
         - host: "dev.${domain}"
           paths:
@@ -19,10 +19,14 @@ data:
         - secretName: gitea-tls
           hosts:
             - "dev.${domain}"
+            - "tempdev.${domain}"
     gitea:
       oauth:
         - name: Stackspin
-          provider: 'openidConnect'
+          provider: "openidConnect"
           key: "${client_id}"
           secret: "${client_secret}"
-          autoDiscoverUrl: 'https://sso.${domain}/.well-known/openid-configuration'
+          autoDiscoverUrl: "https://sso.${domain}/.well-known/openid-configuration"
+      config:
+        server:
+          ROOT_URL: "https://dev.${domain}"
