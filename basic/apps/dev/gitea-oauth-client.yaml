@@ -18,4 +18,4 @@ spec:
   secretName: stackspin-gitea-oauth-variables
   #redirectUris:
   #  - https://dev.${domain}/oauth/openid/
-  #tokenEndpointAuthMethod: client_secret_post
+  tokenEndpointAuthMethod: client_secret_post
