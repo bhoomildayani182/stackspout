@@ -15,6 +15,7 @@ data:
             # https://vikunja.io/docs/config-options/#openid
             # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
             enabled: true
+            redirecturl: "https://do.${domain}/auth/openid/stackspin"
             providers:
               - name: Stackspin
                 authurl: "https://sso.${domain}/"
