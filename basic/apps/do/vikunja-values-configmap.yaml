@@ -38,3 +38,4 @@ data:
           - secretName: vikunja
             hosts:
               - "do.${domain}"
+              - "tempdo.${domain}"
