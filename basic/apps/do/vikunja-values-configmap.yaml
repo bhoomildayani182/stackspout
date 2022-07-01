@@ -29,6 +29,7 @@ data:
         primary: false
         annotations:
           kubernetes.io/tls-acme: "true"
+          certmanager.k8s.io/cluster-issuer: letsencrypt-issuer-staging
         hosts:
           - host: "do.${domain}"
             paths:
@@ -38,7 +39,6 @@ data:
           - secretName: vikunja
             hosts:
               - "do.${domain}"
-              - "tempdo.${domain}"
     additionalContainers:
       api:
         image: vikunja/api:0.18.1

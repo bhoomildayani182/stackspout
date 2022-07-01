@@ -10,6 +10,7 @@ data:
       enabled: true
       annotations:
         kubernetes.io/tls-acme: "true"
+        certmanager.k8s.io/cluster-issuer: letsencrypt-issuer-staging
       hosts:
         - host: "dev.${domain}"
           paths:
@@ -19,7 +20,6 @@ data:
         - secretName: gitea-tls
           hosts:
             - "dev.${domain}"
-            - "tempdev.${domain}"
     gitea:
       oauth:
         - name: Stackspin
