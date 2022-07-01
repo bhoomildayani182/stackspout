@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   namespace: stackspin-apps
-  name: stackspin-nextcloud-override
+  name: stackspin-zulip-override
 data:
   values.yaml: |
     zulip:
