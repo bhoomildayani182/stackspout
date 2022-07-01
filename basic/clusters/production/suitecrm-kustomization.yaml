@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
+  wait: true
   timeout: 12h
   dependsOn:
     - name: single-sign-on
@@ -14,19 +15,19 @@ spec:
     name: stackspout
   path: ./basic/apps/people
   prune: true
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: suitecrm
-      namespace: stackspout
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: suitecrm
-      namespace: stackspout
-    - apiVersion: apps/v1
-      kind: StatefulSet
-      name: suitecrm-mariadb
-      namespace: stackspout
+  #healthChecks:
+  #  - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+  #    kind: HelmRelease
+  #    name: suitecrm
+  #    namespace: stackspout
+  #    #- apiVersion: apps/v1
+  #    #  kind: Deployment
+  #    #  name: suitecrm
+  #    #  namespace: stackspout
+  #  - apiVersion: apps/v1
+  #    kind: StatefulSet
+  #    name: suitecrm-mariadb
+  #    namespace: stackspout
   postBuild:
     substituteFrom:
       #- kind: Secret
