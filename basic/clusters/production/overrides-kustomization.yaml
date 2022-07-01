@@ -11,3 +11,7 @@ spec:
   path: ./basic/overrides
   prune: true
   validation: client
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: stackspin-cluster-variables
