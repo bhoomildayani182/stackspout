@@ -6,14 +6,14 @@ echo "Creating / updating gitRepository stackspout in namespace stackspout"
 flux create source git stackspout \
   --url=https://open.greenhost.net/xeruf/stackspout.git \
   --branch=main \
-  --interval=3m
+  --interval=5m
 
 echo "Creating / updating kustomization stackspout in namespace stackspout"
 flux create kustomization stackspout \
   --source=GitRepository/stackspout \
   --path="./basic/clusters/production/" \
   --prune=true \
-  --interval=3m
+  --interval=30m
 
 python $STACKSPIN/install/generate_secrets.py vikunja
 python $STACKSPIN/install/generate_secrets.py gitea
