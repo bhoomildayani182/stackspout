@@ -10,7 +10,7 @@ data:
       enabled: true
       annotations:
         kubernetes.io/tls-acme: "true"
-        certmanager.k8s.io/cluster-issuer: letsencrypt-issuer-staging
+        cert-manager.io/cluster-issuer: letsencrypt-issuer-staging
       hostname: "people.${domain}"
       tls: true
       #  - secretName: suitecrm-tls
