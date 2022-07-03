@@ -13,9 +13,7 @@ data:
         cert-manager.io/cluster-issuer: letsencrypt-issuer-staging
       hostname: "people.${domain}"
       tls: true
-      #  - secretName: suitecrm-tls
-      #    hosts:
-      #      - "people.${domain}"
+      certManager: true
     # TODO Adjust OIDC SSO to service
     #    - name: Stackspin
     #      key: "${client_id}"
