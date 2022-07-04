@@ -8,4 +8,4 @@ data:
   values.yaml: |
     zulip:
       environment:
-        SETTING_AUTHENTICATION_BACKENDS: '("zproject.backends.GenericOpenIdConnectBackend","EmailAuthBackend")'
+        SETTING_AUTHENTICATION_BACKENDS: '("zproject.backends.GenericOpenIdConnectBackend", "zproject.backends.EmailAuthBackend")'
