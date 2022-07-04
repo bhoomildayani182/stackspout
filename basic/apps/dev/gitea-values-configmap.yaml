@@ -30,3 +30,10 @@ data:
       config:
         server:
           ROOT_URL: "https://dev.${domain}"
+    persistence:
+      enabled: true
+      existingClaim: gitea-data
+    postgresql:
+      persistence:
+        enabled: true
+        existingClaim: gitea-postgres

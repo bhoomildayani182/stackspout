@@ -4,3 +4,4 @@ resources:
   - gitea-release.yaml
   - gitea-oauth-client.yaml
   - gitea-values-configmap.yaml
+  - pvc.yaml
