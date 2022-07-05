@@ -1,13 +1,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: sources
+  name: stackspin-namespace
   namespace: flux-system
 spec:
   interval: 30m
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./basic/infrastructure
+  path: ./basic/infrastructure/namespaces
   prune: true
   validation: client
