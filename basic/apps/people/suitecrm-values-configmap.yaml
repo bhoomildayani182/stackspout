@@ -8,8 +8,8 @@ data:
   values.yaml: |
     ingress:
       enabled: true
-      annotations:
-        kubernetes.io/tls-acme: "true"
+      #annotations:
+      #  kubernetes.io/tls-acme: "true"
       hostname: "people.${domain}"
       tls: true
       certManager: true
