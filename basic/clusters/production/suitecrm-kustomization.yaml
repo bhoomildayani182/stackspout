@@ -8,8 +8,8 @@ spec:
   interval: 30m
   wait: true
   timeout: 1h
-  dependsOn:
-    #- name: single-sign-on
+  #dependsOn:
+  # - name: single-sign-on
   sourceRef:
     kind: GitRepository
     name: stackspout
