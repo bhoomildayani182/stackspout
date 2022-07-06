@@ -2,19 +2,19 @@
 
 kubectl get namespace stackspout 2>/dev/null || kubectl create namespace stackspout
 
-echo "Creating / updating gitRepository stackspout in namespace stackspout"
+echo "Creating / Updating gitRepository stackspout"
 flux create source git stackspout \
   --url=https://open.greenhost.net/xeruf/stackspout.git \
   --branch=main \
   --interval=5m
 
-echo "Creating / updating kustomization stackspout in namespace stackspout"
+echo "Creating / Updating kustomization stackspout"
 flux create kustomization stackspout \
   --source=GitRepository/stackspout \
-  --path="./basic/clusters/production/" \
+  --path="./basic/infrastructure/kustomizations/" \
   --prune=true \
   --interval=30m
 
 python $STACKSPIN/install/generate_secrets.py vikunja
 python $STACKSPIN/install/generate_secrets.py gitea
-python $STACKSPIN/install/generate_secrets.py suitecrm
+python $(dirname "$0")/../generate_secrets.py suitecrm
