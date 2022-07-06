@@ -16,6 +16,10 @@ data:
     suitecrmUsername: "admin"
     suitecrmEmail: "${admin_email}"
     existingSecret: stackspin-suitecrm-variables
+    mariadb:
+      auth:
+        password: "${mariadb-password}"
+        rootPassword: "${mariadb-root-password}"
     # TODO Adjust OIDC SSO to service
     #    - name: Stackspin
     #      key: "${client_id}"
