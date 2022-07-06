@@ -9,7 +9,7 @@ spec:
   wait: true
   timeout: 1h
   dependsOn:
-    - name: single-sign-on
+    #- name: single-sign-on
   sourceRef:
     kind: GitRepository
     name: stackspout
@@ -17,8 +17,8 @@ spec:
   prune: true
   postBuild:
     substituteFrom:
-      #- kind: Secret
-      #  name: stackspin-suitecrm-variables
+      - kind: Secret
+        name: stackspin-suitecrm-variables
       #- kind: Secret
       #  name: stackspin-suitecrm-oauth-variables
       - kind: Secret

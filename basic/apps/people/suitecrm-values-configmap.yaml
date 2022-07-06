@@ -13,6 +13,9 @@ data:
       hostname: "people.${domain}"
       tls: true
       certManager: true
+    suitecrmUsernme: "admin"
+    suitecrmEmail: "${admin_email}"
+    existingSecret: stackspin-suitecrm-variables
     # TODO Adjust OIDC SSO to service
     #    - name: Stackspin
     #      key: "${client_id}"

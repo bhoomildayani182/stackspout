@@ -17,3 +17,4 @@ flux create kustomization stackspout \
 
 python $STACKSPIN/install/generate_secrets.py vikunja
 python $STACKSPIN/install/generate_secrets.py gitea
+python $STACKSPIN/install/generate_secrets.py suitecrm
