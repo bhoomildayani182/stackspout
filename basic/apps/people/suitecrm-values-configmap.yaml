@@ -15,7 +15,8 @@ data:
       certManager: true
     suitecrmUsername: "admin"
     suitecrmEmail: "${admin_email}"
-    existingSecret: stackspin-suitecrm-variables
+    suitecrmPassword: "${suitecrm-password}"
+    #existingSecret: stackspin-suitecrm-variables
     mariadb:
       auth:
         password: "${mariadb-password}"
