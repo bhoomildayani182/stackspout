@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-kimai-values
+  namespace: stackspout
+data:
+  values.yaml: |
+    # https://github.com/robjuz/helm-charts/tree/master/charts/kimai2
+    image:
+      # Maybe apache-latest?
+      tag: apache-1.20.4-prod
+    ingress:
+      enabled: true
+      certManager: true
+      tls: true
+      hostname: "time.${domain}"
+    #    - name: Stackspin
+    #      key: "${client_id}"
+    #      secret: "${client_secret}"
+    #      autoDiscoverUrl: 'https://sso.${domain}/.well-known/openid-configuration'
