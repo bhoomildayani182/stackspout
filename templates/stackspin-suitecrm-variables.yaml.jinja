@@ -3,6 +3,6 @@ kind: Secret
 metadata:
   name: stackspin-suitecrm-variables
 data:
-  suitecrm-password: "{{ 32 | generate_password | b64encode }}"
-  mariadb-password: "{{ 32 | generate_password | b64encode }}"
-  mariadb-root-password: "{{ 32 | generate_password | b64encode }}"
+  suitecrm_password: "{{ 32 | generate_password | b64encode }}"
+  mariadb_password: "{{ 32 | generate_password | b64encode }}"
+  mariadb_root_password: "{{ 32 | generate_password | b64encode }}"

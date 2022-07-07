@@ -8,19 +8,16 @@ data:
   values.yaml: |
     ingress:
       enabled: true
-      #annotations:
-      #  kubernetes.io/tls-acme: "true"
       hostname: "people.${domain}"
       tls: true
       certManager: true
     suitecrmUsername: "admin"
     suitecrmEmail: "${admin_email}"
-    suitecrmPassword: "${suitecrm-password}"
-    #existingSecret: stackspin-suitecrm-variables
+    suitecrmPassword: "${suitecrm_password}"
     mariadb:
       auth:
-        password: "${mariadb-password}"
-        rootPassword: "${mariadb-root-password}"
+        password: "${mariadb_password}"
+        rootPassword: "${mariadb_root_password}"
     # TODO Adjust OIDC SSO to service
     #    - name: Stackspin
     #      key: "${client_id}"
