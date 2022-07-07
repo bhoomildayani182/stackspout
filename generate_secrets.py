@@ -37,6 +37,7 @@ APPS_WITHOUT_OAUTH = [
     "single-sign-on",
     "prometheus",
     "alertmanager",
+    "suitecrm",
 ]
 
 
