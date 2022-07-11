@@ -6,7 +6,7 @@ metadata:
   namespace: stackspout
 data:
   values.yaml: |
-    # https://github.com/robjuz/helm-charts/tree/master/charts/kimai2
+    # https://github.com/robjuz/helm-charts/tree/master/charts/kimai2#parameters
     image:
       # Maybe apache-latest?
       tag: apache-1.20.4-prod

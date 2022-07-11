@@ -21,7 +21,6 @@ data:
               'allow_user_to_change_display_name' => false,
               'default_phone_region' => 'DE',
               'default_locale' => 'en-gb',
-              'lost_password_link' => 'https://sso.${domain}/login/recovery',
             );
     apps:
       # Basics

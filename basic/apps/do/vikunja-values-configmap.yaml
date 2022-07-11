@@ -23,6 +23,10 @@ data:
                 clientsecret: "${client_secret}"
           local:
             enabled: false
+        service:
+          frontendurl: "https://do.${domain}"
+          motd: "Please allow public profile discovery in settings!"
+          timezone: "DE"
     ingress:
       main:
         enabled: true
