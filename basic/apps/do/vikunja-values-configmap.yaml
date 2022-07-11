@@ -27,6 +27,10 @@ data:
           frontendurl: "https://do.${domain}"
           motd: "Please allow public profile discovery in settings!"
           timezone: "DE"
+        database:
+          host: db
+          type: postgres
+          password: "${postgres_password}"
     ingress:
       main:
         enabled: true
@@ -42,9 +46,10 @@ data:
           - secretName: vikunja-tls
             hosts:
               - "do.${domain}"
-              - "tmpdo.${domain}"
     additionalContainers:
       api:
         image: vikunja/api:0.18.1
       frontend:
         image: vikunja/frontend:0.18.2
+    postgresql:
+      enabled: true
