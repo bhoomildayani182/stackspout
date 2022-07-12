@@ -4,7 +4,8 @@ metadata:
   name: gitea
   namespace: flux-system
 spec:
-  interval: 5m
+  interval: 10m
+  retryInterval: 1m
   wait: true
   timeout: 1h
   dependsOn:

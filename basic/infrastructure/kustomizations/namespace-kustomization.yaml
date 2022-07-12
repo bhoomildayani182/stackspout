@@ -4,7 +4,8 @@ metadata:
   name: stackspout-namespace
   namespace: flux-system
 spec:
-  interval: 5m
+  interval: 10m
+  retryInterval: 1m
   sourceRef:
     kind: GitRepository
     name: stackspout
