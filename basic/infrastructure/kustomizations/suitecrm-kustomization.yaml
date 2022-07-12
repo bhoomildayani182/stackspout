@@ -7,7 +7,7 @@ spec:
   interval: 10m
   retryInterval: 1m
   wait: true
-  timeout: 1h
+  timeout: 3m
   #dependsOn:
   # - name: single-sign-on
   sourceRef:
