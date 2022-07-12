@@ -5,7 +5,7 @@ metadata:
   name: vikunja
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 5m
   wait: true
   timeout: 1h
   dependsOn:
