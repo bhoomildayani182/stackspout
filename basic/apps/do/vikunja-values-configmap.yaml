@@ -53,3 +53,10 @@ data:
         image: vikunja/frontend:0.18.2
     postgresql:
       enabled: true
+      postgresqlUsername: vikunja
+      postgresqlPassword: "${postgres_password}"
+      postgresqlDatabase: vikunja
+      persistence:
+        enabled: true
+        existingClaim: vikunja-postgres
+
