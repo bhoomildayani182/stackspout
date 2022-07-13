@@ -35,6 +35,9 @@ data:
           type: postgres
           host: vikunja-postgresql
           password: "${postgresql_password}"
+        log:
+          database: stdout
+          databaselevel: debug
     ingress:
       main:
         enabled: true
