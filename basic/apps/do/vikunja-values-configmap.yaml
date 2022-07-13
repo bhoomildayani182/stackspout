@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: stackspin-vikunja-values
+  name: stackspin-{{ .Release.Name }}-values
   namespace: stackspout
 data:
   # Defaults: https://github.com/k8s-at-home/charts/blob/master/charts/stable/vikunja/values.yaml
@@ -27,9 +27,9 @@ data:
           motd: "Please allow public profile discovery in settings!"
           timezone: "CET"
         database:
-          host: db
           type: postgres
-          password: "${postgres_password}"
+          host: {{ .Release.Name }}-postgresql
+          password: "${postgresql_password}"
     ingress:
       main:
         enabled: true
@@ -42,7 +42,7 @@ data:
                - path: /
                  pathType: Prefix
         tls:
-          - secretName: vikunja-tls
+          - secretName: {{ .Release.Name }}-tls
             hosts:
               - "do.${domain}"
     additionalContainers:
@@ -52,9 +52,9 @@ data:
         image: vikunja/frontend:0.18.2
     postgresql:
       enabled: true
-      postgresqlUsername: vikunja
-      postgresqlPassword: "${postgres_password}"
-      postgresqlDatabase: vikunja
+      postgresqlDatabase: {{ .Release.Name }}
+      postgresqlUsername: {{ .Release.Name }}
+      postgresqlPassword: "${postgresql_password}"
       persistence:
         enabled: true
-        existingClaim: vikunja-postgres
+        existingClaim: {{ .Release.Name }}-postgres
