@@ -1,12 +1,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: stackspin-{{ .Release.Name }}-values
+  name: stackspin-vikunja-values
   namespace: stackspout
 data:
   # Defaults: https://github.com/k8s-at-home/charts/blob/master/charts/stable/vikunja/values.yaml
   # Inherits: https://github.com/k8s-at-home/library-charts/blob/main/charts/stable/common/values.yaml
   values.yaml: |
+    additionalContainers:
+      api:
+        image: vikunja/api:0.18.1
+      frontend:
+        image: vikunja/frontend:0.18.2
     vikunja:
       config: |-
         auth:
@@ -28,7 +33,7 @@ data:
           timezone: "CET"
         database:
           type: postgres
-          host: {{ .Release.Name }}-postgresql
+          host: vikunja-postgresql
           password: "${postgresql_password}"
     ingress:
       main:
@@ -42,19 +47,16 @@ data:
                - path: /
                  pathType: Prefix
         tls:
-          - secretName: {{ .Release.Name }}-tls
+          - secretName: vikunja-tls
             hosts:
               - "do.${domain}"
-    additionalContainers:
-      api:
-        image: vikunja/api:0.18.1
-      frontend:
-        image: vikunja/frontend:0.18.2
+    caddy:
+      noTls: true
     postgresql:
       enabled: true
-      postgresqlDatabase: {{ .Release.Name }}
-      postgresqlUsername: {{ .Release.Name }}
+      postgresqlDatabase: vikunja
+      postgresqlUsername: vikunja
       postgresqlPassword: "${postgresql_password}"
       persistence:
         enabled: true
-        existingClaim: {{ .Release.Name }}-postgres
+        existingClaim: vikunja-postgres
