@@ -13,7 +13,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./basic/apps/dev
+  path: ./basic/apps/code
   prune: true
   postBuild:
     substituteFrom:

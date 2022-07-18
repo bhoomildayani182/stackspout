@@ -38,7 +38,7 @@ data:
           host: vikunja-postgresql
           password: "${postgresql_password}"
         log:
-          path: "/etc/vikunja"
+          path: "/tmp"
           http: file
           database: file
           databaselevel: debug
