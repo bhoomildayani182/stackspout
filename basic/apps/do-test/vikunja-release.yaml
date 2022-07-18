@@ -16,6 +16,9 @@ spec:
   interval: 5m
   valuesFrom:
     - kind: ConfigMap
+      name: stackspin-vikunja-values
+      optional: false
+    - kind: ConfigMap
       name: stackspin-vikunja-test-values
       optional: false
     # Allow overriding values by ConfigMap or Secret

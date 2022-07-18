@@ -27,18 +27,15 @@ data:
                 authurl: "https://sso.${domain}/"
                 clientid: "${client_id}"
                 clientsecret: "${client_secret}"
-          local:
-            enabled: false
         service:
           frontendurl: "https://do-test.${domain}"
-          motd: "Please allow public profile discovery in settings!"
-          timezone: "CET"
         database:
           type: postgres
           host: vikunja-test-postgresql
           password: "${postgresql_password}"
         log:
           path: "/app/vikunja"
+          http: stdout
           database: stderr
           databaselevel: debug
     ingress:
@@ -49,7 +46,6 @@ data:
           kubernetes.io/tls-acme: "true"
         hosts:
           - host: "do-test.${domain}"
-            # TODO Helm template rather than repetition in every file? See https://github.com/k8s-at-home/library-charts/blob/4d09a8ddbdf11c278101b74b36720b5f7c17cd71/charts/stable/common/values.yaml#L342
             paths:
                - path: /
                  pathType: Prefix
@@ -58,7 +54,6 @@ data:
             hosts:
               - "do-test.${domain}"
     caddy:
-      # TODO is caddy needed at all?
       noTls: true
     postgresql:
       enabled: true
