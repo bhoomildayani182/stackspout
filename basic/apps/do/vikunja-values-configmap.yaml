@@ -38,9 +38,9 @@ data:
           host: vikunja-postgresql
           password: "${postgresql_password}"
         log:
-          path: "/tmp"
+          path: "/app/vikunja"
           http: file
-          database: file
+          database: stderr
           databaselevel: debug
     ingress:
       main:
