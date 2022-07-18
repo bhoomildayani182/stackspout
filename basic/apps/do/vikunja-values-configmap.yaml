@@ -10,8 +10,10 @@ data:
     additionalContainers:
       api:
         image: vikunja/api:unstable
+        imagePullPolicy: Always
       frontend:
         image: vikunja/frontend:unstable
+        imagePullPolicy: Always
     vikunja:
       config: |-
         auth:
