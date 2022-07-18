@@ -21,6 +21,6 @@ spec:
       - kind: Secret
         name: stackspin-vikunja-variables
       - kind: Secret
-        name: stackspin-vikunja-oauth-variables
+        name: stackspin-vikunja-test-oauth-variables
       - kind: Secret
         name: stackspin-cluster-variables
