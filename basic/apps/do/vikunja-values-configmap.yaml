@@ -35,7 +35,7 @@ data:
           port: "${outgoing_mail_smtp_port}"
           username: "${outgoing_mail_smtp_user}"
           password: "${outgoing_mail_smtp_password}"
-          fromemail: "${outgoing_mail_smtp_from_address}"
+          fromemail: "${outgoing_mail_from_address}"
           forcessl: true
         service:
           frontendurl: "https://do.${domain}"
