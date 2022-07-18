@@ -9,9 +9,9 @@ data:
   values.yaml: |
     additionalContainers:
       api:
-        image: vikunja/api:0.18.1
+        image: vikunja/api:unstable
       frontend:
-        image: vikunja/frontend:0.18.2
+        image: vikunja/frontend:unstable
     vikunja:
       config: |-
         auth:
@@ -46,14 +46,16 @@ data:
           kubernetes.io/tls-acme: "true"
         hosts:
           - host: "do.${domain}"
-            paths:
-               - path: /
-                 pathType: Prefix
+          - host: "du.${domain}"
+          - host: "tasks.${domain}"
         tls:
           - secretName: vikunja-tls
             hosts:
               - "do.${domain}"
+              - "du.${domain}"
+              - "tasks.${domain}"
     caddy:
+      # TODO is caddy needed at all
       noTls: true
     postgresql:
       enabled: true
