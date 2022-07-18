@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-vikunja-test-values
+  namespace: stackspout
+data:
+  # Defaults: https://github.com/k8s-at-home/charts/blob/master/charts/stable/vikunja/values.yaml
+  # Inherits: https://github.com/k8s-at-home/library-charts/blob/main/charts/stable/common/values.yaml
+  values.yaml: |
+    additionalContainers:
+      api:
+        image: vikunja/api:unstable
+        imagePullPolicy: Always
+      frontend:
+        image: vikunja/frontend:unstable
+        imagePullPolicy: Always
+    vikunja:
+      config: |-
+        auth:
+          openid:
+            # https://vikunja.io/docs/config-options/#openid
+            # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
+            enabled: true
+            redirecturl: "https://do-test.${domain}/auth/openid/"
+            providers:
+              - name: Stackspin
+                authurl: "https://sso.${domain}/"
+                clientid: "${client_id}"
+                clientsecret: "${client_secret}"
+          local:
+            enabled: false
+        service:
+          frontendurl: "https://do-test.${domain}"
+          motd: "Please allow public profile discovery in settings!"
+          timezone: "CET"
+        database:
+          type: postgres
+          host: vikunja-test-postgresql
+          password: "${postgresql_password}"
+        log:
+          path: "/app/vikunja"
+          http: file
+          database: stderr
+          databaselevel: debug
+    ingress:
+      main:
+        enabled: true
+        primary: false
+        annotations:
+          kubernetes.io/tls-acme: "true"
+        hosts:
+          - host: "do-test.${domain}"
+            # TODO Helm template rather than repetition in every file? See https://github.com/k8s-at-home/library-charts/blob/4d09a8ddbdf11c278101b74b36720b5f7c17cd71/charts/stable/common/values.yaml#L342
+            paths:
+               - path: /
+                 pathType: Prefix
+        tls:
+          - secretName: vikunja-test-tls
+            hosts:
+              - "do-test.${domain}"
+    caddy:
+      # TODO is caddy needed at all?
+      noTls: true
+    postgresql:
+      enabled: true
+      postgresqlDatabase: vikunja
+      postgresqlUsername: vikunja
+      postgresqlPassword: "${postgresql_password}"
+      persistence:
+        enabled: true
+        existingClaim: vikunja-test-postgres
