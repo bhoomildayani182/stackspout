@@ -57,17 +57,15 @@ data:
       - name: extract
         enabled: true
       # Collaborative apps
-        #- name: drawio
-        #  enabled: false
-        #buggy
-      - name: notes
-        enabled: true
-        #- name: files_mindmap
-        #  enabled: false
-        #buggy
       - name: files_markdown
         enabled: true
       - name: files_texteditor
+        enabled: true
+      - name: notes
+        enabled: true
+      - name: drawio
+        enabled: true
+      - name: files_mindmap
         enabled: true
       - name: maps
         enabled: true
