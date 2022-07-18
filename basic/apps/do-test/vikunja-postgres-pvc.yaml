@@ -3,8 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: vikunja-test-postgres
   namespace: stackspout
-  labels:
-    stackspin.net/backupSet: "vikunja"
 spec:
   accessModes:
     - ReadWriteOnce

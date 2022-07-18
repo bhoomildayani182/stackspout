@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: vikunja
+  name: vikunja-test
   namespace: stackspout
 spec:
   releaseName: vikunja
@@ -16,7 +16,7 @@ spec:
   interval: 5m
   valuesFrom:
     - kind: ConfigMap
-      name: stackspin-vikunja-values
+      name: stackspin-vikunja-test-values
       optional: false
     # Allow overriding values by ConfigMap or Secret
     - kind: ConfigMap
