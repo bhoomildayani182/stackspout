@@ -10,15 +10,14 @@ data:
       annotations:
         kubernetes.io/tls-acme: "true"
       hosts:
-        - host: "dev.${domain}"
+        - host: "code.${domain}"
           paths:
              - path: /
                pathType: Prefix
       tls:
         - secretName: gitea-tls
           hosts:
-            - "dev.${domain}"
-            - "tmpdev.${domain}"
+            - "code.${domain}"
     gitea:
       oauth:
         - name: Stackspin
@@ -28,7 +27,7 @@ data:
           autoDiscoverUrl: "https://sso.${domain}/.well-known/openid-configuration"
       config:
         server:
-          ROOT_URL: "https://dev.${domain}"
+          ROOT_URL: "https://code.${domain}"
     persistence:
       enabled: true
       existingClaim: gitea-data

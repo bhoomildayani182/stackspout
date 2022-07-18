@@ -46,8 +46,18 @@ data:
           kubernetes.io/tls-acme: "true"
         hosts:
           - host: "do.${domain}"
+            # Helm template rather than repitition? See https://github.com/k8s-at-home/library-charts/blob/4d09a8ddbdf11c278101b74b36720b5f7c17cd71/charts/stable/common/values.yaml#L342
+            paths:
+               - path: /
+                 pathType: Prefix
           - host: "du.${domain}"
+            paths:
+               - path: /
+                 pathType: Prefix
           - host: "tasks.${domain}"
+            paths:
+               - path: /
+                 pathType: Prefix
         tls:
           - secretName: vikunja-tls
             hosts:
@@ -55,7 +65,7 @@ data:
               - "du.${domain}"
               - "tasks.${domain}"
     caddy:
-      # TODO is caddy needed at all
+      # TODO is caddy needed at all?
       noTls: true
     postgresql:
       enabled: true
