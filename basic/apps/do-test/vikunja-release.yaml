@@ -4,7 +4,7 @@ metadata:
   name: vikunja-test
   namespace: stackspout
 spec:
-  releaseName: vikunja
+  releaseName: vikunja-test
   chart:
     spec:
       chart: vikunja
