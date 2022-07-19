@@ -23,6 +23,8 @@ data:
             );
     apps:
       # Basics
+      - name: bruteforcesettings
+        enabled: false
       - name: password_policy
         enabled: false
       - name: photos
@@ -88,16 +90,20 @@ data:
         enabled: true
       - name: workflow_pdf_converter
         enabled: true
-      - name: files_accesscontrol
-        enabled: true
-      - name: files_automatedtagging
-        enabled: true
-      - name: workflow_media_converter
-        enabled: true
-      - name: workflow_ocr
-        enabled: true
+        #- name: files_accesscontrol
+        #  enabled: false
+        #- name: files_automatedtagging
+        #  enabled: false
+        #- name: workflow_media_converter
+        #  enabled: false
+        #- name: workflow_ocr
+        #  enabled: false
       # Testing
+      - name: calendar_resource_management
+        enabled: true
       - name: event_update_notification
-        enabled: true
-      - name: integration_google
-        enabled: true
+        enabled: false
+      # TODO disabling user status, files_comments, support, event_update_notification (Notifications for calendar event updates), bruteforcesettings
+      # need to disable tasks soon
+      # configure firstrunwizard
+      # preconfigured: share by mail - https://apps.nextcloud.com/apps/socialsharing_email
