@@ -17,9 +17,10 @@ spec:
   prune: true
   postBuild:
     substituteFrom:
-      #- kind: Secret
-      #  name: stackspin-kimai-variables
-      #- kind: Secret
-      #  name: stackspin-kimai-oauth-variables
+      - kind: Secret
+        name: stackspin-kimai-variables
+      - kind: Secret
+        name: stackspin-kimai-oauth-variables
+        optional: true
       - kind: Secret
         name: stackspin-cluster-variables

@@ -99,10 +99,11 @@ data:
         #- name: workflow_ocr
         #  enabled: false
       # Testing
-      - name: calendar_resource_management
-        enabled: true
       - name: event_update_notification
         enabled: false
+        #- name: calendar_resource_management
+        #  enabled: true
+        # TODO install via CLI
       # TODO disabling user status, files_comments, support, event_update_notification (Notifications for calendar event updates), bruteforcesettings
       # need to disable tasks soon
       # configure firstrunwizard
