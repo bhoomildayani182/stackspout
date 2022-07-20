@@ -13,7 +13,7 @@ data:
       certManager: true
     suitecrmUsername: "admin"
     suitecrmEmail: "${admin_email}"
-    suitecrmPassword: "${suitecrm_password}"
+    suitecrmPassword: "${password}"
     mariadb:
       auth:
         password: "${mariadb_password}"

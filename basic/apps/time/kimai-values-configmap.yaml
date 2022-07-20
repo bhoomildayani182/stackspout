@@ -7,13 +7,23 @@ data:
   values.yaml: |
     # https://github.com/robjuz/helm-charts/tree/master/charts/kimai2#parameters
     image:
-      # Maybe apache-latest?
-      tag: apache-1.20.4-prod
+      tag: apache-1.21.0-prod
+    kimaiAppSecret: "${secret}"
+    kimaiAdminEmail: "${admin_email}"
+    kimaiAdminPassword: "${password}"
+    kimaiMailerUrl: "smtp://${outgoing_mail_smtp_user}:${outgoing_mail_smtp_password}@${outgoing_mail_smtp_host}?encryption=tls&auth_mode=plain"
+    kimaiMailerFrom: "${outgoing_mail_from_address}"
     ingress:
       enabled: true
       certManager: true
       tls: true
       hostname: "time.${domain}"
+    persistence:
+      existingClaim: kimai-data
+    mariadb:
+      auth:
+        password: "${mariadb_password}"
+        rootPassword: "${mariadb_root_password}"
     #    - name: Stackspin
     #      key: "${client_id}"
     #      secret: "${client_secret}"
