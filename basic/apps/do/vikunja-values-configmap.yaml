@@ -41,6 +41,7 @@ data:
           frontendurl: "https://do.${domain}"
           motd: "Please allow public profile discovery in settings!"
           timezone: "CET"
+          JWTSecret: "${jwt}"
         database:
           type: postgres
           host: vikunja-postgresql

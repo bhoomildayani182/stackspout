@@ -3,4 +3,5 @@ kind: Secret
 metadata:
   name: stackspin-vikunja-variables
 data:
+  jwt: "{{ 32 | generate_password | b64encode }}"
   postgresql_password: "{{ 32 | generate_password | b64encode }}"
