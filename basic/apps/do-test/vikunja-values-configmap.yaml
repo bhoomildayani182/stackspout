@@ -29,6 +29,9 @@ data:
                 clientsecret: "${client_secret}"
         service:
           frontendurl: "https://do-test.${domain}"
+          motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
+          timezone: "CET"
+          JWTSecret: "${jwt}"
         database:
           type: postgres
           host: vikunja-test-postgresql

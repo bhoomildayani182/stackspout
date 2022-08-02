@@ -37,6 +37,7 @@ data:
           password: "${outgoing_mail_smtp_password}"
           fromemail: "${outgoing_mail_from_address}"
           forcessl: true
+        # TODO Configure PVC for file uploads
         service:
           frontendurl: "https://do.${domain}"
           motd: "Please allow public profile discovery in settings!"
