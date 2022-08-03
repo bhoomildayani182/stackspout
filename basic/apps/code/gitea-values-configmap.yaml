@@ -28,6 +28,8 @@ data:
       config:
         server:
           ROOT_URL: "https://code.${domain}"
+        log:
+          LEVEL: "Trace"
     persistence:
       enabled: true
       existingClaim: gitea-data

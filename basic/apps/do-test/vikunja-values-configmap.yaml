@@ -56,8 +56,6 @@ data:
           - secretName: vikunja-test-tls
             hosts:
               - "do-test.${domain}"
-    caddy:
-      noTls: true
     postgresql:
       enabled: true
       postgresqlDatabase: vikunja
