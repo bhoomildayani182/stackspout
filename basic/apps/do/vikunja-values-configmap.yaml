@@ -9,10 +9,10 @@ data:
   values.yaml: |
     additionalContainers:
       api:
-        image: vikunja/api:unstable
+        image: vikunja/api:latest
         imagePullPolicy: Always
       frontend:
-        image: vikunja/frontend:unstable
+        image: vikunja/frontend:latest
         imagePullPolicy: Always
     vikunja:
       config: |-
