@@ -9,6 +9,7 @@ data:
       enabled: true
       annotations:
         kubernetes.io/tls-acme: "true"
+        kubernetes.io/proxy-body-size: "500m"
       hosts:
         - host: "code.${domain}"
           paths:
@@ -18,6 +19,10 @@ data:
         - secretName: gitea-tls
           hosts:
             - "code.${domain}"
+    service:
+      ssh:
+        annotations:
+          metallb.universe.tf/allow-shared-ip: gitea
     gitea:
       oauth:
         - name: Stackspin
