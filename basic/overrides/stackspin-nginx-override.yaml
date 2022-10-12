@@ -5,6 +5,12 @@ metadata:
   name: stackspin-nginx-override
 data:
   values.yaml: |
+    # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
     controller:
       image:
         registry: "k8s.gcr.io"
+    controller:
+      admissionWebhooks:
+        patch:
+          image:
+            registry: "k8s.gcr.io"
