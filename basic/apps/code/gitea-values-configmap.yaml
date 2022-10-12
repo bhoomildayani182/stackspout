@@ -19,10 +19,6 @@ data:
         - secretName: gitea-tls
           hosts:
             - "code.${domain}"
-    service:
-      ssh:
-        annotations:
-          metallb.universe.tf/allow-shared-ip: gitea
     gitea:
       oauth:
         - name: Stackspin
