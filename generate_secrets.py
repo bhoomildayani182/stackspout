@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Generates Kubernetes secrets based on a provided app name.
 
 If the `templates` directory contains a secret called `stackspin-{app}-variables`, it

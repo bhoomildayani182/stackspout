@@ -18,5 +18,7 @@ flux create kustomization stackspout \
 python $(dirname "$0")/../generate_secrets.py vikunja
 python $(dirname "$0")/../generate_secrets.py vikunja-test
 python $(dirname "$0")/../generate_secrets.py gitea
-python $(dirname "$0")/../generate_secrets.py suitecrm
-python $(dirname "$0")/../generate_secrets.py kimai
+python $(dirname "$0")/../generate_secrets.py invoiceninja
+#python $(dirname "$0")/../generate_secrets.py suitecrm
+#python $(dirname "$0")/../generate_secrets.py kimai
+python $(dirname "$0")/../generate_secrets.py wikijs
