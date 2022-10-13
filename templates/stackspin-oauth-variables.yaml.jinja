@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stackspin-{{ app }}-oauth-variables
+data:
+  client_id: "{{ app | b64encode }}"
+  client_secret: "{{ 32 | generate_password | b64encode }}"

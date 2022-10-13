@@ -27,12 +27,16 @@ data:
     persistence:
       public:
         existingClaim: invoiceninja-data
-    appKey: "ksickejksickejksickejdddksickejd"
+    appKey: "${app_key}"
+    debug: true
+    userEmail: "${admin_email}"
+    userPassword: "${password}"
     mariadb:
       # https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
       auth:
-        rootPassword: "testilein"
-        password: "bratwurst"
+        password: "${mariadb_password}"
+        rootPassword: "${mariadb_root_password}"
+
     # TODO Adjust invoiceninja Mailing config
     #    mailer:
     #      enabled: "${outgoing_mail_enabled}"

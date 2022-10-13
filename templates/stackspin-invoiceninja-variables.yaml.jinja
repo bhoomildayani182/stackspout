@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stackspin-invoiceninja-variables
+data:
+  password: "{{ 32 | generate_password | b64encode }}"
+  app_key: "{{ 64 | generate_password | b64encode }}"
+  mariadb_password: "{{ 32 | generate_password | b64encode }}"
+  mariadb_root_password: "{{ 32 | generate_password | b64encode }}"
