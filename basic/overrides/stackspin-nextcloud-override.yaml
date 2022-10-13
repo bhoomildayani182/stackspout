@@ -61,8 +61,8 @@ data:
       # Collaborative apps
       - name: files_markdown
         enabled: true
-      - name: files_texteditor
-        enabled: true
+        #- name: files_texteditor
+        #  enabled: true
       - name: notes
         enabled: true
       - name: drawio
