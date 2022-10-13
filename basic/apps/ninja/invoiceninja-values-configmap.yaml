@@ -31,13 +31,20 @@ data:
     mailer: "smtp" # FIXME use "${outgoing_mail_enabled}"
     # https://github.com/invoiceninja/invoiceninja/blob/v5-stable/config/mail.php#L36
     extraEnvVars:
-      - MAIL_HOST: "${outgoing_mail_smtp_host}"
-      - MAIL_PORT: "${outgoing_mail_smtp_port}"
-      - MAIL_USERNAME: "${outgoing_mail_smtp_user}"
-      - MAIL_PASSWORD: "${outgoing_mail_smtp_password}"
-      - MAIL_EHLO_DOMAIN: "${outgoing_mail_domain}"
-      - MAIL_FROM_ADDRESS: "${outgoing_mail_from_address}"
-      - MAIL_FROM_NAME: "FTT Forensic Discovery GmbH"
+      - name: MAIL_HOST
+        value: "${outgoing_mail_smtp_host}"
+      - name: MAIL_PORT
+        value: "${outgoing_mail_smtp_port}"
+      - name: MAIL_USERNAME
+        value: "${outgoing_mail_smtp_user}"
+      - name: MAIL_PASSWORD
+        value: "${outgoing_mail_smtp_password}"
+      - name: MAIL_EHLO_DOMAIN
+        value: "${outgoing_mail_domain}"
+      - name: MAIL_FROM_ADDRESS
+        value: "${outgoing_mail_from_address}"
+      - name: MAIL_FROM_NAME
+        value: "FTT Forensic Discovery GmbH"
 
     # Missing: invoiceninja OpenID Connect Single Sign-On Configuration
     #    - name: Stackspin
