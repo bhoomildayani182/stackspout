@@ -21,7 +21,10 @@ data:
         rootPassword: "${mariadb_root_password}"
       persistence:
         existingClaim: invoiceninja-mariadb
-    # Redis is only cache, so no pvc needed: https://invoiceninja.github.io/docs/env-variables/
+    redis:
+      # Redis is only cache, so no pvc needed: https://invoiceninja.github.io/docs/env-variables/
+      auth:
+        password: "${redis_password}"
 
     userEmail: "${admin_email}"
     userPassword: "${password}"
