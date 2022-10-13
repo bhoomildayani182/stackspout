@@ -27,7 +27,6 @@ data:
     persistence:
       public:
         existingClaim: invoiceninja-data
-    appKey: "${app_key}"
     debug: true
     userEmail: "${admin_email}"
     userPassword: "${password}"
