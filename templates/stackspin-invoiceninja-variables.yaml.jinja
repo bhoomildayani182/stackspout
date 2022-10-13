@@ -4,5 +4,6 @@ metadata:
   name: stackspin-invoiceninja-variables
 data:
   password: "{{ 32 | generate_password | b64encode }}"
+  redis_password: "{{ 32 | generate_password | b64encode }}"
   mariadb_password: "{{ 32 | generate_password | b64encode }}"
   mariadb_root_password: "{{ 32 | generate_password | b64encode }}"
