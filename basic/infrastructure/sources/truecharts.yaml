@@ -5,4 +5,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 60m
-  url: https://helm.truecharts.org
+  url: https://charts.truecharts.org
