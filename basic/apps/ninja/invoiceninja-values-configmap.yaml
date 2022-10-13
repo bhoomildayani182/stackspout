@@ -14,27 +14,29 @@ data:
     persistence:
       public:
         existingClaim: invoiceninja-data
-    debug: true
-    userEmail: "${admin_email}"
-    userPassword: "${password}"
     mariadb:
       # https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
       auth:
         password: "${mariadb_password}"
         rootPassword: "${mariadb_root_password}"
-    redis:
-      auth:
-        password: "${redis_password}"
+      persistence:
+        existingClaim: invoiceninja-mariadb
+    # Redis is only cache, so no pvc needed: https://invoiceninja.github.io/docs/env-variables/
 
-    # TODO Adjust invoiceninja Mailing config
-    #    mailer:
-    #      enabled: "${outgoing_mail_enabled}"
-    #      host: "${outgoing_mail_smtp_host}"
-    #      port: "${outgoing_mail_smtp_port}"
-    #      username: "${outgoing_mail_smtp_user}"
-    #      password: "${outgoing_mail_smtp_password}"
-    #      fromemail: "${outgoing_mail_from_address}"
-    # TODO Adjust invoiceninja OpenID Connect Single Sign-On Configuration
+    userEmail: "${admin_email}"
+    userPassword: "${password}"
+    mailer: "smtp" # FIXME use "${outgoing_mail_enabled}"
+    # https://github.com/invoiceninja/invoiceninja/blob/v5-stable/config/mail.php#L36
+    extraEnvVars:
+      - MAIL_HOST: "${outgoing_mail_smtp_host}"
+      - MAIL_PORT: "${outgoing_mail_smtp_port}"
+      - MAIL_USERNAME: "${outgoing_mail_smtp_user}"
+      - MAIL_PASSWORD: "${outgoing_mail_smtp_password}"
+      - MAIL_EHLO_DOMAIN: "${outgoing_mail_domain}"
+      - MAIL_FROM_ADDRESS: "${outgoing_mail_from_address}"
+      - MAIL_FROM_NAME: "FTT Forensic Discovery GmbH"
+
+    # Missing: invoiceninja OpenID Connect Single Sign-On Configuration
     #    - name: Stackspin
     #      key: "${client_id}"
     #      secret: "${client_secret}"
