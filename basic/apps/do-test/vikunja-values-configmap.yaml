@@ -4,16 +4,14 @@ metadata:
   name: stackspin-vikunja-test-values
   namespace: stackspout
 data:
-  # Defaults: https://github.com/k8s-at-home/charts/blob/master/charts/stable/vikunja/values.yaml
-  # Inherits: https://github.com/k8s-at-home/library-charts/blob/main/charts/stable/common/values.yaml
+  # https://github.com/truecharts/charts/blob/master/charts/stable/vikunja/values.yaml
   values.yaml: |
-    additionalContainers:
-      api:
-        image: vikunja/api:unstable
-        imagePullPolicy: Always
-      frontend:
-        image: vikunja/frontend:unstable
-        imagePullPolicy: Always
+    image:
+      tag: unstable
+      imagePullPolicy: Always
+    frontendImage:
+      tag: unstable
+      imagePullPolicy: Always
     vikunja:
       config: |-
         auth:
@@ -56,11 +54,12 @@ data:
           - secretName: vikunja-test-tls
             hosts:
               - "do-test.${domain}"
-    persistence:
-      files:
-        labels:
-          stackspin.net/backupSet: "vikunja"
+    #persistence:
+    #  files:
+    #    labels:
+    #      stackspin.net/backupSet: "vikunja"
     postgresql:
+      # https://github.com/truecharts/charts/blob/master/charts/dependency/postgresql/values.yaml
       enabled: true
       postgresqlDatabase: vikunja
       postgresqlUsername: vikunja
