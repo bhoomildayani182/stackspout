@@ -56,20 +56,24 @@ data:
           - secretName: vikunja-test-tls
             hosts:
               - "do-test.${domain}"
+    persistence:
+      files:
+        labels:
+          stackspin.net/backupSet: "vikunja"
     postgresql:
       enabled: true
       postgresqlDatabase: vikunja
       postgresqlUsername: vikunja
       postgresqlPassword: "${postgresql_password}"
-      persistence:
-        db:
-          enabled: true
-          # -- Sets the persistence type
-          # Valid options are: simplePVC, simpleHP, pvc, emptyDir, secret, configMap, hostPath or custom
-          type: pvc
-          mountPath: "/bitnami/postgresql"
-          # -- If you want to reuse an existing claim, the name of the existing PVC can be passed here.
-          existingClaim: vikunja-test-postgres
-      volumeClaimTemplates:
-        db:
-          enabled: false
+      #persistence:
+      #  db:
+      #    enabled: true
+      #    # -- Sets the persistence type
+      #    # Valid options are: simplePVC, simpleHP, pvc, emptyDir, secret, configMap, hostPath or custom
+      #    type: pvc
+      #    mountPath: "/bitnami/postgresql"
+      #    # -- If you want to reuse an existing claim, the name of the existing PVC can be passed here.
+      #    existingClaim: vikunja-test-postgres
+      #volumeClaimTemplates:
+      #  db:
+      #    enabled: false
