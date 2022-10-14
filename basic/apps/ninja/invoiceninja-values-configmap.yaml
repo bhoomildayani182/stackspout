@@ -21,14 +21,14 @@ data:
       auth:
         password: "${mariadb_password}"
         rootPassword: "${mariadb_root_password}"
-      persistence:
-        existingClaim: invoiceninja-mariadb
+      primary:
+        persistence:
+          existingClaim: invoiceninja-mariadb
     redis:
       # Redis is only cache, so no pvc needed: https://invoiceninja.github.io/docs/env-variables/
       auth:
         password: "${redis_password}"
 
-    debug: true
     appURL: "https://ninja.ftt.gmbh"
     userEmail: "${admin_email}"
     userPassword: "${password}"
