@@ -60,7 +60,7 @@ data:
     #      stackspin.net/backupSet: "vikunja"
     postgresql:
       # https://github.com/truecharts/charts/blob/master/charts/dependency/postgresql/values.yaml
-      enabled: true
+      #enabled: true
       postgresqlDatabase: vikunja
       postgresqlUsername: vikunja
       postgresqlPassword: "${postgresql_password}"

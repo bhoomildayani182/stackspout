@@ -11,7 +11,7 @@ data:
       api:
         image: vikunja/api:latest
         imagePullPolicy: Always
-        volumeMounts: [{"mountPath":"/etc/vikunja/config.yml","name":"vikunja-config","subPath":"Vikunja.yaml"}, {"mountPath":"/etc/vikunja/files","name":"vikunja-files"}]
+        #volumeMounts: [{"mountPath":"/etc/vikunja/config.yml","name":"vikunja-config","subPath":"Vikunja.yaml"}, {"mountPath":"/etc/vikunja/files","name":"vikunja-files"}]
       frontend:
         image: vikunja/frontend:latest
         imagePullPolicy: Always
@@ -53,6 +53,10 @@ data:
           http: file
           database: stderr
           databaselevel: debug
+    persistence:
+      files:
+        enabled: true
+        existingClaim: vikunja-files
     ingress:
       main:
         enabled: true
