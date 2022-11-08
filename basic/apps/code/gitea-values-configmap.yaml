@@ -29,6 +29,9 @@ data:
       config:
         server:
           ROOT_URL: "https://code.${domain}"
+          # START_SSH_SERVER: true
+        service:
+          DISABLE_REGISTRATION: true
         log:
           LEVEL: "Trace"
     persistence:
