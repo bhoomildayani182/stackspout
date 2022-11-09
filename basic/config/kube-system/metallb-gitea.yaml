@@ -13,8 +13,12 @@ spec:
   loadBalancerIP: "${ip_address}"
   ports:
     - name: ssh
-      protocol: SSH
+      protocol: TCP
       port: 22
       targetPort: 22
   selector:
     app: gitea
+status:
+  loadBalancer:
+    ingress:
+    - ip: "${ip_address}"
