@@ -41,3 +41,6 @@ data:
       persistence:
         enabled: true
         existingClaim: gitea-postgres
+    service:
+      ssh:
+        hostPort: 22
