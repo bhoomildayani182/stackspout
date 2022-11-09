@@ -9,7 +9,7 @@ metadata:
     metallb.universe.tf/allow-shared-ip: "share-ipv4"
 spec:
   type: LoadBalancer
-  loadBalancerIP: 212.224.115.169 #"${ip_address}"
+  loadBalancerIP: "${ip_address}"
   ports:
     - name: ssh
       protocol: TCP
