@@ -13,6 +13,9 @@ data:
       hostname: "ninja.${domain}"
       tls: true
       certManager: true
+        annotations:
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            more_set_headers "Content-Security-Policy: frame-ancestors 'self' ${nextcloud_domain}";
     persistence:
       public:
         existingClaim: invoiceninja-data
@@ -29,7 +32,7 @@ data:
       auth:
         password: "${redis_password}"
 
-    appURL: "https://ninja.ftt.gmbh"
+    appURL: "https://ninja.${domain}"
     userEmail: "${admin_email}"
     userPassword: "${password}"
     mailer: "smtp" # FIXME use "${outgoing_mail_enabled}"

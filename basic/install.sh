@@ -22,3 +22,4 @@ python $(dirname "$0")/../generate_secrets.py invoiceninja
 #python $(dirname "$0")/../generate_secrets.py suitecrm
 #python $(dirname "$0")/../generate_secrets.py kimai
 python $(dirname "$0")/../generate_secrets.py wikijs
+python $(dirname "$0")/../generate_secrets.py nextcloud-home
