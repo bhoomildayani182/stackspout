@@ -32,6 +32,7 @@ data:
       auth:
         password: "${redis_password}"
 
+    debug: true
     appURL: "https://ninja.${domain}"
     userEmail: "${admin_email}"
     userPassword: "${password}"
