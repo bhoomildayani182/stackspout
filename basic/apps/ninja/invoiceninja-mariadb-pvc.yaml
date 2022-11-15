@@ -11,5 +11,5 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 2Gi
+      storage: 8Gi
   storageClassName: local-path
