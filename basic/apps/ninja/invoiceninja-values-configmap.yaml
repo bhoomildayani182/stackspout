@@ -14,8 +14,6 @@ data:
       tls: true
       certManager: true
         annotations:
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            add_header "Content-Security-Policy: frame-ancestors 'self' ${nextcloud_domain}";
     persistence:
       public:
         existingClaim: invoiceninja-data
