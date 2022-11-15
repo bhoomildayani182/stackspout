@@ -24,3 +24,5 @@ spec:
         optional: true
       - kind: Secret
         name: stackspin-cluster-variables
+      - kind: ConfigMap
+        name: stackspin-nextcloud-kustomization-variables
