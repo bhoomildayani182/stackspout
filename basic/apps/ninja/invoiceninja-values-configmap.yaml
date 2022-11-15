@@ -7,7 +7,7 @@ data:
   values.yaml: |
     # https://github.com/invoiceninja/dockerfiles/blob/master/charts/invoiceninja/values.yaml
     image:
-      tag: 5.5.31
+      tag: 5.5
     ingress:
       enabled: true
       hostname: "ninja.${domain}"

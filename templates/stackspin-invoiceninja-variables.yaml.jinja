@@ -3,6 +3,7 @@ kind: Secret
 metadata:
   name: stackspin-invoiceninja-variables
 data:
+  app_key: "{{ 32 | generate_password | b64encode }}"
   password: "{{ 32 | generate_password | b64encode }}"
   redis_password: "{{ 32 | generate_password | b64encode }}"
   mariadb_password: "{{ 32 | generate_password | b64encode }}"
