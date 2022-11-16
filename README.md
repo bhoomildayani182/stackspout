@@ -22,9 +22,13 @@ Useful tools for administration:
 - append another OAuth2Client definition to `basic/overrides/oauth-clients.yaml`,
   adjusting `metadata.name` and `spec.secretName` as well as `spec.redirectUris`
 - apply changes to the cluster 
-- obtain the generated `client_secret` for you application from kubernetes:
+- obtain the generated `client_secret` for your application from kubernetes:
 
-    kubectl get secret -n flux-system stackspin-nextcloud-home-oauth-variables --template '{{.data.client_secret}}' | base64 -d
+      kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_secret}}' | base64 -d
+
+  with client_id:
+
+      kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_id}}{{"\n"}}{{.data.client_secret}}{{"\n"}}' | while read in; do echo $in | base64 -d; echo; done
 
 ## Customizations
 
