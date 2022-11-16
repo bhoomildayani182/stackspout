@@ -6,8 +6,25 @@ to make it more commercially/professionally interesting.
 Once stabilized, the aim is to contribute as much upstream as possible.
 
 Stackspout is used in day-to-day business
-with a 2-digit user number,
+with a double-digit user number,
 so all experiments happen carefully.
+
+## Tools
+
+Useful tools for administration:
+- my `stack` CLI helper, currently part of my dotfiles:
+  https://git.jfischer.org/xeruf/dotfiles/src/branch/main/.config/shell/server#L11
+- stackspin docs:
+  https://docs.stackspin.net/en/v2/system_administration/customizing.html
+
+### Guide: Create OAuth Credentials for an external service
+- add a line in `basic/install.sh` and run it to generate the secret
+- append another OAuth2Client definition to `basic/overrides/oauth-clients.yaml`,
+  adjusting `metadata.name` and `spec.secretName` as well as `spec.redirectUris`
+- apply changes to the cluster 
+- obtain the generated `client_secret` for you application from kubernetes:
+
+    kubectl get secret -n flux-system stackspin-nextcloud-home-oauth-variables --template '{{.data.client_secret}}' | base64 -d
 
 ## Customizations
 
@@ -16,10 +33,12 @@ so all experiments happen carefully.
 - Add Email Auth back to Zulip
 
 ### New Applications
+below list is formatted as:
 > subdomain: Service (helmrepo, if not provided by the service authors)
 #### Stable including Single-Sign-On
 - dev: Gitea 
-- do: Vikunja (k8s-at-home)
+- do: Vikunja (k8s-at-home - migrating to truecharts)
+- ninja: InvoiceNinja
 #### In Development
 - people: SuiteCRM (bitnami repo)
 - time: Kimai (robjuz repo)
@@ -33,7 +52,6 @@ so all experiments happen carefully.
 ### Issues to tackle
 #### Structurally
 - generate_secrets.py was copied from Stackpin
-- all apps except gitea lack pvcs
 #### Functionally
 - Nextcloud too slow - add Redis
 - Preconfigure user settings in Nextcloud, Vikunja and more
