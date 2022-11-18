@@ -27,6 +27,11 @@ data:
           secret: "${client_secret}"
           autoDiscoverUrl: "https://sso.${domain}/.well-known/openid-configuration"
       config:
+        # https://docs.gitea.io/en-us/config-cheat-sheet
+        repository:
+          DEFAULT_PUSH_CREATE_PRIVATE: false
+          ENABLE_PUSH_CREATE_USER: true
+          ENABLE_PUSH_CREATE_ORG: true
         server:
           ROOT_URL: "https://code.${domain}"
           # START_SSH_SERVER: true
