@@ -8,7 +8,7 @@ data:
     # https://github.com/invoiceninja/dockerfiles/blob/master/charts/invoiceninja/values.yaml
     image:
       tag: 5.5
-      imagePullPolicy: Always
+      pullPolicy: Always
     ingress:
       enabled: true
       hostname: "ninja.${domain}"
