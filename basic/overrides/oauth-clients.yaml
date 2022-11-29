@@ -16,6 +16,9 @@ spec:
   secretName: stackspin-nextcloud-home-oauth-variables
   redirectUris:
     - https://files.home.${domain}/index.php/apps/sociallogin/custom_oauth2/stackspin
+    - https://files.home.${domain}/apps/sociallogin/custom_oidc/stackspin
+    - https://files.home.${domain}/index.php/apps/sociallogin/custom_oidc/stackspin
+    - https://files.home.${domain}/apps/sociallogin/custom_oauth2/stackspin
   tokenEndpointAuthMethod: client_secret_post
 ---
 apiVersion: hydra.ory.sh/v1alpha1
