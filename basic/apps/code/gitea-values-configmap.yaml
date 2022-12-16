@@ -20,23 +20,28 @@ data:
           hosts:
             - "code.${domain}"
     gitea:
+      # https://gitea.com/gitea/helm-chart/src/branch/main#oauth2-settings
       oauth:
         - name: Stackspin
           provider: "openidConnect"
           key: "${client_id}"
           secret: "${client_secret}"
           autoDiscoverUrl: "https://sso.${domain}/.well-known/openid-configuration"
+          iconUrl: "https://dashboard.${domain}/favicon-32x32.png"
+      # https://docs.gitea.io/en-us/config-cheat-sheet
       config:
-        # https://docs.gitea.io/en-us/config-cheat-sheet
         repository:
           DEFAULT_PUSH_CREATE_PRIVATE: false
           ENABLE_PUSH_CREATE_USER: true
           ENABLE_PUSH_CREATE_ORG: true
         server:
           ROOT_URL: "https://code.${domain}"
-          # START_SSH_SERVER: true
+          LANDING_PAGE: login
+        openid:
+          #ENABLE_OPENID_SIGNUP: true
         service:
-          DISABLE_REGISTRATION: true
+          ENABLE_BASIC_AUTHENTICATION: false
+          #DISABLE_REGISTRATION: true
         log:
           LEVEL: "Trace"
     persistence:
