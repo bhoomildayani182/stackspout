@@ -37,11 +37,11 @@ data:
         server:
           ROOT_URL: "https://code.${domain}"
           LANDING_PAGE: login
-        #openid:
-          #ENABLE_OPENID_SIGNUP: true
+        openid:
+          ENABLE_OPENID_SIGNUP: true
         service:
           ENABLE_BASIC_AUTHENTICATION: false
-          #DISABLE_REGISTRATION: true
+          DISABLE_REGISTRATION: true
         log:
           LEVEL: "Trace"
     persistence:
