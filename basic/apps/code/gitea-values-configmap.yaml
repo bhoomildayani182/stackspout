@@ -40,7 +40,7 @@ data:
         openid:
           ENABLE_OPENID_SIGNUP: true
         service:
-          #DISABLE_REGISTRATION: true
+          DISABLE_REGISTRATION: false
         log:
           LEVEL: "Trace"
     persistence:
