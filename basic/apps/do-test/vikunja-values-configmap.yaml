@@ -6,39 +6,41 @@ metadata:
 data:
   # https://github.com/truecharts/charts/blob/master/charts/stable/vikunja/values.yaml
   values.yaml: |
-    #image:
-    #  tag: unstable
-    #  imagePullPolicy: Always
-    #frontendImage:
-    #  tag: unstable
-    #  imagePullPolicy: Always
-    vikunja:
-      config: |-
-        auth:
-          openid:
-            # https://vikunja.io/docs/config-options/#openid
-            # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
-            enabled: true
-            redirecturl: "https://do-test.${domain}/auth/openid/"
-            providers:
-              - name: Stackspin
-                authurl: "https://sso.${domain}/"
-                clientid: "${client_id}"
-                clientsecret: "${client_secret}"
-        service:
-          frontendurl: "https://do-test.${domain}"
-          motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
-          timezone: "CET"
-          JWTSecret: "${jwt}"
-        database:
-          type: postgres
-          host: vikunja-test-postgresql
-          password: "${postgresql_password}"
-        log:
-          path: "/app/vikunja"
-          http: stdout
-          database: stderr
-          databaselevel: debug
+    image:
+      tag: unstable
+      imagePullPolicy: Always
+    frontendImage:
+      tag: unstable
+      imagePullPolicy: Always
+    configmap:
+      config:
+        data:
+          vikunja.yaml: |-
+            auth:
+              openid:
+                # https://vikunja.io/docs/config-options/#openid
+                # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
+                enabled: true
+                redirecturl: "https://do-test.${domain}/auth/openid/"
+                providers:
+                  - name: Stackspin
+                    authurl: "https://sso.${domain}/"
+                    clientid: "${client_id}"
+                    clientsecret: "${client_secret}"
+            service:
+              frontendurl: "https://do-test.${domain}"
+              motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
+              timezone: "CET"
+              JWTSecret: "${jwt}"
+            database:
+              type: postgres
+              host: vikunja-test-postgresql
+              password: "${postgresql_password}"
+            log:
+              path: "/app/vikunja"
+              http: stdout
+              database: stderr
+              databaselevel: debug
     ingress:
       main:
         enabled: true
