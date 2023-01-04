@@ -7,8 +7,9 @@ spec:
   releaseName: gitea
   chart:
     spec:
+      # https://gitea.com/gitea/helm-chart/tags
       chart: gitea
-      version: 5.0.9
+      version: 6.0.5
       sourceRef:
         kind: HelmRepository
         name: gitea
