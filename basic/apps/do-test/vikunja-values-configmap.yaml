@@ -6,12 +6,12 @@ metadata:
 data:
   # https://github.com/truecharts/charts/blob/master/charts/stable/vikunja/values.yaml
   values.yaml: |
-    image:
-      tag: unstable
-      imagePullPolicy: Always
-    frontendImage:
-      tag: unstable
-      imagePullPolicy: Always
+    #image:
+    #  tag: unstable
+    #  imagePullPolicy: Always
+    #frontendImage:
+    #  tag: unstable
+    #  imagePullPolicy: Always
     vikunja:
       config: |-
         auth:
