@@ -41,6 +41,7 @@ data:
           ENABLE_OPENID_SIGNUP: true
         service:
           DISABLE_REGISTRATION: false
+          ALLOW_ONLY_EXTERNAL_REGISTRATION: true
         log:
           LEVEL: "Trace"
     persistence:
