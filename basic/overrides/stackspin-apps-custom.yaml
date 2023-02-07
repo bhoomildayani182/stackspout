@@ -1,0 +1,26 @@
+# This list of apps is loaded by the Stackspin dashboard on startup, and it
+# will insert any missing entries into the Stackspin database (`apps` table).
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-apps-custom
+  namespace: flux-system
+data:
+  vikunja: |
+    name: "Vikunja Tasks"
+  gitea: |
+    name: "Gitea Code"
+  invoiceninja: |
+    name: "Invoiceninja Billing"
+---
+# This list of OAuth clients with their corresponding apps is loaded by the
+# Stackspin dashboard on startup, and it will insert any missing entries into
+# the Stackspin database (`oauthclient_apps` table).
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-oauthclients-custom
+  namespace: flux-system
+data:
+  vikunja: vikunja
+  gitea: gitea
