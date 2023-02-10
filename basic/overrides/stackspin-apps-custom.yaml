@@ -6,11 +6,11 @@ metadata:
   name: stackspin-apps-custom
   namespace: flux-system
 data:
-  do: |
+  vikunja: |
     name: "Vikunja Tasks"
-  code: |
+  gitea: |
     name: "Gitea Code"
-  ninja: |
+  invoiceninja: |
     name: "Invoiceninja Billing"
 ---
 # This list of OAuth clients with their corresponding apps is loaded by the
