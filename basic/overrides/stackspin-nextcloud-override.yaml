@@ -57,11 +57,11 @@ data:
       - name: metadata
         enabled: true
         # TODO incompatible
-       - name: extract
-         enabled: false
+      - name: extract
+        enabled: false
       # Collaborative apps
       - name: files_markdown
-        enabled: true
+        enabled: false
         #- name: files_texteditor
         #  enabled: true
       - name: notes
