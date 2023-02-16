@@ -21,6 +21,19 @@ data:
               'default_phone_region' => 'DE',
               'default_locale' => 'en-gb',
             );
+            #extraVolumes:
+            #  - name: nextcloud-onlyoffice-config
+            #    configMap:
+            #      name: nextcloud-onlyoffice-config-and-scripts
+            #extraVolumeMounts:
+            #  - name: nextcloud-onlyoffice-config
+            #    mountPath: /var/local
+
+      lifecycle:
+        postStartCommand:
+          - '/bin/bash'
+          - '-c'
+          - '"echo hiho && /bin/bash /var/local/setup-apps.sh"'
     apps:
       # Basics
       - name: bruteforcesettings
@@ -60,8 +73,8 @@ data:
       - name: extract
         enabled: false
       # Collaborative apps
-      - name: files_markdown
-        enabled: false
+      #- name: files_markdown
+      #  enabled: false
         #- name: files_texteditor
         #  enabled: true
       - name: notes
