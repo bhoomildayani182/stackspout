@@ -85,12 +85,12 @@ data:
         enabled: true
       - name: metadata
         enabled: true
-        # TODO incompatible
-      - name: extract
-        enabled: false
-      # Collaborative apps
-      #- name: files_markdown
-      #  enabled: false
+        # TODO handy but incompatible
+        #- name: extract
+        #  enabled: false
+        # Collaborative apps
+        #- name: files_markdown
+        #  enabled: false
         #- name: files_texteditor
         #  enabled: true
       - name: notes
