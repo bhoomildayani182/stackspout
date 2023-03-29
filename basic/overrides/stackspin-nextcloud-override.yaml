@@ -45,11 +45,12 @@ data:
             #  - name: nextcloud-onlyoffice-config
             #    mountPath: /var/local
 
-      #lifecycle:
-      #  postStartCommand:
-      #    - '/bin/bash'
-      #    - '-c'
-      #    - '"echo hiho && /bin/bash /var/local/setup-apps.sh"'
+      lifecycle:
+        postStartCommand:
+          - '/bin/bash'
+          - '-c'
+          - 'echo hiho | tee /tmp/test'
+            #- 'echo hiho && /bin/bash /var/local/setup-apps.sh'
     apps:
       # Basics
       - name: bruteforcesettings
