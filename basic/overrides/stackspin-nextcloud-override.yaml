@@ -21,6 +21,7 @@ data:
               'default_phone_region' => 'DE',
               'default_locale' => 'en-gb',
               'lost_password_link' => 'https://dashboard.${domain}/web/recovery',
+              'simpleSignUpLink.shown' => false,
               'enable_previews' => true,
               'preview_libreoffice_path' => '/usr/bin/libreoffice',
               'enabledPreviewProviders' =>
@@ -55,7 +56,7 @@ data:
         postStartCommand:
           - '/bin/bash'
           - '-c'
-          - 'apt update && apt install ffmpeg imagemagick ghostscript libreoffice libreoffice-l10n-de libreoffice-help-de'
+          - 'apt update && apt install --yes ffmpeg imagemagick ghostscript libreoffice libreoffice-l10n-de libreoffice-help-de'
             #- 'echo hiho && /bin/bash /var/local/setup-apps.sh'
     apps:
       # Basics
