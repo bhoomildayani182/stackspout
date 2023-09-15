@@ -6,44 +6,30 @@ metadata:
 data:
   # https://github.com/truecharts/charts/blob/master/charts/stable/vikunja/values.yaml
   values.yaml: |
-    image:
-      tag: unstable
-      imagePullPolicy: Always
-    frontendImage:
-      tag: unstable
-      imagePullPolicy: Always
-    configmap:
-      config:
-        data:
-          vikunja.yaml: |-
-            auth:
-              openid:
-                # https://vikunja.io/docs/config-options/#openid
-                # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
-                enabled: true
-                redirecturl: "https://do-test.${domain}/auth/openid/"
-                providers:
-                  - name: Stackspin
-                    authurl: "https://sso.${domain}/"
-                    clientid: "${client_id}"
-                    clientsecret: "${client_secret}"
-            service:
-              frontendurl: "https://do-test.${domain}"
-              motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
-              timezone: "CET"
-              JWTSecret: "${jwt}"
-            database:
-              type: postgres
-              host: vikunja-test-postgresql
-              password: "${postgresql_password}"
-            log:
-              path: "/app/vikunja"
-              http: stdout
-              database: stderr
-              databaselevel: debug
-    ingress:
-      main:
+    frontend:
+      image:
+        tag: unstable
+        pullPolicy: Always
+      ingress:
         enabled: true
+        primary: true
+        annotations:
+          kubernetes.io/tls-acme: "true"
+        hosts:
+          - host: "do-test.${domain}"
+            paths:
+               - path: /
+                 pathType: Prefix
+        tls:
+          - secretName: vikunja-test-tls
+            hosts:
+              - "do-test.${domain}"
+    api:
+      image:
+        tag: unstable
+        pullPolicy: Always
+      ingress:
+        enabled: false
         primary: false
         annotations:
           kubernetes.io/tls-acme: "true"
@@ -56,25 +42,41 @@ data:
           - secretName: vikunja-test-tls
             hosts:
               - "do-test.${domain}"
+      config: |-
+        auth:
+          openid:
+            # https://vikunja.io/docs/config-options/#openid
+            # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
+            enabled: true
+            redirecturl: "https://do-test.${domain}/auth/openid/"
+            providers:
+              - name: Stackspin
+                authurl: "https://sso.${domain}/"
+                clientid: "${client_id}"
+                clientsecret: "${client_secret}"
+        service:
+          frontendurl: "https://do-test.${domain}"
+          motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
+          timezone: "CET"
+          JWTSecret: "${jwt}"
+        database:
+          type: postgres
+          host: vikunja-test-postgresql
+          password: "${postgresql_password}"
+        log:
+          path: "/app/vikunja"
+          http: stdout
+          database: stderr
+          databaselevel: debug
     #persistence:
     #  files:
     #    labels:
     #      stackspin.net/backupSet: "vikunja"
+    postgresqlEnabled: true
     postgresql:
-      # https://github.com/truecharts/charts/blob/master/charts/dependency/postgresql/values.yaml
-      #enabled: true
       postgresqlDatabase: vikunja
       postgresqlUsername: vikunja
       postgresqlPassword: "${postgresql_password}"
-      #persistence:
-      #  db:
-      #    enabled: true
-      #    # -- Sets the persistence type
-      #    # Valid options are: simplePVC, simpleHP, pvc, emptyDir, secret, configMap, hostPath or custom
-      #    type: pvc
-      #    mountPath: "/bitnami/postgresql"
-      #    # -- If you want to reuse an existing claim, the name of the existing PVC can be passed here.
-      #    existingClaim: vikunja-test-postgres
-      #volumeClaimTemplates:
-      #  db:
-      #    enabled: false
+      persistence:
+        enabled: true
+        existingClaim: vikunja-postgres
