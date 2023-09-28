@@ -44,107 +44,122 @@ data:
                   15 => 'OC\\Preview\\AVI',
                 )
             );
-            #extraVolumes:
-            #  - name: nextcloud-onlyoffice-config
-            #    configMap:
-            #      name: nextcloud-onlyoffice-config-and-scripts
-            #extraVolumeMounts:
-            #  - name: nextcloud-onlyoffice-config
-            #    mountPath: /var/local
+            extraVolumes:
+              - name: nextcloud-poststart
+                configMap:
+                  name: nextcloud-poststart-config
+            extraVolumeMounts:
+              - name: nextcloud-poststart
+                mountPath: /opt
 
       lifecycle:
         postStartCommand:
           - '/bin/bash'
-          - '-c'
-          - 'apt update && apt install --yes ffmpeg imagemagick ghostscript libreoffice libreoffice-l10n-de libreoffice-help-de'
-            #- 'echo hiho && /bin/bash /var/local/setup-apps.sh'
+          - '/opt/setup.sh'
+            # && /bin/bash /var/local/setup-apps.sh'
     apps:
-      # Basics
-      - name: bruteforcesettings
-        enabled: false
-      - name: password_policy
-        enabled: false
-      - name: photos
-        enabled: false
-      - name: passwords
-        enabled: false
-      - name: contacts
-        enabled: true
-      # Common Apps
-      - name: external
-        enabled: true
-      - name: polls
-        enabled: false
-        #unsure - maybe redundant to forms?
-      - name: forms
-        enabled: true
-        #- name: spreed
-        #  enabled: false
-        # redundant to Zulip & Jitsi
-      - name: appointments
-        enabled: true
-      # Management
-      - name: deck
-        enabled: true
-      - name: tasks
-        enabled: true
-      # Convenience
-      - name: files_rightclick
-        enabled: true
-      - name: metadata
-        enabled: true
-      - name: previewgenerator
-        enabled: true
-        # TODO handy but incompatible
-        #- name: extract
-        #  enabled: false
-        # Collaborative apps
-        #- name: files_markdown
-        #  enabled: false
-        #- name: files_texteditor
+      custom:
+        # Basics
+        - name: bruteforcesettings
+          enabled: false
+        - name: password_policy
+          enabled: false
+        - name: photos
+          enabled: false
+        - name: passwords
+          enabled: false
+        - name: contacts
+          enabled: true
+        # Common Apps
+        - name: external
+          enabled: true
+        - name: polls
+          enabled: false
+          #unsure - maybe redundant to forms?
+        - name: forms
+          enabled: true
+          #- name: spreed
+          #  enabled: false
+          # redundant to Zulip & Jitsi
+        - name: appointments
+          enabled: true
+        # Management
+        - name: deck
+          enabled: true
+        - name: tasks
+          enabled: true
+        # Convenience
+        - name: files_rightclick
+          enabled: true
+        - name: metadata
+          enabled: true
+        - name: previewgenerator
+          enabled: true
+          # TODO handy but incompatible
+          #- name: extract
+          #  enabled: false
+          # Collaborative apps
+          #- name: files_markdown
+          #  enabled: false
+          #- name: files_texteditor
+          #  enabled: true
+        - name: notes
+          enabled: true
+        - name: drawio
+          enabled: true
+        - name: files_mindmap
+          enabled: true
+        - name: maps
+          enabled: true
+        - name: jitsi
+          enabled: false
+          # waiting for /var/lib/Stackspin/local-storage/pvc-3b008674-544c-46e7-b456-f20932eb9f23_stackspin-apps_nextcloud-files/custom_apps
+        # Aesthetics
+        #- name: theming
         #  enabled: true
-      - name: notes
-        enabled: true
-      - name: drawio
-        enabled: true
-      - name: files_mindmap
-        enabled: true
-      - name: maps
-        enabled: true
-      - name: jitsi
-        enabled: false
-        # waiting for /var/lib/Stackspin/local-storage/pvc-3b008674-544c-46e7-b456-f20932eb9f23_stackspin-apps_nextcloud-files/custom_apps
-      # Aesthetics
-      #- name: theming
-      #  enabled: true
-      - name: apporder
-        enabled: false
-      - name: side_menu
-        enabled: true
-      - name: breezedark
-        enabled: true
-        #- name: unsplash
-        #  enabled: true
-      # Flow
-      - name: analytics
-        enabled: true
-      - name: workflow_pdf_converter
-        enabled: true
-        #- name: files_accesscontrol
-        #  enabled: false
-        #- name: files_automatedtagging
-        #  enabled: false
-        #- name: workflow_media_converter
-        #  enabled: false
-        #- name: workflow_ocr
-        #  enabled: false
-      # Testing
-      - name: event_update_notification
-        enabled: false
-        #- name: calendar_resource_management
-        #  enabled: true
-        # TODO install via CLI
-      # TODO disabling user status, files_comments, support, event_update_notification (Notifications for calendar event updates), bruteforcesettings
-      # need to disable tasks soon
-      # configure firstrunwizard
-      # preconfigured: share by mail - https://apps.nextcloud.com/apps/socialsharing_email
+        - name: apporder
+          enabled: false
+        - name: side_menu
+          enabled: true
+        - name: breezedark
+          enabled: true
+          #- name: unsplash
+          #  enabled: true
+        # Flow
+        - name: analytics
+          enabled: true
+        - name: workflow_pdf_converter
+          enabled: true
+          #- name: files_accesscontrol
+          #  enabled: false
+          #- name: files_automatedtagging
+          #  enabled: false
+          #- name: workflow_media_converter
+          #  enabled: false
+          #- name: workflow_ocr
+          #  enabled: false
+        # Testing
+        - name: event_update_notification
+          enabled: false
+          #- name: calendar_resource_management
+          #  enabled: true
+          # TODO install via CLI
+        # TODO disabling user status, files_comments, support, event_update_notification (Notifications for calendar event updates), bruteforcesettings
+        # disable tasks soon
+        # configure firstrunwizard
+        # preconfigured: share by mail - https://apps.nextcloud.com/apps/socialsharing_email
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: stackspin-apps
+  name: stackspin-nextcloud-setup
+data:
+  setup.sh: |
+    #!/bin/bash
+    set -e
+    exec > /var/www/tmp/setup-$(date +"%s").log
+    exec 2> /var/www/tmp/setup-$(date +"%s")_error.log
+
+    apt update
+    apt install --yes ffmpeg imagemagick ghostscript libreoffice libreoffice-l10n-de libreoffice-help-de
