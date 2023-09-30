@@ -44,19 +44,18 @@ data:
                   15 => 'OC\\Preview\\AVI',
                 )
             );
-            extraVolumes:
-              - name: nextcloud-poststart
-                configMap:
-                  name: nextcloud-poststart-config
-            extraVolumeMounts:
-              - name: nextcloud-poststart
-                mountPath: /opt
-
-      lifecycle:
-        postStartCommand:
-          - '/bin/bash'
-          - '/opt/setup.sh'
-            # && /bin/bash /var/local/setup-apps.sh'
+      #extraVolumes:
+      #  - name: nextcloud-poststart
+      #    configMap:
+      #      name: nextcloud-poststart-config
+      #extraVolumeMounts:
+      #  - name: nextcloud-poststart
+      #    mountPath: /opt
+      #lifecycle:
+      #  postStartCommand:
+      #    - '/bin/bash'
+      #    - '-c'
+      #    - '/opt/setup.sh && /var/local/setup-apps.sh'
     apps:
       custom:
         # Basics
