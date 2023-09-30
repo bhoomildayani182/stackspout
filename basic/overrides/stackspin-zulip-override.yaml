@@ -7,4 +7,4 @@ data:
   values.yaml: |
     zulip:
       environment:
-        SETTING_AUTHENTICATION_BACKENDS: '("zproject.backends.GenericOpenIdConnectBackend", "zproject.backends.EmailAuthBackend")'
+        SETTING_PUSH_NOTIFICATION_BOUNCER_URL: 'https://push.zulipchat.com'
