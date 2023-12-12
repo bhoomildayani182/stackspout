@@ -11,33 +11,37 @@ data:
         tag: unstable
         pullPolicy: Always
       ingress:
-        annotations:
-          kubernetes.io/tls-acme: "true"
-        hosts:
-          - host: "do-test.${domain}"
-            paths:
-               - path: /
-                 pathType: Prefix
-        tls:
-          - secretName: vikunja-test-tls
-            hosts:
-              - "do-test.${domain}"
+        main:
+          enabled: true
+          annotations:
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - host: "do-test.${domain}"
+              paths:
+                 - path: /
+                   pathType: Prefix
+          tls:
+            - secretName: vikunja-test-tls
+              hosts:
+                - "do-test.${domain}"
     api:
       image:
         tag: unstable
         pullPolicy: Always
       ingress:
-        annotations:
-          kubernetes.io/tls-acme: "true"
-        hosts:
-          - host: "do-test.${domain}"
-            paths:
-               - path: /
-                 pathType: Prefix
-        tls:
-          - secretName: vikunja-test-tls
-            hosts:
-              - "do-test.${domain}"
+        main:
+          enabled: true
+          annotations:
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - host: "do-test.${domain}"
+              paths:
+                 - path: /
+                   pathType: Prefix
+          tls:
+            - secretName: vikunja-test-tls
+              hosts:
+                - "do-test.${domain}"
       configMaps:
         config:
           data:
