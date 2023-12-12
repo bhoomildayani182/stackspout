@@ -59,7 +59,6 @@ data:
           motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
           timezone: "CET"
           JWTSecret: "${jwt}"
-          interface: ":3456"
         database:
           type: postgres
           host: vikunja-test-postgresql
