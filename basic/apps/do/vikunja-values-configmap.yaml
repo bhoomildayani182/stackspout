@@ -4,83 +4,103 @@ metadata:
   name: stackspin-vikunja-values
   namespace: stackspout
 data:
-  # Defaults: https://github.com/k8s-at-home/charts/blob/master/charts/stable/vikunja/values.yaml
-  # Inherits: https://github.com/k8s-at-home/library-charts/blob/main/charts/stable/common/values.yaml
+  # https://github.com/truecharts/charts/blob/master/charts/stable/vikunja/values.yaml
   values.yaml: |
-    additionalContainers:
-      api:
-        image: vikunja/api:latest
-        imagePullPolicy: Always
-        volumeMounts: [{"mountPath":"/etc/vikunja/config.yml","name":"vikunja-config","subPath":"Vikunja.yaml"}, {"mountPath":"/etc/vikunja/files","name":"files"}]
-      frontend:
-        image: vikunja/frontend:latest
-        imagePullPolicy: Always
-    vikunja:
-      config: |-
-        auth:
-          openid:
-            # https://vikunja.io/docs/config-options/#openid
-            # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
-            enabled: true
-            redirecturl: "https://do.${domain}/auth/openid/"
-            providers:
-              - name: Stackspin
-                authurl: "https://sso.${domain}/"
-                clientid: "${client_id}"
-                clientsecret: "${client_secret}"
-          local:
-            enabled: false
-        mailer:
-          enabled: "${outgoing_mail_enabled}"
-          host: "${outgoing_mail_smtp_host}"
-          port: "${outgoing_mail_smtp_port}"
-          username: "${outgoing_mail_smtp_user}"
-          password: "${outgoing_mail_smtp_password}"
-          fromemail: "${outgoing_mail_from_address}"
-          forcessl: true
-        # TODO Configure PVC for file uploads
-        service:
-          frontendurl: "https://do.${domain}"
-          motd: "Please allow public profile discovery in settings!"
-          timezone: "CET"
-          JWTSecret: "${jwt}"
-        database:
-          type: postgres
-          host: vikunja-postgresql
-          password: "${postgresql_password}"
-        log:
-          path: "/app/vikunja"
-          http: file
-          database: stderr
-          databaselevel: debug
-    persistence:
-      files:
-        enabled: true
-        existingClaim: vikunja-files
-    ingress:
-      main:
-        enabled: true
-        primary: false
-        annotations:
-          kubernetes.io/tls-acme: "true"
-        hosts:
-          - host: "do.${domain}"
-            # TODO Helm template rather than repetition in every file? See https://github.com/k8s-at-home/library-charts/blob/4d09a8ddbdf11c278101b74b36720b5f7c17cd71/charts/stable/common/values.yaml#L342
-            paths:
-               - path: /
-                 pathType: Prefix
-        tls:
-          - secretName: vikunja-tls
-            hosts:
-              - "do.${domain}"
-    caddy:
-      # TODO is caddy needed at all?
-      noTls: true
+    frontend:
+      image:
+        tag: unstable
+        pullPolicy: Always
+      ingress:
+        main:
+          enabled: true
+          annotations:
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - host: "do.${domain}"
+              paths:
+                 - path: /
+                   pathType: Prefix
+          tls:
+            - secretName: vikunja-tls
+              hosts:
+                - "do.${domain}"
+    api:
+      image:
+        tag: unstable
+        pullPolicy: Always
+      ingress:
+        main:
+          enabled: true
+          annotations:
+            kubernetes.io/tls-acme: "true"
+          hosts:
+            - host: "do.${domain}"
+              paths:
+                 - path: /
+                   pathType: Prefix
+          tls:
+            - secretName: vikunja-tls
+              hosts:
+                - "do.${domain}"
+      configMaps:
+        config:
+          data:
+            config.yml: |-
+              auth:
+                openid:
+                  # https://vikunja.io/docs/config-options/#openid
+                  # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
+                  enabled: true
+                  redirecturl: "https://do.${domain}/auth/openid/"
+                  providers:
+                    - name: Stackspin
+                      authurl: "https://sso.${domain}/"
+                      clientid: "${client_id}"
+                      clientsecret: "${client_secret}"
+                local:
+                  enabled: false
+              mailer:
+                enabled: "${outgoing_mail_enabled}"
+                host: "${outgoing_mail_smtp_host}"
+                port: "${outgoing_mail_smtp_port}"
+                username: "${outgoing_mail_smtp_user}"
+                password: "${outgoing_mail_smtp_password}"
+                fromemail: "${outgoing_mail_from_address}"
+                forcessl: true
+              # TODO Configure PVC for file uploads
+              service:
+                frontendurl: "https://do.${domain}"
+                timezone: "CET"
+                JWTSecret: "${jwt}"
+              database:
+                type: postgres
+                host: vikunja-postgresql
+                password: "${postgresql_password}"
+              log:
+                path: "/app/vikunja"
+                http: file
+                database: stderr
+                databaselevel: debug
+              defaultsettings:
+                avatar_provider: gravatar
+                discoverable_by_name: true
+                discoverable_by_email: true
+                week_start: 1
+                timezone: CET
+                # TODO default_project_id
+    #persistence:
+    #  files:
+    #    labels:
+    #      stackspin.net/backupSet: "vikunja"
     postgresql:
       enabled: true
-      postgresqlDatabase: vikunja
-      postgresqlUsername: vikunja
-      postgresqlPassword: "${postgresql_password}"
+      global:
+        postgresql:
+          database: vikunja
+          username: vikunja
+          password: "${postgresql_password}"
       persistence:
         enabled: true
         existingClaim: vikunja-postgres
+    typesense:
+      enabled: false
