@@ -92,3 +92,5 @@ data:
       persistence:
         enabled: true
         existingClaim: vikunja-postgres
+    typesense:
+      enabled: false
