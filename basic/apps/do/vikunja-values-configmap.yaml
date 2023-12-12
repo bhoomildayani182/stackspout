@@ -19,7 +19,6 @@ data:
             - host: "do.${domain}"
               paths:
                  - path: /
-                   pathType: Prefix
           tls:
             - secretName: vikunja-tls
               hosts:
@@ -36,8 +35,7 @@ data:
           hosts:
             - host: "do.${domain}"
               paths:
-                 - path: /
-                   pathType: Prefix
+                 - path: /api
           tls:
             - secretName: vikunja-tls
               hosts:
