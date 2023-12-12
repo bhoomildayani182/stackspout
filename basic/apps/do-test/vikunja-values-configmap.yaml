@@ -11,8 +11,6 @@ data:
         tag: unstable
         pullPolicy: Always
       ingress:
-        enabled: true
-        primary: true
         annotations:
           kubernetes.io/tls-acme: "true"
         hosts:
@@ -29,8 +27,6 @@ data:
         tag: unstable
         pullPolicy: Always
       ingress:
-        enabled: false
-        primary: false
         annotations:
           kubernetes.io/tls-acme: "true"
         hosts:
@@ -42,47 +38,53 @@ data:
           - secretName: vikunja-test-tls
             hosts:
               - "do-test.${domain}"
-      config: |-
-        auth:
-          openid:
-            # https://vikunja.io/docs/config-options/#openid
-            # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
-            enabled: true
-            redirecturl: "https://do-test.${domain}/auth/openid/"
-            providers:
-              - name: Stackspin
-                authurl: "https://sso.${domain}/"
-                clientid: "${client_id}"
-                clientsecret: "${client_secret}"
-        service:
-          frontendurl: "https://do-test.${domain}"
-          motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
-          timezone: "CET"
-          JWTSecret: "${jwt}"
-        database:
-          type: postgres
-          host: vikunja-test-postgresql
-          password: "${postgresql_password}"
-        log:
-          path: "/app/vikunja"
-          http: stdout
-          database: stderr
-          databaselevel: debug
-        defaultsettings:
-          avatar_provider: gravatar
-          discoverable_by_name: true
-          discoverable_by_email: true
-          week_start: 1
-          timezone: CET
+      configMaps:
+        config:
+          data:
+            config.yml: |-
+              auth:
+                openid:
+                  # https://vikunja.io/docs/config-options/#openid
+                  # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
+                  enabled: true
+                  redirecturl: "https://do-test.${domain}/auth/openid/"
+                  providers:
+                    - name: Stackspin
+                      authurl: "https://sso.${domain}/"
+                      clientid: "${client_id}"
+                      clientsecret: "${client_secret}"
+              service:
+                frontendurl: "https://do-test.${domain}"
+                motd: "This is a test instance, do not use for production data as it can vanish without notice! Use Stackspin login, as usual."
+                timezone: "CET"
+                JWTSecret: "${jwt}"
+              database:
+                type: postgres
+                host: vikunja-test-postgresql
+                password: "${postgresql_password}"
+              log:
+                path: "/app/vikunja"
+                http: stdout
+                database: stderr
+                databaselevel: debug
+              defaultsettings:
+                avatar_provider: gravatar
+                discoverable_by_name: true
+                discoverable_by_email: true
+                week_start: 1
+                timezone: CET
+                # TODO default_project_id
     #persistence:
     #  files:
     #    labels:
     #      stackspin.net/backupSet: "vikunja"
-    postgresqlEnabled: true
     postgresql:
-      postgresqlDatabase: vikunja
-      postgresqlUsername: vikunja
-      postgresqlPassword: "${postgresql_password}"
+      enabled: true
+      global:
+        postgresql:
+          database: vikunja
+          username: vikunja
+          password: "${postgresql_password}"
       persistence:
         enabled: true
         existingClaim: vikunja-postgres
