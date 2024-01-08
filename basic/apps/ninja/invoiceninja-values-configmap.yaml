@@ -18,11 +18,17 @@ data:
       annotations:
         nginx.ingress.kubernetes.io/configuration-snippet: |
           more_set_headers "Content-Security-Policy: frame-ancestors 'self' ${nextcloud_domain}";
+    commonLabels:
+      stackspin.net/backupSet: "invoiceninja"
+    podLabels:
+      stackspin.net/backupSet: "invoiceninja"
     persistence:
       public:
         existingClaim: invoiceninja-data
     mariadb:
       # https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
+      commonLabels:
+        stackspin.net/backupSet: "invoiceninja"
       auth:
         password: "${mariadb_password}"
         rootPassword: "${mariadb_root_password}"
@@ -30,6 +36,8 @@ data:
         persistence:
           existingClaim: invoiceninja-mariadb
     redis:
+      commonLabels:
+        stackspin.net/backupSet: "invoiceninja"
       # Redis is only cache, so no pvc needed: https://invoiceninja.github.io/docs/env-variables/
       auth:
         password: "${redis_password}"
