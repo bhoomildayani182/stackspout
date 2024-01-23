@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-forgejo-values
+  namespace: stackspout
+data:
+  values.yaml: |
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+      hosts:
+        - host: "forge.${domain}"
+          paths:
+             - path: /
+               pathType: Prefix
+      tls:
+        - secretName: forgejo-tls
+          hosts:
+            - "forge.${domain}"
+    gitea:
+      admin:
+        username: "forgejo"
+        email: "${admin_email}"
+        password: "${password}"
+      # https://codeberg.org/forgejo-contrib/forgejo-helm#oauth2-settings
+      oauth:
+        - name: Stackspin
+          provider: "openidConnect"
+          key: "${client_id}"
+          secret: "${client_secret}"
+          autoDiscoverUrl: "https://sso.${domain}/.well-known/openid-configuration"
+          iconUrl: "https://dashboard.${domain}/favicon-32x32.png"
+      # https://forgejo.org/docs/latest/admin/config-cheat-sheet/
+      config:
+        APP_NAME: "Forge for ${company_name}"
+        repository:
+          DEFAULT_PUSH_CREATE_PRIVATE: false
+          ENABLE_PUSH_CREATE_USER: true
+          ENABLE_PUSH_CREATE_ORG: true
+          DEFAULT_REPO_UNITS: [repo.code,repo.releases,repo.issues,repo.pulls]
+          MAX_CREATION_LIMIT: 99
+        server:
+          ROOT_URL: "https://forge.${domain}"
+          LANDING_PAGE: login
+        openid:
+          ENABLE_OPENID_SIGNUP: true
+        service:
+          DISABLE_REGISTRATION: false
+          ALLOW_ONLY_EXTERNAL_REGISTRATION: true
+        log:
+          LEVEL: "Debug"
+    persistence:
+      enabled: true
+      existingClaim: forgejo-data
+    postgresql:
+      persistence:
+        enabled: true
+        existingClaim: forgejo-postgres
+    service:
+      ssh:
+        type: LoadBalancer
+        loadBalancerIP: "${ip_address}"
+        hostPort: 22
+        externalTrafficPolicy: "Local"
+        annotations:
+          metallb.universe.tf/allow-shared-ip: "share-ipv4"
