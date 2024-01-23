@@ -22,9 +22,10 @@ data:
       stackspin.net/backupSet: "invoiceninja"
     podLabels:
       stackspin.net/backupSet: "invoiceninja"
+      backup.velero.io/backup-volumes: "invoiceninja-data"
     persistence:
       public:
-        existingClaim: invoiceninja-data
+        existingClaim: "invoiceninja-data"
     mariadb:
       # https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
       commonLabels:

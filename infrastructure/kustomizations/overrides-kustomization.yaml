@@ -1,14 +1,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: stackspout-sources
+  name: stackspout-overrides
   namespace: flux-system
 spec:
-  interval: 10m
-  retryInterval: 1m
+  interval: 2m
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./basic/infrastructure/sources
+  path: ./overrides
   prune: true
   validation: client
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: stackspin-cluster-variables

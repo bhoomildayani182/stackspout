@@ -13,7 +13,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./basic/apps/ninja
+  path: ./apps/ninja
   prune: true
   postBuild:
     substituteFrom:

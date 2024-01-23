@@ -11,11 +11,6 @@ flux create source git stackspout \
 echo "Creating / Updating kustomization stackspout"
 flux create kustomization stackspout \
   --source=GitRepository/stackspout \
-  --path="./basic/infrastructure/kustomizations/" \
+  --path="./infrastructure/kustomizations/" \
   --prune=true \
   --interval=5m
-
-python $(dirname "$0")/../generate_secrets.py vikunja
-python $(dirname "$0")/../generate_secrets.py vikunja-test
-python $(dirname "$0")/../generate_secrets.py gitea
-python $(dirname "$0")/../generate_secrets.py invoiceninja

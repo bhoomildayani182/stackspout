@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: stackspin-kimai-variables
-data:
-  password: "{{ 32 | generate_password | b64encode }}"
-  secret: "{{ 32 | generate_password | b64encode }}"
-  mariadb_password: "{{ 32 | generate_password | b64encode }}"
-  mariadb_root_password: "{{ 32 | generate_password | b64encode }}"

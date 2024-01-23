@@ -19,8 +19,8 @@ Useful tools for administration:
   https://docs.stackspin.net/en/v2/system_administration/customizing.html
 
 ### Guide: Creating OAuth Credentials for an external service
-- add a line in `basic/install.sh` and run it to generate the secret (TODO: Update to new stackspin mechanism)
-- append another OAuth2Client definition to `basic/overrides/oauth-clients.yaml`,
+- add a line in `install.sh` and run it to generate the secret (TODO: Update to new stackspin mechanism)
+- append another OAuth2Client definition to `overrides/oauth-clients.yaml`,
   adjusting `metadata.name` and `spec.secretName` as well as `spec.redirectUris`
 - apply changes to the cluster 
 - obtain the generated `client_secret` for your application from kubernetes:
@@ -71,7 +71,7 @@ First [install Stackspin](https://docs.stackspin.net/en/latest/installation/inst
 Then apply the configuration to your cluster:
 
 ```sh
-basic/install.sh
+install.sh
 ```
 
 Done!

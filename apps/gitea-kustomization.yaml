@@ -1,8 +1,7 @@
-
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: vikunja
+  name: gitea
   namespace: flux-system
 spec:
   interval: 10m
@@ -14,13 +13,13 @@ spec:
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./basic/apps/do
+  path: ./apps/code
   prune: true
   postBuild:
     substituteFrom:
+      #- kind: Secret
+      #  name: stackspin-gitea-variables
       - kind: Secret
-        name: stackspin-vikunja-variables
-      - kind: Secret
-        name: stackspin-vikunja-oauth-variables
+        name: stackspin-gitea-oauth-variables
       - kind: Secret
         name: stackspin-cluster-variables

@@ -10,6 +10,8 @@ data:
     name: "Vikunja Tasks"
   gitea: |
     name: "Gitea Code"
+  forgejo: |
+    name: "Forgejo"
   invoiceninja: |
     name: "Invoiceninja Billing"
 ---
@@ -24,3 +26,4 @@ metadata:
 data:
   vikunja: vikunja
   gitea: gitea
+  forgejo: forgejo
