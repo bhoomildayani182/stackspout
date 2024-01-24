@@ -13,3 +13,4 @@ spec:
     requests:
       storage: 2Gi
   storageClassName: local-path
+  reclaimPolicy: Retain
