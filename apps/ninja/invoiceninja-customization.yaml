@@ -1,26 +1,28 @@
-
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: vikunja
+  name: invoiceninja
   namespace: flux-system
 spec:
   interval: 10m
-  retryInterval: 1m
+  retryInterval: 2m
   wait: true
   timeout: 3m
-  dependsOn:
-    - name: single-sign-on
+  #dependsOn:
+  #  - name: single-sign-on
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./apps/do
+  path: ./apps/ninja
   prune: true
   postBuild:
     substituteFrom:
       - kind: Secret
-        name: stackspin-vikunja-variables
+        name: stackspin-invoiceninja-variables
       - kind: Secret
-        name: stackspin-vikunja-oauth-variables
+        name: stackspin-invoiceninja-oauth-variables
+        optional: true
       - kind: Secret
         name: stackspin-cluster-variables
+      - kind: ConfigMap
+        name: stackspin-nextcloud-kustomization-variables

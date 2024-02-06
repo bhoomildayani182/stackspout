@@ -1,11 +1,12 @@
+
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: forgejo
+  name: vikunja
   namespace: flux-system
 spec:
   interval: 10m
-  retryInterval: 1m
+  retryInterval: 2m
   wait: true
   timeout: 3m
   dependsOn:
@@ -13,13 +14,13 @@ spec:
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./apps/forge
+  path: ./apps/do
   prune: true
   postBuild:
     substituteFrom:
-      #- kind: Secret
-      #  name: stackspin-forgejo-variables
       - kind: Secret
-        name: stackspin-forgejo-oauth-variables
+        name: stackspin-vikunja-variables
+      - kind: Secret
+        name: stackspin-vikunja-oauth-variables
       - kind: Secret
         name: stackspin-cluster-variables
