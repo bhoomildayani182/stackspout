@@ -12,7 +12,7 @@ data:
       pullPolicy: Always
     ingress:
       enabled: true
-      hostname: "ninja.${domain}"
+      hostname: "${invoiceninja_domain}"
       tls: true
       certManager: true
       annotations:
@@ -44,7 +44,7 @@ data:
         password: "${redis_password}"
 
     appKey: "${app_key}"
-    appURL: "https://ninja.${domain}"
+    appURL: "https://${invoiceninja_domain}"
     userEmail: "${admin_email}"
     userPassword: "${password}"
     mailer: "smtp" # FIXME use "${outgoing_mail_enabled}"
