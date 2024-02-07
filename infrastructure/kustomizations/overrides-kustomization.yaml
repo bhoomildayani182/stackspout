@@ -10,7 +10,6 @@ spec:
     name: stackspout
   path: ./overrides
   prune: true
-  validation: client
   postBuild:
     substituteFrom:
       - kind: Secret

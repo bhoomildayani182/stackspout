@@ -11,4 +11,3 @@ spec:
     name: stackspout
   path: ./apps
   prune: true
-  validation: client

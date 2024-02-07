@@ -11,4 +11,3 @@ spec:
     name: stackspout
   path: ./infrastructure/sources
   prune: true
-  validation: client
