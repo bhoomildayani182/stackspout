@@ -2,7 +2,7 @@
 # Generates kubernetes kustomizations
 if test $# -gt 0
 then dir=$1
-	{ echo 'apiVersion: kustomize.config.k8s.io/v1
+	{ echo 'apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:'
 	find $dir -maxdepth 1 -type f -name "*.yaml" -not -name "kustomization.yaml" -printf "  - %f\n"; } | tee $dir/kustomization.yaml
