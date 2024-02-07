@@ -24,11 +24,11 @@ spec:
       - kind: Secret
         name: stackspin-cluster-variables
       - kind: Secret
-        name: stackspout-invoiceninja-variables
+        name: stackspin-invoiceninja-variables
       - kind: ConfigMap
         name: stackspout-invoiceninja-kustomization-variables
       - kind: Secret
-        name: stackspout-invoiceninja-oauth-variables
+        name: stackspin-invoiceninja-oauth-variables
         optional: true
       - kind: ConfigMap
         name: stackspin-single-sign-on-kustomization-variables
