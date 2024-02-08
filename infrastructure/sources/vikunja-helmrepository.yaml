@@ -4,5 +4,6 @@ metadata:
   name: vikunja
   namespace: flux-system
 spec:
+  type: "oci"
   interval: 60m
-  url: https://kolaente.dev/api/packages/vikunja/helm
+  url: oci://kolaente.dev/vikunja
