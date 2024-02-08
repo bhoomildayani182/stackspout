@@ -26,7 +26,7 @@ spec:
       - kind: Secret
         name: stackspin-invoiceninja-variables
       - kind: ConfigMap
-        name: stackspout-invoiceninja-kustomization-variables
+        name: stackspin-invoiceninja-kustomization-variables
       - kind: Secret
         name: stackspin-invoiceninja-oauth-variables
         optional: true

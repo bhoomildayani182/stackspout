@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: stackspout-invoiceninja-kustomization-variables
+  name: stackspin-invoiceninja-kustomization-variables
   namespace: flux-system
 data:
   invoiceninja_domain: ninja.${domain}
