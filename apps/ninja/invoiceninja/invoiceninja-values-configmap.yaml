@@ -20,6 +20,8 @@ data:
           more_set_headers "Content-Security-Policy: frame-ancestors 'self' ${nextcloud_domain}";
     commonLabels:
       stackspin.net/backupSet: "invoiceninja"
+    podLabels:
+      stackspin.net/backupSet: "invoiceninja"
     podAnnotations:
       backup.velero.io/backup-volumes: "public"
     persistence:
