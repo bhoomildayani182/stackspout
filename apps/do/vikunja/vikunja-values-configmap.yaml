@@ -4,7 +4,7 @@ metadata:
   name: stackspin-vikunja-values
   namespace: stackspout
 data:
-  # https://github.com/truecharts/charts/blob/master/charts/stable/vikunja/values.yaml
+  # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
   values.yaml: |
     frontend:
       image:
@@ -24,6 +24,9 @@ data:
               hosts:
                 - "do.${domain}"
     api:
+      persistence:
+        data:
+          existingClaim: vikunja-files
       image:
         tag: unstable
         pullPolicy: Always
@@ -86,10 +89,13 @@ data:
                 week_start: 1
                 timezone: CET
                 # TODO default_project_id
-    #persistence:
-    #  files:
-    #    labels:
-    #      stackspin.net/backupSet: "vikunja"
+    global:
+      labels:
+        stackspin.net/backupSet: "vikunja"
+    podLabels:
+      stackspin.net/backupSet: "vikunja"
+    podAnnotations:
+      backup.velero.io/backup-volumes: "data"
     postgresql:
       enabled: true
       global:
