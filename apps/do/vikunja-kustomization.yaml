@@ -26,7 +26,7 @@ spec:
       - kind: ConfigMap
         name: stackspin-vikunja-kustomization-variables
       - kind: Secret
-        name: stackspout-vikunja-variables
+        name: stackspin-vikunja-variables
       # OIDC
       - kind: Secret
         name: stackspin-vikunja-oauth-variables
