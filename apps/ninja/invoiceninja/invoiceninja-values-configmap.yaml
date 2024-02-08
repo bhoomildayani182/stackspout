@@ -20,22 +20,23 @@ data:
           more_set_headers "Content-Security-Policy: frame-ancestors 'self' ${nextcloud_domain}";
     commonLabels:
       stackspin.net/backupSet: "invoiceninja"
-    podLabels:
-      stackspin.net/backupSet: "invoiceninja"
-      backup.velero.io/backup-volumes: "invoiceninja-data"
+    podAnnotations:
+      backup.velero.io/backup-volumes: "public"
     persistence:
       public:
         existingClaim: "invoiceninja-data"
     mariadb:
       # https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
-      commonLabels:
-        stackspin.net/backupSet: "invoiceninja"
       auth:
         password: "${mariadb_password}"
         rootPassword: "${mariadb_root_password}"
       primary:
         persistence:
-          existingClaim: invoiceninja-mariadb
+          existingClaim: "invoiceninja-mariadb"
+        podAnnotations:
+          backup.velero.io/backup-volumes: "data"
+      commonLabels:
+        stackspin.net/backupSet: "invoiceninja"
     redis:
       commonLabels:
         stackspin.net/backupSet: "invoiceninja"
