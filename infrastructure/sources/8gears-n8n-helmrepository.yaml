@@ -4,6 +4,6 @@ metadata:
   name: 8gears-n8n
   namespace: flux-system
 spec:
-  type: "oci"
   interval: 60m
-  url: oci://8gears.container-registry.com/library/n8n
+  type: "oci"
+  url: oci://8gears.container-registry.com/library
