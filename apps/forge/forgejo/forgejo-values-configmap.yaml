@@ -62,6 +62,11 @@ data:
         stackspin.net/backupSet: "forgejo"
     podLabels:
       stackspin.net/backupSet: "forgejo"
+
+    redis-cluster:
+      enabled: false
+    postgresql-ha:
+      enabled: false
     postgresql:
       enabled: true
       global:
@@ -76,6 +81,7 @@ data:
       primary:
         podAnnotations:
           backup.velero.io/backup-volumes: "data"
+
     service:
       ssh:
         type: LoadBalancer
