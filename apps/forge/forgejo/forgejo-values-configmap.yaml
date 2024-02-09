@@ -89,13 +89,11 @@ data:
             database: gitea
             username: gitea
             password: gitea # "${postgresql_password}"
-        persistence:
-          existingClaim: forgejo-postgres
       primary:
         podAnnotations:
           backup.velero.io/backup-volumes: "data"
         persistence:
-          existingClaim: vikunja-postgres
+          existingClaim: forgejo-postgres
 
     service:
       ssh:
