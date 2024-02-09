@@ -30,8 +30,8 @@ data:
           provider: "openidConnect"
           key: "${client_id}"
           secret: "${client_secret}"
-          autoDiscoverUrl: "https://sso.${domain}/.well-known/openid-configuration"
-          iconUrl: "https://dashboard.${domain}/favicon-32x32.png"
+          autoDiscoverUrl: "https://${hydra_domain}/.well-known/openid-configuration"
+          iconUrl: "https://${dashboard_domain}/favicon-32x32.png"
       # https://forgejo.org/docs/latest/admin/config-cheat-sheet/
       config:
         APP_NAME: "Forge for ${company_name}"
@@ -51,13 +51,31 @@ data:
           ALLOW_ONLY_EXTERNAL_REGISTRATION: true
         log:
           LEVEL: "Debug"
+      podAnnotations:
+        backup.velero.io/backup-volumes: "data"
     persistence:
-      enabled: true
       existingClaim: forgejo-data
+      labels:
+        stackspin.net/backupSet: "forgejo"
+    deployment:
+      labels:
+        stackspin.net/backupSet: "forgejo"
+    podLabels:
+      stackspin.net/backupSet: "forgejo"
     postgresql:
-      persistence:
-        enabled: true
-        existingClaim: forgejo-postgres
+      enabled: true
+      global:
+        commonLabels:
+          stackspin.net/backupSet: "forgejo"
+        postgresql:
+          database: gitea
+          username: gitea
+          password: gitea # "${postgresql_password}"
+        persistence:
+          existingClaim: forgejo-postgres
+      primary:
+        podAnnotations:
+          backup.velero.io/backup-volumes: "data"
     service:
       ssh:
         type: LoadBalancer

@@ -4,22 +4,33 @@ metadata:
   name: forgejo
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 5m
   retryInterval: 2m
+  timeout: 10m
   wait: true
-  timeout: 3m
-  dependsOn:
-    - name: single-sign-on
+  prune: true
+  path: ./apps/forge/forgejo
   sourceRef:
     kind: GitRepository
     name: stackspout
-  path: ./apps/forge
-  prune: true
+  dependsOn:
+    - name: flux
+    - name: local-path-provisioner
+    - name: forgejo-secrets
+    - name: nginx
+    - name: single-sign-on
   postBuild:
     substituteFrom:
-      #- kind: Secret
-      #  name: stackspin-forgejo-variables
-      - kind: Secret
-        name: stackspin-forgejo-oauth-variables
       - kind: Secret
         name: stackspin-cluster-variables
+      - kind: ConfigMap
+        name: stackspin-forgejo-kustomization-variables
+      - kind: Secret
+        name: stackspin-forgejo-variables
+      # OIDC
+      - kind: Secret
+        name: stackspin-forgejo-oauth-variables
+      - kind: ConfigMap
+        name: stackspin-single-sign-on-kustomization-variables
+      - kind: ConfigMap
+        name: stackspin-dashboard-kustomization-variables
