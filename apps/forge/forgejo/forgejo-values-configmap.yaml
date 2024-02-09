@@ -34,6 +34,18 @@ data:
           iconUrl: "https://${dashboard_domain}/favicon-32x32.png"
       # https://forgejo.org/docs/latest/admin/config-cheat-sheet/
       config:
+        database:
+          DB_TYPE: postgres
+        session:
+          PROVIDER: db
+        cache:
+          ADAPTER: memory
+        queue:
+          TYPE: level
+        indexer:
+          ISSUE_INDEXER_TYPE: bleve
+          REPO_INDEXER_ENABLED: true
+
         APP_NAME: "Forge for ${company_name}"
         repository:
           DEFAULT_PUSH_CREATE_PRIVATE: false
