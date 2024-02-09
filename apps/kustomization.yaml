@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ninja-kustomization.yaml
   - do-kustomization.yaml
+  - forge-kustomization.yaml
