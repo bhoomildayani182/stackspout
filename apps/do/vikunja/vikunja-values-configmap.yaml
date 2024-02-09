@@ -55,7 +55,7 @@ data:
                   redirecturl: "https://do.${domain}/auth/openid/"
                   providers:
                     - name: Stackspin
-                      authurl: "https://sso.${domain}/"
+                      authurl: "https://${hydra_domain}/"
                       clientid: "${client_id}"
                       clientsecret: "${client_secret}"
                 local:
@@ -99,12 +99,16 @@ data:
     postgresql:
       enabled: true
       global:
+        commonLabels:
+          stackspin.net/backupSet: "vikunja"
         postgresql:
           database: vikunja
           username: vikunja
           password: "${postgresql_password}"
-      persistence:
-        enabled: true
-        existingClaim: vikunja-postgres
+        persistence:
+          existingClaim: vikunja-postgres
+      primary:
+        podAnnotations:
+          backup.velero.io/backup-volumes: "data"
     typesense:
       enabled: false
