@@ -81,18 +81,21 @@ data:
       enabled: false
     postgresql:
       enabled: true
+      commonLabels:
+        stackspin.net/backupSet: "forgejo"
       global:
-        commonLabels:
-          stackspin.net/backupSet: "forgejo"
         postgresql:
-          database: gitea
-          username: gitea
-          password: gitea # "${postgresql_password}"
+          auth:
+            database: gitea
+            username: gitea
+            password: gitea # "${postgresql_password}"
         persistence:
           existingClaim: forgejo-postgres
       primary:
         podAnnotations:
           backup.velero.io/backup-volumes: "data"
+        persistence:
+          existingClaim: vikunja-postgres
 
     service:
       ssh:
