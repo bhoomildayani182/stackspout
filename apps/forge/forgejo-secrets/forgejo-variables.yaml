@@ -7,3 +7,4 @@ metadata:
 spec:
   fields:
   - fieldName: postgresql_password
+  - fieldName: postgresql_admin_password
