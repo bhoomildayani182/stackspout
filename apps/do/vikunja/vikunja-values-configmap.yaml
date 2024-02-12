@@ -7,6 +7,8 @@ data:
   # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
   values.yaml: |
     frontend:
+      image:
+        tag: 0.21
       ingress:
         main:
           enabled: true
@@ -21,6 +23,8 @@ data:
               hosts:
                 - "${vikunja_domain}"
     api:
+      image:
+        tag: 0.21
       persistence:
         data:
           existingClaim: vikunja-files
