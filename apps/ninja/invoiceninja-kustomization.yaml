@@ -21,10 +21,10 @@ spec:
     #- name: single-sign-on
   postBuild:
     substituteFrom:
-      - kind: ConfigMap
-        name: stackspin-invoiceninja-kustomization-variables
       - kind: Secret
         name: stackspin-cluster-variables
+      - kind: ConfigMap
+        name: stackspin-invoiceninja-kustomization-variables
       - kind: Secret
         name: stackspin-invoiceninja-variables
       - kind: Secret

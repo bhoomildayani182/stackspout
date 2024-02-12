@@ -26,7 +26,7 @@ data:
           provider: "openidConnect"
           key: "${client_id}"
           secret: "${client_secret}"
-          autoDiscoverUrl: "https://sso.${domain}/.well-known/openid-configuration"
+          autoDiscoverUrl: "https://${hydra_domain}/.well-known/openid-configuration"
           iconUrl: "https://dashboard.${domain}/favicon-32x32.png"
       # https://docs.gitea.io/en-us/config-cheat-sheet
       config:
