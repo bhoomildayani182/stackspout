@@ -76,4 +76,4 @@ data:
     #    - name: Stackspin
     #      key: "${client_id}"
     #      secret: "${client_secret}"
-    #      autoDiscoverUrl: 'https://sso.${domain}/.well-known/openid-configuration'
+    #      autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'

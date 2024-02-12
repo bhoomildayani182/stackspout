@@ -21,10 +21,10 @@ spec:
     - name: single-sign-on
   postBuild:
     substituteFrom:
-      - kind: Secret
-        name: stackspin-cluster-variables
       - kind: ConfigMap
         name: stackspin-forgejo-kustomization-variables
+      - kind: Secret
+        name: stackspin-cluster-variables
       - kind: Secret
         name: stackspin-forgejo-variables
       # OIDC
