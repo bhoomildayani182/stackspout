@@ -106,6 +106,7 @@ data:
             database: vikunja
             username: vikunja
             password: "${postgresql_password}"
+            postgresPassword: "${postgresql_admin_password}"
       primary:
         persistence:
           existingClaim: vikunja-postgres

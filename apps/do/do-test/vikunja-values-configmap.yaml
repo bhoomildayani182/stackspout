@@ -54,7 +54,7 @@ data:
                   redirecturl: "https://do-test.${domain}/auth/openid/"
                   providers:
                     - name: Stackspin
-                      authurl: "https://sso.${domain}/"
+                      authurl: "https://${hydra_domain}/"
                       clientid: "${client_id}"
                       clientsecret: "${client_secret}"
               service:
