@@ -13,13 +13,13 @@ data:
           annotations:
             kubernetes.io/tls-acme: "true"
           hosts:
-            - host: "do.${domain}"
+            - host: "${vikunja_domain}"
               paths:
                  - path: /
           tls:
             - secretName: vikunja-tls
               hosts:
-                - "do.${domain}"
+                - "${vikunja_domain}"
     api:
       persistence:
         data:
@@ -30,13 +30,13 @@ data:
           annotations:
             kubernetes.io/tls-acme: "true"
           hosts:
-            - host: "do.${domain}"
+            - host: "${vikunja_domain}"
               paths:
                  - path: /api
           tls:
             - secretName: vikunja-tls
               hosts:
-                - "do.${domain}"
+                - "${vikunja_domain}"
       configMaps:
         config:
           data:
@@ -46,7 +46,7 @@ data:
                   # https://vikunja.io/docs/config-options/#openid
                   # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
                   enabled: true
-                  redirecturl: "https://do.${domain}/auth/openid/"
+                  redirecturl: "https://${vikunja_domain}/auth/openid/"
                   providers:
                     - name: Stackspin
                       authurl: "https://${hydra_domain}/"
@@ -64,7 +64,7 @@ data:
                 forcessl: true
               # TODO Configure PVC for file uploads
               service:
-                frontendurl: "https://do.${domain}"
+                frontendurl: "https://${vikunja_domain}"
                 timezone: "CET"
                 JWTSecret: "${jwt}"
               database:
