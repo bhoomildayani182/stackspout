@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - vikunja-secrets-kustomization.yaml
   - vikunja-kustomization.yaml
+  - vikunja-test-kustomization.yaml
