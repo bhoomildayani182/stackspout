@@ -19,7 +19,7 @@ data:
               paths:
                  - path: /
           tls:
-            - secretName: vikunja-tls
+            - secretName: vikunja-test-tls
               hosts:
                 - "test.${vikunja_domain}"
     api:
