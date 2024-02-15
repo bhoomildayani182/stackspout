@@ -29,6 +29,6 @@ spec:
         name: stackspin-vikunja-variables
       # OIDC
       - kind: Secret
-        name: stackspin-vikunja-oauth-variables
+        name: stackspin-vikunja-test-oauth-variables
       - kind: ConfigMap
         name: stackspin-single-sign-on-kustomization-variables
