@@ -15,7 +15,7 @@ spec:
     - id_token
     - code
   scope: "openid profile email stackspin_roles"
-  secretName: stackspin-vikunja-oauth-variables
+  secretName: stackspin-vikunja-test-oauth-variables
   redirectUris:
     - https://test.${vikunja_domain}/auth/openid/stackspin
   tokenEndpointAuthMethod: client_secret_post
