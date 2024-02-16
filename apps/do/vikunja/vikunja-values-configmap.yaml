@@ -8,7 +8,7 @@ data:
   values.yaml: |
     frontend:
       image:
-        tag: 0.20.4
+        tag: 0.22
       ingress:
         main:
           enabled: true
@@ -26,7 +26,7 @@ data:
         VIKUNJA_API_URL: https://${vikunja_domain}/api/v1
     api:
       image:
-        tag: 0.20.4
+        tag: 0.22
       persistence:
         data:
           existingClaim: vikunja-files
