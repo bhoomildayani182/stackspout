@@ -7,23 +7,13 @@ data:
   # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
   values.yaml: |
     frontend:
-      image:
-        tag: unstable
+      enabled: false
       ingress:
         main:
-          enabled: true
-          annotations:
-            kubernetes.io/tls-acme: "true"
-          hosts:
-            - host: "test.${vikunja_domain}"
-              paths:
-                 - path: /
-          tls:
-            - secretName: vikunja-test-tls
-              hosts:
-                - "test.${vikunja_domain}"
+          enabled: false
     api:
       image:
+        repository: vikunja/vikunja
         tag: unstable
       persistence:
         data:
@@ -36,7 +26,7 @@ data:
           hosts:
             - host: "test.${vikunja_domain}"
               paths:
-                 - path: /api
+                 - path: /
           tls:
             - secretName: vikunja-test-tls
               hosts:
