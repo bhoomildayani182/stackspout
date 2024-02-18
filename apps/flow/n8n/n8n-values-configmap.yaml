@@ -1,10 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: stackspin-zammad-values
+  name: stackspin-n8n-values
   namespace: stackspout
 data:
   values.yaml: |
+    n8n:
+      encryption_key: "${encryption_key}"
+
     commonLabels:
       stackspin.net/backupSet: "n8n"
     podLabels:
@@ -12,50 +15,30 @@ data:
     podAnnotations:
       backup.velero.io/backup-volumes: "data"
 
+    persistence:
+      enabled: true
+      type: existing
+      existingClaim: "n8n-data"
+
     ingress:
       enabled: true
       annotations:
         kubernetes.io/tls-acme: "true"
       hosts:
-        - host: "${zammad_domain}"
+        - host: "${n8n_domain}"
           paths:
              - path: /
                pathType: Prefix
       tls:
-        - secretName: zammad-tls
+        - secretName: n8n-tls
           hosts:
-            - "${zammad_domain}"
+            - "${n8n_domain}"
 
-    zammadConfig:
-      minio:
-        enabled: false
+    secret:
+      database:
+        type: sqlite
 
-    minio:
-      auth:
-        rootUser: "zammadadmin"
-        rootPasswort: "${minio_password}"
-
-    postgresql:
-      auth:
-        username: "zammad"
-        postgresPassword: "${postgresql_postgres_password}"
-        password: "${postgresql_password}"
-      persistence:
-        # TODO PVC Name & backup annotation
-        existingClaim: zammad-postgres
-
-    redis:
-      auth:
-        password: "${redis_password}"
-
-    persistence:
-      enabled: true
-      existingClaim: zammad-data
-
-    autoWizard:
-      enabled: false
-
-    # TODO Adjust zammad Mailing config
+    # TODO Adjust n8n Mailing config
     #    mailer:
     #      enabled: "${outgoing_mail_enabled}"
     #      host: "${outgoing_mail_smtp_host}"
@@ -63,7 +46,7 @@ data:
     #      username: "${outgoing_mail_smtp_user}"
     #      password: "${outgoing_mail_smtp_password}"
     #      fromemail: "${outgoing_mail_from_address}"
-    # TODO Adjust zammad OpenID Connect Single Sign-On Configuration
+    # TODO Adjust n8n OpenID Connect Single Sign-On Configuration
     #    - name: Stackspin
     #      key: "${client_id}"
     #      secret: "${client_secret}"

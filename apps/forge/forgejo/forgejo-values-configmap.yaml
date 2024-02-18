@@ -102,8 +102,8 @@ data:
     service:
       ssh:
         type: LoadBalancer
-        loadBalancerIP: "${ip_address}"
         hostPort: 22
         externalTrafficPolicy: "Local"
+        loadBalancerIP: "${ip_address}"
         annotations:
           metallb.universe.tf/allow-shared-ip: "share-ipv4"

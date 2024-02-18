@@ -1,27 +1,27 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: zammad
+  name: n8n
   namespace: stackspout
 spec:
-  releaseName: zammad
+  releaseName: n8n
   chart:
     spec:
-      chart: zammad
-      version:
+      chart: n8n
+      version: 1.0 # TODO
       sourceRef:
         kind: HelmRepository
-        name: zammad
+        name: n8n
         namespace: flux-system
   interval: 5m
   valuesFrom:
     - kind: ConfigMap
-      name: stackspin-zammad-values
+      name: stackspout-n8n-values
       optional: false
     # Allow overriding values by ConfigMap or Secret
     - kind: ConfigMap
-      name: stackspin-zammad-override
+      name: stackspout-n8n-override
       optional: true
     - kind: Secret
-      name: stackspin-zammad-override
+      name: stackspout-n8n-override
       optional: true

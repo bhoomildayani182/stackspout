@@ -4,6 +4,7 @@ metadata:
   name: stackspin-suitecrm-variables
   namespace: flux-system
 data:
-  password: "{{ 32 | generate_password | b64encode }}"
-  mariadb_password: "{{ 32 | generate_password | b64encode }}"
-  mariadb_root_password: "{{ 32 | generate_password | b64encode }}"
+  fields:
+  - fieldName: password
+  - fieldName: mariadb_password
+  - fieldName: mariadb_root_password
