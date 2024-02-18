@@ -1,8 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: vikunja-test-postgres
+  name: peertube-data
   namespace: stackspout
+  labels:
+    stackspin.net/backupSet: "peertube"
 spec:
   accessModes:
     - ReadWriteOnce

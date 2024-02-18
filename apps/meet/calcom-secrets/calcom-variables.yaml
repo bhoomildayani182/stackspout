@@ -1,0 +1,14 @@
+---
+apiVersion: secretgenerator.mittwald.de/v1alpha1
+kind: StringSecret
+metadata:
+  name: stackspin-calcom-variables
+  namespace: flux-system
+spec:
+  # DATABASE_URL
+  # NEXT_PUBLIC_WEBAPP_URL
+  fields:
+  - fieldname: postgresql_password
+  - fieldname: postgresql_postgres_password
+  - fieldName: NEXTAUTH_SECRET
+  - fieldName: CALENDSO_ENCRYPTION_KEY

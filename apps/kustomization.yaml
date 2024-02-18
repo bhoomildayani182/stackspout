@@ -4,6 +4,7 @@ resources:
   - ninja-kustomization.yaml
   - do-kustomization.yaml
   - forge-kustomization.yaml
-  - flow-kustomization.yaml
   - support-kustomization.yaml
+  - flow-kustomization.yaml
   - people-kustomization.yaml
+  - meet-kustomization.yaml
