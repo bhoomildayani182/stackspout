@@ -1,3 +1,4 @@
+# https://artifacthub.io/packages/helm/bitnami/suitecrm
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -8,7 +9,7 @@ spec:
   chart:
     spec:
       chart: suitecrm
-      version: 11.1.12
+      version: 14.1.1
       sourceRef:
         kind: HelmRepository
         name: bitnami

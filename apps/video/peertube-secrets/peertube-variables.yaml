@@ -6,4 +6,4 @@ metadata:
   namespace: flux-system
 spec:
   fields:
-  - fieldname: password
+  - fieldName: password

@@ -6,5 +6,4 @@ resources:
   - forge-kustomization.yaml
   - support-kustomization.yaml
   - flow-kustomization.yaml
-  - people-kustomization.yaml
   - meet-kustomization.yaml

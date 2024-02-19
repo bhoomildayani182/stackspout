@@ -6,4 +6,4 @@ metadata:
   namespace: flux-system
 spec:
   fields:
-  - fieldname: encryption_key
+  - fieldName: encryption_key

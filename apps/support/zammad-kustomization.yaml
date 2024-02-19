@@ -4,32 +4,6 @@ metadata:
   name: zammad
   namespace: flux-system
 spec:
-  interval: 10m
-  retryInterval: 2m
-  wait: true
-  timeout: 3m
-  dependsOn:
-    - name: single-sign-on
-  sourceRef:
-    kind: GitRepository
-    name: stackspout
-  path: ./basic/apps/name
-  prune: true
-  postBuild:
-    substituteFrom:
-      #- kind: Secret
-      #  name: stackspin-zammad-variables
-      - kind: Secret
-        name: stackspin-zammad-oauth-variables
-      - kind: Secret
-        name: stackspin-cluster-variables
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: zammad
-  namespace: flux-system
-spec:
   interval: 5m
   retryInterval: 2m
   timeout: 10m

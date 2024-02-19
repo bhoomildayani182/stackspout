@@ -8,7 +8,7 @@ spec:
   # DATABASE_URL
   # NEXT_PUBLIC_WEBAPP_URL
   fields:
-  - fieldname: postgresql_password
-  - fieldname: postgresql_postgres_password
+  - fieldName: postgresql_password
+  - fieldName: postgresql_postgres_password
   - fieldName: NEXTAUTH_SECRET
   - fieldName: CALENDSO_ENCRYPTION_KEY
