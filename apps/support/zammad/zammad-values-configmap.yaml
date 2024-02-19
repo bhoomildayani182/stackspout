@@ -29,11 +29,12 @@ data:
     zammadConfig:
       minio:
         enabled: false
-
-    minio:
-      auth:
-        rootUser: "zammadadmin"
-        rootPasswort: "${minio_password}"
+      postgresql:
+        enabled: true
+        user: "zammad"
+        pass: "${postgresql_password}"
+      redis:
+        pass: "${redis_password}"
 
     postgresql:
       auth:
@@ -43,6 +44,11 @@ data:
       persistence:
         # TODO PVC Name & backup annotation
         existingClaim: zammad-postgres
+
+    minio:
+      auth:
+        rootUser: "zammadadmin"
+        rootPasswort: "${minio_password}"
 
     redis:
       auth:
