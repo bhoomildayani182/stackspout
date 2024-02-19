@@ -27,8 +27,8 @@ data:
       hosts:
         - host: "${n8n_domain}"
           paths:
-             - path: /
-               pathType: Prefix
+            - path: /
+              pathType: Prefix
       tls:
         - secretName: n8n-tls
           hosts:
