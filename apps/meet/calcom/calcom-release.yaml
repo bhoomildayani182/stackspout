@@ -16,12 +16,12 @@ spec:
   interval: 5m
   valuesFrom:
     - kind: ConfigMap
-      name: stackspout-calcom-values
+      name: stackspin-calcom-values
       optional: false
     # Allow overriding values by ConfigMap or Secret
     - kind: ConfigMap
-      name: stackspout-calcom-override
+      name: stackspin-calcom-override
       optional: true
     - kind: Secret
-      name: stackspout-calcom-override
+      name: stackspin-calcom-override
       optional: true

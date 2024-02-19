@@ -11,17 +11,17 @@ spec:
       version: 0.20.1
       sourceRef:
         kind: HelmRepository
-        name: n8n
+        name: 8gears
         namespace: flux-system
   interval: 5m
   valuesFrom:
     - kind: ConfigMap
-      name: stackspout-n8n-values
+      name: stackspin-n8n-values
       optional: false
     # Allow overriding values by ConfigMap or Secret
     - kind: ConfigMap
-      name: stackspout-n8n-override
+      name: stackspin-n8n-override
       optional: true
     - kind: Secret
-      name: stackspout-n8n-override
+      name: stackspin-n8n-override
       optional: true

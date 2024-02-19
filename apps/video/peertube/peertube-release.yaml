@@ -16,12 +16,12 @@ spec:
   interval: 5m
   valuesFrom:
     - kind: ConfigMap
-      name: stackspout-peertube-values
+      name: stackspin-peertube-values
       optional: false
     # Allow overriding values by ConfigMap or Secret
     - kind: ConfigMap
-      name: stackspout-peertube-override
+      name: stackspin-peertube-override
       optional: true
     - kind: Secret
-      name: stackspout-peertube-override
+      name: stackspin-peertube-override
       optional: true
