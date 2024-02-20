@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stackspin-calcom-keys
+  namespace: stackspout
+type: Opaque
+data:
+  DATABASE_URL: "postgresql://calcom:${postgresql_password}@calcom-postgresql/calcom"
+  NEXT_PUBLIC_WEBAPP_URL: "https://${calcom_domain}"
+  NEXTAUTH_SECRET: "${nextauth_secret}"
+  CALENDSO_ENCRYPTION_KEY: "${calendso_key}"

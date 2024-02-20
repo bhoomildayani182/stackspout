@@ -14,7 +14,8 @@ data:
       auth:
         database: calcom
         username: calcom
-        existingSecret: "stackspin-calcom-postgres"
+        password: "${postgresql_password}"
+        postgresPassword: "${postgresql_postgres_password}"
       primary:
         persistence:
           existingClaim: calcom-postgres
