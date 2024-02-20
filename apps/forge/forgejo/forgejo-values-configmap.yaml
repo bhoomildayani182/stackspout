@@ -86,11 +86,13 @@ data:
       enabled: true
       commonLabels:
         stackspin.net/backupSet: "forgejo"
-      auth:
-        database: gitea
-        username: gitea
-        password: gitea # "${postgresql_password}"
-        postgresPassword: "${postgresql_admin_password}"
+      global:
+        postgresql:
+          auth:
+            database: gitea
+            username: gitea
+            password: gitea # "${postgresql_password}"
+            postgresPassword: "${postgresql_admin_password}"
       primary:
         podAnnotations:
           backup.velero.io/backup-volumes: "data"

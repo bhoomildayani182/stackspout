@@ -99,11 +99,13 @@ data:
       enabled: true
       commonLabels:
         stackspin.net/backupSet: "vikunja"
-      auth:
-        database: vikunja
-        username: vikunja
-        password: "${postgresql_password}"
-        postgresPassword: "${postgresql_admin_password}"
+      global:
+        postgresql:
+          auth:
+            database: vikunja
+            username: vikunja
+            password: "${postgresql_password}"
+            postgresPassword: "${postgresql_admin_password}"
       primary:
         persistence:
           existingClaim: vikunja-postgres
