@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gatus
+  namespace: stackspout
+spec:
+  releaseName: gatus
+  chart:
+    spec:
+      chart: gatus
+      version: 1.0 # TODO
+      sourceRef:
+        kind: HelmRepository
+        name: minicloudlabs
+        namespace: flux-system
+  interval: 5m
+  valuesFrom:
+    - kind: ConfigMap
+      name: stackspin-gatus-values
+      optional: false
+    # Allow overriding values by ConfigMap or Secret
+    - kind: ConfigMap
+      name: stackspin-gatus-override
+      optional: true
+    - kind: Secret
+      name: stackspin-gatus-override
+      optional: true

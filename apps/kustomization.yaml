@@ -7,3 +7,4 @@ resources:
   - support-kustomization.yaml
   - flow-kustomization.yaml
   - meet-kustomization.yaml
+  - status-kustomization.yaml
