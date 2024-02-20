@@ -5,6 +5,7 @@ metadata:
   namespace: stackspout
 data:
   values.yaml: |
+    # https://github.com/8gears/n8n-helm-chart/blob/master/values.yaml
     n8n:
       encryption_key: "${encryption_key}"
 
@@ -26,9 +27,6 @@ data:
         kubernetes.io/tls-acme: "true"
       hosts:
         - host: "${n8n_domain}"
-          paths:
-            - path: /
-              pathType: Prefix
       tls:
         - secretName: n8n-tls
           hosts:
