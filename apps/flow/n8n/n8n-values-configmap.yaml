@@ -27,6 +27,7 @@ data:
         kubernetes.io/tls-acme: "true"
       hosts:
         - host: "${n8n_domain}"
+          paths: [ "/" ]
       tls:
         - secretName: n8n-tls
           hosts:
