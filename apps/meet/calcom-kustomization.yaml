@@ -26,8 +26,6 @@ spec:
         name: stackspin-cluster-variables
       - kind: ConfigMap
         name: stackspin-calcom-kustomization-variables
-      - kind: Secret
-        name: stackspin-calcom-variables
       # OIDC
       - kind: Secret
         name: stackspin-calcom-oauth-variables

@@ -6,16 +6,15 @@ metadata:
 data:
   values.yaml: |
     postgresql:
+      # https://github.com/Pyrrha/calcom-helm/blob/main/charts/calcom-stack/values.yaml
       enabled: true
       commonLabels:
         stackspin.net/backupSet: "calcom"
-      #global:
-      #  postgresql:
+      # https://github.com/bitnami/charts/tree/main/bitnami/postgresql/#postgresql-common-parameters
       auth:
         database: calcom
         username: calcom
-        password: "${postgresql_password}"
-        postgresPassword: "${postgresql_postgres_password}"
+        existingSecret: "stackspin-calcom-postgres"
       primary:
         persistence:
           existingClaim: calcom-postgres
@@ -23,7 +22,8 @@ data:
           backup.velero.io/backup-volumes: "data"
 
     calcom:
-      secretRef: "stackspin-calcom-variables"
+      # https://github.com/Pyrrha/calcom-helm/blob/main/charts/calcom/values.yaml
+      secretRef: "stackspin-calcom-keys"
       commonLabels:
         stackspin.net/backupSet: "calcom"
       podLabels:
