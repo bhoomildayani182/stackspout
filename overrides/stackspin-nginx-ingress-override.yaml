@@ -8,6 +8,6 @@ data:
     # https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
     controller:
       service:
-        externalTrafficPolicy: "Cluster"
+        externalTrafficPolicy: "Local"
         annotations:
           metallb.universe.tf/allow-shared-ip: "share-ipv4"
