@@ -103,7 +103,7 @@ data:
       ssh:
         type: LoadBalancer
         hostPort: 22
-        externalTrafficPolicy: "Local"
+        externalTrafficPolicy: "Cluster"
         loadBalancerIP: "${ip_address}"
         annotations:
           metallb.universe.tf/allow-shared-ip: "share-ipv4"
