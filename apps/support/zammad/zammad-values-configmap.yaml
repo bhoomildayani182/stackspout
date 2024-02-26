@@ -5,10 +5,11 @@ metadata:
   namespace: stackspout
 data:
   values.yaml: |
+    # https://github.com/zammad/zammad-helm/blob/main/zammad/values.yaml
     commonLabels:
-      stackspin.net/backupSet: "n8n"
+      stackspin.net/backupSet: "zammad"
     podLabels:
-      stackspin.net/backupSet: "n8n"
+      stackspin.net/backupSet: "zammad"
     podAnnotations:
       backup.velero.io/backup-volumes: "data"
 
@@ -33,17 +34,22 @@ data:
         enabled: true
         user: "zammad"
         pass: "${postgresql_password}"
+        db: "zammad"
       redis:
         pass: "${redis_password}"
 
     postgresql:
+      # https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
       auth:
         username: "zammad"
+        database: "zammad"
         postgresPassword: "${postgresql_postgres_password}"
         password: "${postgresql_password}"
-      persistence:
-        # TODO PVC Name & backup annotation
-        existingClaim: zammad-postgres
+      primary:
+        persistence:
+          existingClaim: zammad-postgres
+        podAnnotations:
+          backup.velero.io/backup-volumes: "data"
 
     minio:
       auth:
