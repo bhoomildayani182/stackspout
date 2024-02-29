@@ -9,3 +9,4 @@ spec:
     NEXT_PUBLIC_WEBAPP_URL: "https://${calcom_domain}"
     NEXTAUTH_SECRET: "${nextauth_secret}"
     CALENDSO_ENCRYPTION_KEY: "${calendso_key}"
+  fields: []
