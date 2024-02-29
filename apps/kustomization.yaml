@@ -8,3 +8,4 @@ resources:
   - flow-kustomization.yaml
   - meet-kustomization.yaml
   - status-kustomization.yaml
+  - sprint-kustomization.yaml
