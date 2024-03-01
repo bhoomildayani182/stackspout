@@ -39,7 +39,8 @@ data:
       host: "${n8n_domain}"
       port: 443
       protocol: https
-      timezone: "Europe/Berlin"
+      generic:
+        timezone: "Europe/Berlin"
 
     # TODO Adjust n8n Mailing config
     #    mailer:
