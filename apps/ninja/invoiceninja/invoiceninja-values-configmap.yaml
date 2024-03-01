@@ -70,7 +70,7 @@ data:
       - name: MAIL_FROM_ADDRESS
         value: "${outgoing_mail_from_address}"
       - name: MAIL_FROM_NAME
-        value: "${business_name}"
+        value: "${org_name}"
 
     # Missing: invoiceninja OpenID Connect Single Sign-On Configuration
     #    - name: Stackspin

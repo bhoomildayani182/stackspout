@@ -46,7 +46,7 @@ data:
           ISSUE_INDEXER_TYPE: bleve
           REPO_INDEXER_ENABLED: true
 
-        APP_NAME: "Forge for ${company_name}"
+        APP_NAME: "Forge for ${org_name}"
         repository:
           DEFAULT_PUSH_CREATE_PRIVATE: false
           ENABLE_PUSH_CREATE_USER: true

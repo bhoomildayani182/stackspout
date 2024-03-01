@@ -33,9 +33,13 @@ data:
           hosts:
             - "${n8n_domain}"
 
-    secret:
+    config:
       database:
         type: sqlite
+      host: "${n8n_domain}"
+      port: 443
+      protocol: https
+      timezone: "Europe/Berlin"
 
     # TODO Adjust n8n Mailing config
     #    mailer:
