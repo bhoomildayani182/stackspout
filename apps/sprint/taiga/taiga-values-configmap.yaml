@@ -6,7 +6,6 @@ metadata:
 data:
   values.yaml: |
     # https://github.com/nemonik/taiga-helm/blob/master/values.yaml
-    # TODO verify structure matches chart
     commonLabels:
       stackspin.net/backupSet: "taiga"
     podLabels:
@@ -35,15 +34,17 @@ data:
               - "${taiga_domain}"
 
     env:
-      mailer:
-        enableEmail: "${outgoing_mail_enabled}"
-        emailHost: "${outgoing_mail_smtp_host}"
-        emailPort: "${outgoing_mail_smtp_port}"
-        emailHostUser: "${outgoing_mail_smtp_user}"
-        emailHostPassword: "${outgoing_mail_smtp_password}"
-        defaultFromEmail: "${outgoing_mail_from_address}"
+      #taigaURL: "https://${taiga_domain}"
+      #taigaWebsocketsURL: "ws://${taiga_domain}"
 
-    # TODO Adjust taiga OpenID Connect Single Sign-On Configuration
+      enableEmail: "${outgoing_mail_enabled}"
+      emailHost: "${outgoing_mail_smtp_host}"
+      emailPort: "${outgoing_mail_smtp_port}"
+      emailHostUser: "${outgoing_mail_smtp_user}"
+      emailHostPassword: "${outgoing_mail_smtp_password}"
+      defaultFromEmail: "${outgoing_mail_from_address}"
+
+    # taiga OpenID Connect Single Sign-On Configuration
     #    - name: Stackspin
     #      key: "${client_id}"
     #      secret: "${client_secret}"
