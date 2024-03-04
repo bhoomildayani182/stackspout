@@ -33,12 +33,12 @@ data:
           username: "${outgoing_mail_smtp_user}"
           password: "${outgoing_mail_smtp_password}"
           host: "${outgoing_mail_smtp_host}"
-          port: "${outgoing_mail_smtp_port}"
+          port: ${outgoing_mail_smtp_port}
           to: "${outgoing_mail_from_address}"
           client:
             insecure: false
           default-alert:
-            enabled: "${outgoing_mail_enabled}"
+            enabled: ${outgoing_mail_enabled}
             description: "health check failed"
             send-on-resolved: true
             failure-threshold: 9
