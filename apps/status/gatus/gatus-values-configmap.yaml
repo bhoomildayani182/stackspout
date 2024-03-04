@@ -6,8 +6,6 @@ metadata:
 data:
   values.yaml: |
     # https://github.com/minicloudlabs/helm-charts/blob/main/charts/gatus/values.yaml
-    # TODO verify structure matches chart
-
     ingress:
       enabled: true
       annotations:
@@ -27,11 +25,38 @@ data:
         scopes: ["openid"]
         #autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'
 
-    # TODO Adjust gatus Mailing config
-    #    mailer:
-    #      enabled: "${outgoing_mail_enabled}"
-    #      host: "${outgoing_mail_smtp_host}"
-    #      port: "${outgoing_mail_smtp_port}"
-    #      username: "${outgoing_mail_smtp_user}"
-    #      password: "${outgoing_mail_smtp_password}"
-    #      fromemail: "${outgoing_mail_from_address}"
+    config:
+      alerting:
+        # https://github.com/TwiN/gatus?tab=readme-ov-file#configuring-email-alerts
+        email:
+          from: "${outgoing_mail_from_address}"
+          username: "${outgoing_mail_smtp_user}"
+          password: "${outgoing_mail_smtp_password}"
+          host: "${outgoing_mail_smtp_host}"
+          port: "${outgoing_mail_smtp_port}"
+          to: "${outgoing_mail_from_address}"
+          client:
+            insecure: false
+          default-alert:
+            enabled: "${outgoing_mail_enabled}"
+            description: "health check failed"
+            send-on-resolved: true
+            failure-threshold: 9
+            success-threshold: 3
+      maintenance:
+        enabled: false
+        start: 20:00
+        duration: 6h
+        every: [Saturday, Sunday]
+      connectivity:
+        checker:
+          target: 1.1.1.1:53
+          interval: 60s
+      endpoints:
+        - name: example
+          url: https://example.org
+          interval: 60s
+          conditions:
+            - "[STATUS] == 200"
+          alerts:
+            - type: email

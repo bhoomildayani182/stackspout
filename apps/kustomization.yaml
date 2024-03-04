@@ -9,3 +9,4 @@ resources:
   - meet-kustomization.yaml
   - status-kustomization.yaml
   - sprint-kustomization.yaml
+  - video-kustomizaiton.yaml
