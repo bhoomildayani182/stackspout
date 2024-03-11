@@ -76,11 +76,19 @@ data:
                 type: postgres
                 host: vikunja-postgresql
                 password: "${postgresql_password}"
+              # https://vikunja.io/docs/config-options/#log
               log:
                 path: "/app/vikunja"
+                standard: stderr
+                level: debug
+                database: file
+                databaselevel: info
                 http: file
-                database: stderr
-                databaselevel: debug
+                echo: file
+                events: file
+                eventslevel: debug
+                mail: file
+                maillevel: debug
               defaultsettings:
                 avatar_provider: gravatar
                 discoverable_by_name: true
