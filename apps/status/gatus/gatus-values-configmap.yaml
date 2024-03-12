@@ -52,11 +52,75 @@ data:
         checker:
           target: 1.1.1.1:53
           interval: 60s
+      ui:
+        header: "FTT Monitor"
+        title: "FTT Monitoring"
+      default-endpoint: &defaults
+        group: FTT
+        interval: 2m
+        conditions:
+          - "[STATUS] == 200"
       endpoints:
-        - name: example
-          url: https://example.org
-          interval: 60s
-          conditions:
-            - "[STATUS] == 200"
-          alerts:
-            - type: email
+        - name: "Nextcloud"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://files.ftt.gmbh"
+        - name: "Zulip"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://chat.ftt.gmbh"
+        - name: "Vikunja"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://do.ftt.gmbh"
+        - name: "HedgeDoc"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://note.ftt.gmbh"
+        - name: "InvoiceNinja"
+          url: "https://ninja.ftt.gmbh"
+          <<: *defaults
+          group: "Stackspout"
+        - name: "Zammad"
+          url: "https://support.ftt.gmbh"
+          <<: *defaults
+          group: "Stackspout"
+        - name: "Forgejo Repositories"
+          url: "https://forge.ftt.gmbh"
+          <<: *defaults
+          group: "Stackspout"
+        - name: "NAS"
+          url: "https://nas.ftt.gmbh"
+          <<: *defaults
+          group: "Tooling"
+        - name: "FTT Homepage"
+          url: "https://ftt.gmbh"
+          <<: *defaults
+          group: "FTT"
+        - name: "FTT Teampage"
+          url: "https://ftt.gmbh/team"
+          <<: *defaults
+          group: "FTT"
+        - name: "FTT Teampage EN"
+          url: "https://ftt.gmbh/en/team"
+          <<: *defaults
+          group: "FTT"
+        - name: "Main Admin Panel"
+          url: "https://main.iridion.it:999"
+          <<: *defaults
+          group: "Iridion"
+        - name: "Second Admin Panel"
+          url: "https://ns2.iridion.it:999"
+          <<: *defaults
+          group: "Iridion"
+
+        - name: "Fossil Repositories"
+          url: "https://fossil.ftt.gmbh"
+          enabled: false
+          <<: *defaults
+          group: "Development"
+        - name: "Firezone"
+          url: "https://fire.ftt.gmbh"
+          enabled: false
+          <<: *defaults
+          group: "Security"
