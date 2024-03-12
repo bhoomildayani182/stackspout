@@ -84,6 +84,8 @@ data:
       enabled: false
     postgresql:
       enabled: true
+      image:
+        tag: "11-debian-11"
       commonLabels:
         stackspin.net/backupSet: "forgejo"
       global:
