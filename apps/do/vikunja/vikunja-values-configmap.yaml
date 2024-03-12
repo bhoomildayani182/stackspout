@@ -69,6 +69,7 @@ data:
                 fromemail: "${outgoing_mail_from_address}"
                 forcessl: true
               service:
+                #rootpath: "/app/vikunja"
                 frontendurl: "https://${vikunja_domain}"
                 timezone: "CET"
                 JWTSecret: "${jwt}"
@@ -78,11 +79,10 @@ data:
                 password: "${postgresql_password}"
               # https://vikunja.io/docs/config-options/#log
               log:
-                path: "/app/vikunja"
                 standard: stderr
                 level: debug
                 database: file
-                databaselevel: info
+                databaselevel: debug
                 http: file
                 echo: file
                 events: file
