@@ -8,4 +8,6 @@ resources:
   - flow-kustomization.yaml
   - meet-kustomization.yaml
   - status-kustomization.yaml
-  - sprint-kustomization.yaml
+  - design-kustomization.yaml
+  #- sprint-kustomization.yaml #charts outdated
+  #- video-kustomization.yaml #missing storage
