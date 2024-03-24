@@ -53,8 +53,8 @@ data:
           target: 1.1.1.1:53
           interval: 60s
       ui:
-        header: "FTT Monitor"
-        title: "FTT Monitoring"
+        header: "${org_name} Monitor"
+        title: "${org_name} Monitoring"
       default-endpoint: &defaults
         group: FTT
         interval: 2m
@@ -64,45 +64,59 @@ data:
         - name: "Nextcloud"
           <<: *defaults
           group: "Stackspout"
-          url: "https://files.ftt.gmbh"
+          url: "https://files.${domain}/status.php"
         - name: "Zulip"
           <<: *defaults
           group: "Stackspout"
-          url: "https://chat.ftt.gmbh"
+          url: "https://chat.${domain}"
         - name: "Vikunja"
           <<: *defaults
           group: "Stackspout"
-          url: "https://do.ftt.gmbh"
+          url: "https://do.${domain}"
         - name: "HedgeDoc"
           <<: *defaults
           group: "Stackspout"
-          url: "https://note.ftt.gmbh"
+          url: "https://note.${domain}"
         - name: "InvoiceNinja"
-          url: "https://ninja.ftt.gmbh"
+          url: "https://ninja.${domain}"
           <<: *defaults
           group: "Stackspout"
         - name: "Zammad"
-          url: "https://support.ftt.gmbh"
+          url: "https://support.${domain}"
           <<: *defaults
           group: "Stackspout"
         - name: "Forgejo Repositories"
-          url: "https://forge.ftt.gmbh"
+          url: "https://forge.${domain}"
           <<: *defaults
           group: "Stackspout"
-        - name: "NAS"
-          url: "https://nas.ftt.gmbh"
+
+        - name: "Mailserver STARTTLS"
+          url: "starttls://${outgoing_mail_smtp_host}:587"
           <<: *defaults
-          group: "Tooling"
+          interval: 10m
+          client:
+            timeout: 5s
+          conditions:
+            - "[CONNECTED] == true"
+        - name: "Mailserver TLS"
+          url: "tls://${outgoing_mail_smtp_host}:465"
+          <<: *defaults
+          interval: 10m
+          client:
+            timeout: 5s
+          conditions:
+            - "[CONNECTED] == true"
+
         - name: "FTT Homepage"
-          url: "https://ftt.gmbh"
+          url: "https://${domain}"
           <<: *defaults
           group: "FTT"
         - name: "FTT Teampage"
-          url: "https://ftt.gmbh/team"
+          url: "https://${domain}/team"
           <<: *defaults
           group: "FTT"
         - name: "FTT Teampage EN"
-          url: "https://ftt.gmbh/en/team"
+          url: "https://${domain}/en/team"
           <<: *defaults
           group: "FTT"
         - name: "Main Admin Panel"
@@ -113,14 +127,3 @@ data:
           url: "https://ns2.iridion.it:999"
           <<: *defaults
           group: "Iridion"
-
-        - name: "Fossil Repositories"
-          url: "https://fossil.ftt.gmbh"
-          enabled: false
-          <<: *defaults
-          group: "Development"
-        - name: "Firezone"
-          url: "https://fire.ftt.gmbh"
-          enabled: false
-          <<: *defaults
-          group: "Security"

@@ -11,14 +11,14 @@ data:
         kubernetes.io/tls-acme: "true"
         nginx.ingress.kubernetes.io/proxy-body-size: "50m"
       hosts:
-        - host: "forge.${domain}"
+        - host: "${forgejo_domain}"
           paths:
              - path: /
                pathType: Prefix
       tls:
         - secretName: forgejo-tls
           hosts:
-            - "forge.${domain}"
+            - "${forgejo_domain}"
     gitea:
       admin:
         username: "forgejo"
@@ -54,7 +54,7 @@ data:
           DEFAULT_REPO_UNITS: [repo.code,repo.releases,repo.issues,repo.pulls]
           MAX_CREATION_LIMIT: 99
         server:
-          ROOT_URL: "https://forge.${domain}"
+          ROOT_URL: "https://${forgejo_domain}"
           LANDING_PAGE: login
         openid:
           ENABLE_OPENID_SIGNUP: true
