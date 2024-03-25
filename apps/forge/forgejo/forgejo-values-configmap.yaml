@@ -46,7 +46,7 @@ data:
           ISSUE_INDEXER_TYPE: bleve
           REPO_INDEXER_ENABLED: true
 
-        APP_NAME: "Forge for ${org_name}"
+        APP_NAME: "Forging ${org_name}"
         repository:
           DEFAULT_PUSH_CREATE_PRIVATE: false
           ENABLE_PUSH_CREATE_USER: true
@@ -60,9 +60,10 @@ data:
           ENABLE_OPENID_SIGNUP: true
         service:
           DISABLE_REGISTRATION: false
+          ENABLE_BASIC_AUTHENTICATION: false
           ALLOW_ONLY_EXTERNAL_REGISTRATION: true
         log:
-          LEVEL: "Debug"
+          # LEVEL: "Debug"
       podAnnotations:
         backup.velero.io/backup-volumes: "data"
     persistence:
