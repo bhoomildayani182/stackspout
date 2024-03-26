@@ -9,12 +9,43 @@ metadata:
 data:
   vikunja: |
     name: "Vikunja Tasks"
-  gitea: |
-    name: "Gitea Code"
+    version: "0.22"
+    external: true
+    url: "do.${domain}"
   forgejo: |
-    name: "Forgejo"
+    name: "Forgejo Git"
+    version: "1.21"
+    external: true
+    url: "forge.${domain}"
   invoiceninja: |
     name: "Invoiceninja Billing"
+    version: "5.8.38"
+    external: true
+    url: "ninja.${domain}"
+  cal: |
+    name: "Cal Appointment Booking"
+    version: ""
+    external: true
+    url: "meet.${domain}"
+  n8n: |
+    name: "n8n Integrations"
+    version: ""
+    external: true
+    url: "flow.${domain}"
+  gatus: |
+    name: "Gatus Monitoring"
+    version: ""
+    external: true
+    url: "status.${domain}"
+  zammad: |
+    name: "Zammad Customer Support"
+    version: ""
+    external: true
+    url: "support.${domain}"
+  handbook: |
+    name: "FTT Handbook"
+    external: true
+    url: "about.${domain}"
 ---
 # This list of OAuth clients with their corresponding apps is loaded by the
 # Stackspin dashboard on startup, and it will insert any missing entries into
@@ -26,5 +57,4 @@ metadata:
   namespace: flux-system
 data:
   vikunja: vikunja
-  gitea: gitea
   forgejo: forgejo
