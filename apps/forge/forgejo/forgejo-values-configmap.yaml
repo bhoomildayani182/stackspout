@@ -23,7 +23,7 @@ data:
       admin:
         username: "forgejo"
         email: "${admin_email}"
-        password: "${password}"
+        password: "${forgejo_admin_password}"
       # https://codeberg.org/forgejo-contrib/forgejo-helm#oauth2-settings
       oauth:
         - name: Stackspin
@@ -51,17 +51,41 @@ data:
           DEFAULT_PUSH_CREATE_PRIVATE: false
           ENABLE_PUSH_CREATE_USER: true
           ENABLE_PUSH_CREATE_ORG: true
-          DEFAULT_REPO_UNITS: [repo.code,repo.releases,repo.issues,repo.pulls]
+          DEFAULT_REPO_UNITS: "repo.code,repo.releases,repo.issues,repo.pulls"
           MAX_CREATION_LIMIT: 99
+        project:
+          PROJECT_BOARD_BASIC_KANBAN_TYPE: "Done, Doing, Todo"
+          # PROJECT_BOARD_BUG_TRIAGE_TYPE: Needs Triage, High Priority, Low Priority, Closed
         server:
-          ROOT_URL: "https://${forgejo_domain}"
           LANDING_PAGE: login
+          PROTOCOL: "https"
+          # ROOT_URL: "https://${forgejo_domain}"
+          # DOMAIN:
         openid:
           ENABLE_OPENID_SIGNUP: true
         service:
           DISABLE_REGISTRATION: false
           ENABLE_BASIC_AUTHENTICATION: false
           ALLOW_ONLY_EXTERNAL_REGISTRATION: true
+          DEFAULT_USER_VISIBILITY: "limited"
+          DEFAULT_ORG_MEMBER_VISIBLE: true
+          # EMAIL_DOMAIN_ALLOWLIST
+        admin:
+          SEND_NOTIFICATION_EMAIL_ON_NEW_USER: true
+        mailer:
+          ENABLED: "${outgoing_mail_enabled}"
+          SMTP_ADDR: "${outgoing_mail_smtp_host}"
+          SMTP_PORT: "${outgoing_mail_smtp_port}"
+          USER: "${outgoing_mail_smtp_user}"
+          PASSWD: "${outgoing_mail_smtp_password}"
+          FROM: "${outgoing_mail_from_address}"
+          # SUBJECT_PREFIX
+          # forcessl: true
+        cors:
+          ENABLED: true
+          # SCHEME: "https"
+          ALLOW_DOMAIN: "files.ftt.gmbh"
+          ALLOW_CREDENTIALS: true
         log:
           # LEVEL: "Debug"
       podAnnotations:

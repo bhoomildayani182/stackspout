@@ -6,7 +6,7 @@ metadata:
 spec:
   fields:
   - fieldName: app_key
-  - fieldName: password
+  - fieldName: invoiceninja_admin_password
   - fieldName: redis_password
   - fieldName: mariadb_password
   - fieldName: mariadb_root_password

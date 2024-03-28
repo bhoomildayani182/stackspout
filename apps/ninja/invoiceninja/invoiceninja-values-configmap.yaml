@@ -49,7 +49,7 @@ data:
     appKey: "${app_key}"
     appURL: "https://${invoiceninja_domain}"
     userEmail: "${admin_email}"
-    userPassword: "${password}"
+    userPassword: "${invoiceninja_admin_password}"
     mailer: "smtp" # FIXME use "${outgoing_mail_enabled}"
     # https://github.com/invoiceninja/invoiceninja/blob/v5-stable/config/mail.php#L36
     extraEnvVars:
