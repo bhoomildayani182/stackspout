@@ -86,7 +86,7 @@ data:
           # SCHEME: "https"
           ALLOW_DOMAIN: "files.ftt.gmbh"
           ALLOW_CREDENTIALS: true
-        log:
+        # log:
           # LEVEL: "Debug"
       podAnnotations:
         backup.velero.io/backup-volumes: "data"
