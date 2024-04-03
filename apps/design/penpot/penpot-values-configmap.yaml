@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stackspin-penpot-values
+  namespace: stackspout
+data:
+  values.yaml: |
+    # TODO verify structure matches chart
+    commonLabels:
+      stackspin.net/backupSet: "penpot"
+    podLabels:
+      stackspin.net/backupSet: "penpot"
+    # TODO Configure PVC for data & database including backup labels
+    podAnnotations:
+      backup.velero.io/backup-volumes: "data"
+    persistence:
+      enabled: true
+      existingClaim: "penpot-data"
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/tls-acme: "true"
+        hosts:
+          - host: "${penpot_domain}"
+            paths:
+               - path: /
+                 pathType: Prefix
+        tls:
+          - secretName: penpot-tls
+            hosts:
+              - "${penpot_domain}"
+        integrations:
+          certManager:
+            enabled: true
+    penpot:
+      public_uri: "https://${penpot_domain}"
+      #registration_domain_whitelist: []
+      #flags:
+      #  backend_api_doc: false
+      #  cors: false
+      #  demo_users: false
+      #  demo_warning: false
+      #  insecure_register: false
+      #  log_emails: false
+      #  log_invitation_token: false
+      #  login: true
+      #  mail_verification: true
+      #  registration: true
+      #  secure_session_cookies: true
+      #  user_feedback: false
+      identity_providers:
+        oidc:
+          enabled: true
+          client_id: "${client_id}"
+          client_secret: "${client_secret}"
+          base_uri: "https://${hydra_domain}"
+          #autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'
+      smtp:
+        enabled: "${outgoing_mail_enabled}"
+        host: "${outgoing_mail_smtp_host}"
+        port: "${outgoing_mail_smtp_port}"
+        username: "${outgoing_mail_smtp_user}"
+        pass: "${outgoing_mail_smtp_password}"
+        default_from: "${outgoing_mail_from_address}"
+        default_reply_to: "${outgoing_mail_from_address}"
+
+    persistence:
+      assets:
+        enabled: true
+        mountPath: /opt/data/assets
+        targetSelectAll: true
