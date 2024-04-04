@@ -1,9 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-  - gitea-release.yaml
-  - gitea-values-configmap.yaml
-  - metallb-gitea.yaml
-  - gitea-oauth-client.yaml
-  - gitea-data-pvc.yaml
-  - gitea-postgres-pvc.yaml

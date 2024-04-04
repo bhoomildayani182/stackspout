@@ -5,6 +5,7 @@ metadata:
   namespace: stackspout
 data:
   values.yaml: |
+    # https://git.lecygnenoir.info/LecygneNoir/peertube-helm/src/branch/master/values.yaml
     commonLabels:
       stackspin.net/backupSet: "peertube"
     podLabels:
