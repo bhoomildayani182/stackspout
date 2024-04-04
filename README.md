@@ -18,11 +18,32 @@ Useful tools for administration:
 - stackspin docs:
   https://docs.stackspin.net/en/v2/system_administration/customizing.html
 
+## Explanation - Typical App Deployment in Stackspout with Flux on Kubernetes
+
+The diagram illustrates generically how continuous app deployment works in our Kubernetes cluster
+from Infrastructure-as-Code using flux.
+Not every app has database, backend and frontend,
+but in the end the deployments all work very similarly
+so there is no point showing it for each individual app.
+Except for the Single-Sign On,
+apps also do not really depend on each other.
+
+Explanations:
+- deploy :: creates a resource on the cluster from a file in the GitRepository
+- create :: creates a resource on the cluster using Kubernetes logic
+- ... all :: creates multiple independent resources
+
+All Flux Kustomizations refer to a directory in the GitRepository,
+but for clarity I omitted it beyond the initial one.
+
+Clouds are created not via Flux GitOps,
+but through one-time scripts.
+
+![Flux Diagram](./stackspout.png)
+
 ### Guide: Creating OAuth Credentials for an external service
-- add a line in `install.sh` and run it to generate the secret (TODO: Update to new stackspin mechanism)
-- append another OAuth2Client definition to `overrides/oauth-clients.yaml`,
+- push an OAuth2Client definition like for the apps,
   adjusting `metadata.name` and `spec.secretName` as well as `spec.redirectUris`
-- apply changes to the cluster 
 - obtain the generated `client_secret` for your application from kubernetes:
 
       kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_secret}}' | base64 -d
@@ -30,6 +51,7 @@ Useful tools for administration:
   with client_id:
 
       kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_id}}{{"\n"}}{{.data.client_secret}}{{"\n"}}' | while read in; do echo $in | base64 -d; echo; done
+
 
 ## Customizations
 
