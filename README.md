@@ -58,29 +58,34 @@ but through one-time scripts.
 ### Overrides
 - Adds many Nextcloud extensions and some configuration
   -> most notably `external` to add Applications into Nextcloud as hub
-- Add Email Auth back to Zulip so guests can be invited
 
 ### New Applications
 below list is formatted as:
 > subdomain: Service (helmrepo, if not provided by the service authors)
 
 #### Stable including Single-Sign-On
-- dev: Gitea (TODO: Forgej)
-- do: Vikunja (k8s-at-home - migrating to creators chart)
-- ninja: InvoiceNinja (No SSO)
-#### In Development
-- people: SuiteCRM (bitnami repo)
-- time: Kimai (robjuz repo)
+- forge: Forgejo
+- do: Vikunja
+#### No SSO
+- ninja: InvoiceNinja
+- support: Zammad
+- flow: n8n (8gears)
+- meet: cal.com (pyrrha)
+- status: Gatus (minicloudlabs)
 #### Planned
-- meet: Jitsi Meet
+- design: penpot (truecharts, waiting on PR)
+- sprint: taiga (nemonik)
+- video: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneNoir/peertube-helm)
+)
+- call: Jitsi Meet / OpenTalk
 - wiki: Wiki (maybe wikijs, but I'd like something that integrated with Nextcloud and Markdown/Orgdown)
 #### Ideas
 - link: URL Shortener
 - connect: Bonfire
+#### Stale
+- people: SuiteCRM (bitnami repo)
+- time: Kimai (robjuz repo)
 
-### Issues to Tackle
-- generate_secrets.py was copied from Stackpin
-  -> new mechanism
 #### Functionally
 - Nextcloud too slow - add Redis?
 - Preconfigure user settings in Nextcloud, Vikunja and more
