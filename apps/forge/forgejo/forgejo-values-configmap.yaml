@@ -59,8 +59,8 @@ data:
         server:
           LANDING_PAGE: login
           ROOT_URL: "https://${forgejo_domain}"
-          # PROTOCOL: "https"
-          # DOMAIN:
+          LFS_START_SERVER: true
+          LFS_JWT_SECRET: "${lfs_jwt}"
         openid:
           ENABLE_OPENID_SIGNUP: true
         service:
