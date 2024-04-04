@@ -58,8 +58,8 @@ data:
           # PROJECT_BOARD_BUG_TRIAGE_TYPE: Needs Triage, High Priority, Low Priority, Closed
         server:
           LANDING_PAGE: login
-          PROTOCOL: "https"
-          # ROOT_URL: "https://${forgejo_domain}"
+          ROOT_URL: "https://${forgejo_domain}"
+          # PROTOCOL: "https"
           # DOMAIN:
         openid:
           ENABLE_OPENID_SIGNUP: true
@@ -83,7 +83,7 @@ data:
           # forcessl: true
         cors:
           ENABLED: true
-          # SCHEME: "https"
+          SCHEME: "https"
           ALLOW_DOMAIN: "files.ftt.gmbh"
           ALLOW_CREDENTIALS: true
         # log:
