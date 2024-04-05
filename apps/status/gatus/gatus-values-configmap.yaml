@@ -16,6 +16,10 @@ data:
           hosts:
             - "${gatus_domain}"
 
+    persistence:
+      enabled: true
+      existingClaim: "gatus-data"
+
     security:
       oidc:
         issuer-url: "https://${hydra_domain}"

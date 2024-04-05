@@ -42,17 +42,3 @@ data:
           - secretName: calcom-tls
             hosts:
               - "${calcom_domain}"
-
-    # TODO Adjust calcom Mailing config
-    #    mailer:
-    #      enabled: "${outgoing_mail_enabled}"
-    #      host: "${outgoing_mail_smtp_host}"
-    #      port: "${outgoing_mail_smtp_port}"
-    #      username: "${outgoing_mail_smtp_user}"
-    #      password: "${outgoing_mail_smtp_password}"
-    #      fromemail: "${outgoing_mail_from_address}"
-    # TODO Adjust calcom OpenID Connect Single Sign-On Configuration
-    #    - name: Stackspin
-    #      key: "${client_id}"
-    #      secret: "${client_secret}"
-    #      autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'
