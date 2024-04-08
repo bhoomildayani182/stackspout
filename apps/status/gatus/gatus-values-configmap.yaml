@@ -93,6 +93,14 @@ data:
           url: "https://forge.${domain}"
           <<: *defaults
           group: "Stackspout"
+        - name: "Cal.com Appointment Booking"
+          url: "https://meet.${domain}"
+          <<: *defaults
+          group: "Stackspout"
+        - name: "Gatus Health Dashboard"
+          url: "https://status.${domain}"
+          <<: *defaults
+          group: "Stackspout"
 
         - name: "Mailserver STARTTLS"
           url: "starttls://${outgoing_mail_smtp_host}:587"
