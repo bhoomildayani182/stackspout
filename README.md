@@ -10,49 +10,6 @@ with a double-digit user number,
 so all experiments happen carefully.
 Still, it is an experimental offering.
 
-## Tools
-
-Useful tools for administration:
-- my `stack` CLI helper, currently part of my dotfiles:
-  https://git.jfischer.org/xeruf/dotfiles/src/branch/main/.config/shell/server#L11
-- stackspin docs:
-  https://docs.stackspin.net/en/v2/system_administration/customizing.html
-
-## Explanation - Typical App Deployment in Stackspout with Flux on Kubernetes
-
-The diagram illustrates generically how continuous app deployment works in our Kubernetes cluster
-from Infrastructure-as-Code using flux.
-Not every app has database, backend and frontend,
-but in the end the deployments all work very similarly
-so there is no point showing it for each individual app.
-Except for the Single-Sign On,
-apps also do not really depend on each other.
-
-Explanations:
-- deploy :: creates a resource on the cluster from a file in the GitRepository
-- create :: creates a resource on the cluster using Kubernetes logic
-- ... all :: creates multiple independent resources
-
-All Flux Kustomizations refer to a directory in the GitRepository,
-but for clarity I omitted it beyond the initial one.
-
-Clouds are created not via Flux GitOps,
-but through one-time scripts.
-
-![Flux Diagram](./stackspout.png)
-
-### Guide: Creating OAuth Credentials for an external service
-- push an OAuth2Client definition like for the apps,
-  adjusting `metadata.name` and `spec.secretName` as well as `spec.redirectUris`
-- obtain the generated `client_secret` for your application from kubernetes:
-
-      kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_secret}}' | base64 -d
-
-  with client_id:
-
-      kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_id}}{{"\n"}}{{.data.client_secret}}{{"\n"}}' | while read in; do echo $in | base64 -d; echo; done
-
-
 ## Customizations
 
 ### Overrides
@@ -60,7 +17,12 @@ but through one-time scripts.
   -> most notably `external` to add Applications into Nextcloud as hub
 
 ### New Applications
-below list is formatted as:
+
+Following are the applications Stackspout adds beyond Stackspin.
+Unlike Stackspin, there is currently no mechanism to add those individually,
+they come in one package with the repository.
+
+Below list is formatted as:
 > subdomain: Service (helmrepo, if not provided by the service authors)
 
 #### Stable including Single-Sign-On
@@ -114,3 +76,46 @@ kubectl -n stackspout get pods
 ```
 
 But there are also ConfigMaps, Secrets, StatefulSets, PVCs, Helmrepos and more...
+
+### Tools
+
+Useful tools for administration:
+- my `stack` CLI helper, currently part of my dotfiles:
+  https://git.jfischer.org/xeruf/dotfiles/src/branch/main/.config/shell/server#L11
+- stackspin docs:
+  https://docs.stackspin.net/en/v2/system_administration/customizing.html
+
+### Guide: Creating OAuth Credentials for an external service
+- push an OAuth2Client definition like for the apps,
+  adjusting `metadata.name` and `spec.secretName` as well as `spec.redirectUris`
+- obtain the generated `client_secret` for your application from kubernetes:
+
+      kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_secret}}' | base64 -d
+
+  with client_id:
+
+      kubectl get secret -n flux-system stackspin-APP-oauth-variables --template '{{.data.client_id}}{{"\n"}}{{.data.client_secret}}{{"\n"}}' | while read in; do echo $in | base64 -d; echo; done
+
+
+## Explanation - Typical App Deployment in Stackspout with Flux on Kubernetes
+
+The diagram illustrates generically how continuous app deployment works in our Kubernetes cluster
+from Infrastructure-as-Code using flux.
+Not every app has database, backend and frontend,
+but in the end the deployments all work very similarly
+so there is no point showing it for each individual app.
+Except for the Single-Sign On,
+apps also do not really depend on each other.
+
+Explanations:
+- deploy :: creates a resource on the cluster from a file in the GitRepository
+- create :: creates a resource on the cluster using Kubernetes logic
+- ... all :: creates multiple independent resources
+
+All Flux Kustomizations refer to a directory in the GitRepository,
+but for clarity I omitted it beyond the initial one.
+
+Clouds are created not via Flux GitOps,
+but through one-time scripts.
+
+![Flux Diagram](./stackspout.png)
