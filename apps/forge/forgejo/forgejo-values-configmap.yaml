@@ -9,7 +9,7 @@ data:
       enabled: true
       annotations:
         kubernetes.io/tls-acme: "true"
-        nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+        nginx.ingress.kubernetes.io/proxy-body-size: "5g"
       hosts:
         - host: "${forgejo_domain}"
           paths:
