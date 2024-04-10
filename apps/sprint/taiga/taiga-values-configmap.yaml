@@ -23,6 +23,8 @@ data:
         enabled: true
         annotations:
           kubernetes.io/tls-acme: "true"
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            more_set_headers "Content-Security-Policy: frame-ancestors 'self' files.${domain}";
         hosts:
           - host: "${taiga_domain}"
             paths:
