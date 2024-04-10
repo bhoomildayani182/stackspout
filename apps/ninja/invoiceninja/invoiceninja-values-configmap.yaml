@@ -17,7 +17,7 @@ data:
       certManager: true
       annotations:
         nginx.ingress.kubernetes.io/configuration-snippet: |
-          more_set_headers "Content-Security-Policy: frame-ancestors 'self' ${nextcloud_domain}";
+          more_set_headers "Content-Security-Policy: frame-ancestors 'self' files.${domain}";
     commonLabels:
       stackspin.net/backupSet: "invoiceninja"
     podLabels:

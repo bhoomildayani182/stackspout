@@ -5,6 +5,30 @@ metadata:
   name: stackspin-zulip-override
 data:
   values.yaml: |
-    zulip:
-      environment:
-        SETTING_PUSH_NOTIFICATION_BOUNCER_URL: 'https://push.zulipchat.com'
+    ingress:
+      annotations:
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          more_set_headers "Content-Security-Policy: frame-ancestors 'self' files.${domain}";
+
+    #zulip:
+    #  environment:
+    #    SETTING_PUSH_NOTIFICATION_BOUNCER_URL: 'https://push.zulipchat.com'
+    ## https://github.com/zulip/docker-zulip/blob/main/kubernetes/chart/zulip/values.yaml
+    #ingress:
+    #  enabled: true
+    #  annotations:
+    #    # Tell cert-manager to automatically get a TLS certificate
+    #    kubernetes.io/tls-acme: "true"
+    #    # Allow bigger uploads, for image and file attaching.
+    #    # 25M is the default limit of Zulip itself, so we just follow that
+    #    # suggestion here. If you want to increase this further, you'd have to
+    #    # configure that limit in Zulip as well.
+    #    nginx.ingress.kubernetes.io/proxy-body-size: "25m"
+    #  hosts:
+    #    - host: "${zulip_domain}"
+    #      paths:
+    #        - path: "/"
+    #  tls:
+    #    - hosts:
+    #        - "${zulip_domain}"
+    #      secretName: stackspin-zulip
