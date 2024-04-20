@@ -14,3 +14,8 @@ flux create kustomization stackspout \
   --path="./infrastructure/kustomizations/" \
   --prune=true \
   --interval=5m
+
+flux bootstrap git \
+  --url=https://open.greenhost.net/xeruf/stackspout.git \
+  --branch=main \
+  --path=util/flux

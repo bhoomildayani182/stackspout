@@ -60,7 +60,7 @@ First [install Stackspin](https://docs.stackspin.net/en/latest/installation/inst
 Then apply the configuration to your cluster:
 
 ```sh
-install.sh
+./install.sh
 ```
 
 Done!
@@ -118,4 +118,6 @@ but for clarity I omitted it beyond the initial one.
 Clouds are created not via Flux GitOps,
 but through one-time scripts.
 
-![Flux Diagram](./stackspout.png)
+![Flux Diagram](util/stackspout.png)
+
+See also https://about.ftt.gmbh/projects/polygon.html#state-of-stackspout-2022
