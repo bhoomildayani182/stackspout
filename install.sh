@@ -4,7 +4,7 @@ kubectl get namespace stackspout 2>/dev/null || kubectl create namespace stacksp
 
 echo "Creating / Updating gitRepository stackspout"
 flux create source git stackspout \
-  --url=https://open.greenhost.net/xeruf/stackspout.git \
+  --url=https://forge.ftt.gmbh/polygon/stackspout.git \
   --branch=main \
   --interval=5m
 
@@ -15,7 +15,12 @@ flux create kustomization stackspout \
   --prune=true \
   --interval=5m
 
-flux bootstrap git \
-  --url=https://open.greenhost.net/xeruf/stackspout.git \
+# Required for oversized truecharts repo
+export GITEA_TOKEN=$(pass business/ftt/stackspout)
+flux bootstrap gitea \
+  --token-auth \
   --branch=main \
+  --hostname=forge.ftt.gmbh \
+  --owner=polygon \
+  --repository=stackspout \
   --path=util/flux
