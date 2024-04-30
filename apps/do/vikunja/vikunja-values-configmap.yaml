@@ -49,13 +49,13 @@ data:
             config.yml: |-
               auth:
                 openid:
-                  # https://vikunja.io/docs/config-options/#openid
-                  # Example: https://github.com/go-vikunja/api/blob/main/config.yml.sample#L289-L312
+                  # https://vikunja.io/docs/openid-example-configurations/
+                  # Example: https://kolaente.dev/vikunja/vikunja/src/branch/main/config.yml.sample#L313
                   enabled: true
                   redirecturl: "https://${vikunja_domain}/auth/openid/"
                   providers:
                     - name: Stackspin
-                      authurl: "https://${hydra_domain}/"
+                      authurl: "https://${hydra_domain}"
                       clientid: "${client_id}"
                       clientsecret: "${client_secret}"
                 local:
