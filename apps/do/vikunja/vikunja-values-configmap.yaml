@@ -55,7 +55,7 @@ data:
                   redirecturl: "https://${vikunja_domain}/auth/openid/"
                   providers:
                     - name: Stackspin
-                      authurl: "https://${hydra_domain}"
+                      authurl: "https://${hydra_domain}/"
                       clientid: "${client_id}"
                       clientsecret: "${client_secret}"
                 local:
