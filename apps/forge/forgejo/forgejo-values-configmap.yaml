@@ -66,6 +66,7 @@ data:
         openid:
           ENABLE_OPENID_SIGNUP: true
         service:
+          ENABLE_NOTIFY_MAIL: true
           DISABLE_REGISTRATION: false
           ENABLE_BASIC_AUTHENTICATION: false
           ALLOW_ONLY_EXTERNAL_REGISTRATION: true

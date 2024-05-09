@@ -140,9 +140,11 @@ data:
         # Testing
         - name: event_update_notification
           enabled: false
-          #- name: calendar_resource_management
-          #  enabled: true
-          # TODO install via CLI
+        - name: google_synchronization
+          enabled: true
+        #- name: calendar_resource_management
+        #  enabled: true
+        # TODO install via CLI
         # TODO disabling user status, files_comments, support, event_update_notification (Notifications for calendar event updates), bruteforcesettings
         # disable tasks soon
         # configure firstrunwizard
