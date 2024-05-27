@@ -5,4 +5,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 6m
-  url: https://kolaente.dev/xeruf/helm-chart/raw/branch/merged-docker/
+  url: https://kolaente.dev/xeruf/helm-chart/raw/branch/helm/
