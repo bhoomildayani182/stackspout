@@ -6,11 +6,6 @@ metadata:
 data:
   # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
   values.yaml: |
-    frontend:
-      enabled: false
-      ingress:
-        main:
-          enabled: false
     api:
       image:
         repository: vikunja/vikunja
