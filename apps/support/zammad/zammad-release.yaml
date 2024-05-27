@@ -8,7 +8,10 @@ spec:
   chart:
     spec:
       chart: zammad
-      version: 10.3.4
+      version: 10.3.4 # 12.2.0
+      # Migration: https://github.com/zammad/zammad-helm/tree/main/zammad#upgrading
+      # Versions: https://github.com/zammad/zammad-helm/blob/main/zammad/Chart.yaml
+      # History: https://github.com/zammad/zammad-helm/releases
       sourceRef:
         kind: HelmRepository
         name: zammad
