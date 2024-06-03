@@ -62,6 +62,8 @@ data:
               log:
                 #path: "/app/vikunja"
                 #http: file
+                level: debug
+                maillevel: debug
                 database: stderr
                 databaselevel: debug
               defaultsettings:
