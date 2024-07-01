@@ -65,11 +65,17 @@ data:
         conditions:
           - "[STATUS] == 200"
       endpoints:
-        - name: "Nextcloud"
+        - name: "Nextcloud Files"
           <<: *defaults
           group: "Stackspout"
           url: "https://files.${domain}/status.php"
-        - name: "Zulip"
+        - name: "Nextcloud Maintenance Mode"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://files.${domain}/status.php"
+          conditions:
+            - "[BODY].maintenance == false"
+        - name: "Zulip Teamchat"
           <<: *defaults
           group: "Stackspout"
           url: "https://chat.${domain}"
@@ -83,15 +89,15 @@ data:
           url: "https://do.${domain}/api/v1/info"
           conditions:
             - "len([BODY].auth.openid_connect.providers) > 0"
-        - name: "HedgeDoc"
+        - name: "HedgeDoc Notes"
           <<: *defaults
           group: "Stackspout"
           url: "https://note.${domain}"
-        - name: "InvoiceNinja"
+        - name: "InvoiceNinja Billing"
           url: "https://ninja.${domain}"
           <<: *defaults
           group: "Stackspout"
-        - name: "Zammad"
+        - name: "Zammad Support"
           url: "https://support.${domain}"
           <<: *defaults
           group: "Stackspout"
