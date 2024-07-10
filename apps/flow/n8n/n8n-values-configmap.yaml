@@ -7,7 +7,7 @@ data:
   values.yaml: |
     # https://github.com/8gears/n8n-helm-chart/blob/master/values.yaml
     image:
-      tag: "1.42.1"
+      tag: "1.47.3"
 
     n8n:
       encryption_key: "${encryption_key}"

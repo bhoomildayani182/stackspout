@@ -15,6 +15,7 @@ Still, it is an experimental offering.
 ### Overrides
 - Adds many Nextcloud extensions and some configuration
   -> most notably `external` to add Applications into Nextcloud as hub
+- Allow iFraming of applications into Nextcloud
 
 ### New Applications
 
@@ -23,24 +24,24 @@ Unlike Stackspin, there is currently no mechanism to add those individually,
 they come in one package with the repository.
 
 Below list is formatted as:
-> subdomain: Service (helmrepo, if not provided by the service authors)
+> subdomain: Service (helmrepo, if not by the application authors themselves)
 
 #### Stable including Single-Sign-On
 - forge: Forgejo
-- do: Vikunja
+- do: Vikunja [needs upgrade]
+- status: Gatus (minicloudlabs)
 #### No SSO
 - ninja: InvoiceNinja
-- support: Zammad
+- support: Zammad [needs PVC fixed]
 - flow: n8n (8gears)
 - meet: cal.com (pyrrha)
-- status: Gatus (minicloudlabs)
 #### Planned
 - design: penpot (truecharts, waiting on PR)
 - sprint: taiga (nemonik)
 - video: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneNoir/peertube-helm)
 )
-- call: Jitsi Meet / OpenTalk
-- wiki: Wiki (maybe wikijs, but I'd like something that integrated with Nextcloud and Markdown/Orgdown)
+- call: Jitsi Meet / OpenTalk / Element Call
+- wiki: Wiki (maybe wikijs, but I'd like something that integrates with Nextcloud and Markdown/Orgdown)
 #### Ideas
 - link: URL Shortener
 - connect: Bonfire

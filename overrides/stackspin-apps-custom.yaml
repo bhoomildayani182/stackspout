@@ -19,27 +19,27 @@ data:
     url: "https://forge.${domain}"
   invoiceninja: |
     name: "Invoiceninja Billing"
-    version: "5.8.38"
+    version: "5.9"
     external: true
     url: "https://ninja.${domain}"
   cal: |
     name: "Cal Appointment Booking"
-    version: ""
+    version: "3.7.11"
     external: true
     url: "https://meet.${domain}"
   n8n: |
     name: "n8n Integrations"
-    version: ""
+    version: "1.47.3"
     external: true
     url: "https://flow.${domain}"
   gatus: |
     name: "Gatus Monitoring"
-    version: ""
+    version: "5.11.0"
     external: true
     url: "https://status.${domain}"
   zammad: |
     name: "Zammad Customer Support"
-    version: ""
+    version: "6.2.0"
     external: true
     url: "https://support.${domain}"
   handbook: |
