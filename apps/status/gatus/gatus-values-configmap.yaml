@@ -113,6 +113,10 @@ data:
           url: "https://meet.${domain}"
           <<: *defaults
           group: "Stackspout"
+        - name: "Stackspin Dashboard"
+          url: "https://dashboard.${domain}/web/recovery"
+          <<: *defaults
+          group: "Stackspout"
         - name: "Gatus Health Dashboard"
           url: "https://status.${domain}"
           <<: *defaults
