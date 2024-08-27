@@ -69,14 +69,16 @@ data:
           enabled: false
         - name: contacts
           enabled: true
+        - name: external_storage
+          enabled: true
         # Common Apps
-        - name: external
-          enabled: true
-        - name: polls
-          enabled: false
-          #unsure - maybe redundant to forms?
-        - name: forms
-          enabled: true
+        #- name: external
+        #  enabled: true
+        #- name: polls
+        #  enabled: false
+        #  #unsure - maybe redundant to forms?
+        #- name: forms
+        #  enabled: true
           #- name: spreed
           #  enabled: false
           # redundant to Zulip & Jitsi
@@ -94,7 +96,7 @@ data:
           enabled: true
         - name: previewgenerator
           enabled: true
-          # TODO handy but incompatible
+          # TODO handy but abendoned - https://apps.nextcloud.com/apps/extract
           #- name: extract
           #  enabled: false
           # Collaborative apps
@@ -110,6 +112,8 @@ data:
           enabled: true
         - name: maps
           enabled: true
+          version: "v1.4.0"
+          github_repository: nextcloud/maps
         - name: jitsi
           enabled: false
           # waiting for /var/lib/Stackspin/local-storage/pvc-3b008674-544c-46e7-b456-f20932eb9f23_stackspin-apps_nextcloud-files/custom_apps
