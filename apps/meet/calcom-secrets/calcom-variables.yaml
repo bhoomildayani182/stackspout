@@ -9,3 +9,4 @@ spec:
   - fieldName: postgresql_postgres_password
   - fieldName: nextauth_secret
   - fieldName: calendso_key
+    length: 32
