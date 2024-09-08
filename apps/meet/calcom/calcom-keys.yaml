@@ -11,7 +11,7 @@ stringData:
   EMAIL_FROM: "${outgoing_mail_from_address}"
   EMAIL_FROM_NAME: "${org_name}"
   EMAIL_SERVER_HOST: "${outgoing_mail_smtp_host}"
-  EMAIL_SERVER_PORT: "${outgoing_mail_smtp_port}"
+  EMAIL_SERVER_PORT: ${quote}${outgoing_mail_smtp_port}${quote}
   EMAIL_SERVER_USER: "${outgoing_mail_smtp_user}"
   EMAIL_SERVER_PASSWORD: "${outgoing_mail_smtp_password}"
   # email_enabled: "${outgoing_mail_enabled}"

@@ -21,6 +21,8 @@ spec:
     - name: nginx
     - name: single-sign-on
   postBuild:
+    substitute:
+      quote: '"'
     substituteFrom:
       - kind: Secret
         name: stackspin-cluster-variables
