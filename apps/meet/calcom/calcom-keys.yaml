@@ -6,6 +6,7 @@ metadata:
 stringData:
   DATABASE_URL: "postgresql://calcom:${postgresql_password}@calcom-postgresql/calcom"
   NEXT_PUBLIC_WEBAPP_URL: "https://${calcom_domain}"
+  NEXT_PUBLIC_API_V2_URL: "https://${calcom_domain}/api/v2"
   NEXTAUTH_SECRET: "${nextauth_secret}"
   CALENDSO_ENCRYPTION_KEY: "${calendso_key}"
   EMAIL_FROM: "${outgoing_mail_from_address}"
