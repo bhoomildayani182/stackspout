@@ -24,6 +24,8 @@ data:
 
     calcom:
       # https://github.com/Pyrrha/calcom-helm/blob/main/charts/calcom/values.yaml
+      image:
+        #tag: v4.5.0
       secretRef: "stackspin-calcom-keys"
       commonLabels:
         stackspin.net/backupSet: "calcom"
