@@ -5,7 +5,7 @@ metadata:
   namespace: stackspout
 stringData:
   DATABASE_URL: "postgresql://calcom:${postgresql_password}@calcom-postgresql/calcom"
-  ALLOWED_HOSTNAMES: '"${calcom_domain}"'
+  #ALLOWED_HOSTNAMES: '"${calcom_domain}"'
   NEXT_PUBLIC_WEBAPP_URL: "https://${calcom_domain}"
   #NEXT_PUBLIC_API_V2_URL: "https://${calcom_domain}/api/v2"
   NEXTAUTH_SECRET: "${nextauth_secret}"
