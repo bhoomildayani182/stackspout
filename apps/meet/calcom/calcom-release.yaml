@@ -9,7 +9,7 @@ spec:
     spec:
       # https://github.com/Pyrrha/calcom-helm/blob/main/charts/calcom-stack/Chart.yaml
       chart: calcom-stack
-      version: 0.3.9
+      version: 0.3.15
       sourceRef:
         kind: HelmRepository
         name: calcom
