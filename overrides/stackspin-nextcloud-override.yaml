@@ -139,8 +139,8 @@ data:
         # Flow
         - name: analytics
           enabled: true
-        - name: workflow_pdf_converter
-          enabled: true
+          #- name: workflow_pdf_converter
+          #  enabled: true
           #- name: files_accesscontrol
           #  enabled: false
           #- name: files_automatedtagging
