@@ -130,7 +130,7 @@ data:
           enabled: true
         - name: breezedark
           enabled: true
-          version: "v29.0.0"
+          version: "v28.0.1" # 29.0.0
           release_filename: "breezedark.tar.gz"
           github_repository: mwalbeck/nextcloud-breeze-dark
           #raw_url: https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v29.0.0/breezedark.tar.gz
