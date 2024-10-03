@@ -117,6 +117,7 @@ data:
         - name: maps
           enabled: true
           version: "1.4.0"
+          raw_url: "https://github.com/nextcloud/maps/releases/download/v{{ .version }}/maps-{{ .version }}.tar.gz"
           release_filename: "maps-{{ .version }}.tar.gz"
           github_repository: nextcloud/maps
           # waiting for /var/lib/Stackspin/local-storage/pvc-3b008674-544c-46e7-b456-f20932eb9f23_stackspin-apps_nextcloud-files/custom_apps
