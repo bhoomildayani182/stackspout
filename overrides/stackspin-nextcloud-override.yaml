@@ -59,14 +59,14 @@ data:
     apps:
       custom:
         # Basics
-        - name: bruteforcesettings
-          enabled: false
-        - name: password_policy
-          enabled: false
-        - name: photos
-          enabled: false
-        - name: passwords
-          enabled: false
+        #- name: bruteforcesettings
+        #  enabled: false
+        #- name: password_policy
+        #  enabled: false
+        #- name: photos
+        #  enabled: false
+        #- name: passwords
+        #  enabled: false
         - name: contacts
           enabled: true
         - name: files_external
@@ -87,10 +87,10 @@ data:
         - name: appointments
           enabled: true
         # Management
-        - name: deck
-          enabled: true
-        - name: tasks
-          enabled: true
+        #- name: deck
+        #  enabled: true
+        #- name: tasks
+        #  enabled: true
         # Convenience
         - name: files_rightclick
           enabled: true
@@ -110,21 +110,20 @@ data:
           enabled: true
         - name: drawio
           enabled: true
-        - name: files_mindmap
-          enabled: true
+        # INCOMPATIBLE https://apps.nextcloud.com/apps/files_mindmap
+        # name: files_mindmap
+        #  enabled: true
         - name: maps
           enabled: true
           version: "1.4.0"
           release_filename: "maps-{{ .version }}.tar.gz"
           github_repository: nextcloud/maps
-        - name: jitsi
-          enabled: false
           # waiting for /var/lib/Stackspin/local-storage/pvc-3b008674-544c-46e7-b456-f20932eb9f23_stackspin-apps_nextcloud-files/custom_apps
         # Aesthetics
         #- name: theming
         #  enabled: true
-        - name: apporder
-          enabled: false
+        #- name: apporder
+        #  enabled: false
         - name: side_menu
           enabled: true
         - name: breezedark
@@ -145,8 +144,8 @@ data:
           #- name: workflow_ocr
           #  enabled: false
         # Testing
-        - name: event_update_notification
-          enabled: false
+        #- name: event_update_notification
+        #  enabled: false
         - name: google_synchronization
           enabled: true
         #- name: calendar_resource_management
