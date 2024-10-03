@@ -108,6 +108,9 @@ data:
           enabled: true
         - name: drawio
           enabled: true
+          version: "v3.0.3"
+          release_filename: "drawio-{{ .version }}.tar.gz"
+          github_repository: jgraph/drawio-nextcloud
         # INCOMPATIBLE https://apps.nextcloud.com/apps/files_mindmap
         # name: files_mindmap
         #  enabled: true
