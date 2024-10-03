@@ -69,7 +69,7 @@ data:
           enabled: false
         - name: contacts
           enabled: true
-        - name: external_storage
+        - name: files_external
           enabled: true
         # Common Apps
         #- name: external
