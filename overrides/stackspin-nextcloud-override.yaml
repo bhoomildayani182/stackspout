@@ -69,6 +69,8 @@ data:
         #  enabled: false
         - name: contacts
           enabled: true
+          github_repository: nextcloud/contacts
+          version: "v6.1.2"
         - name: files_external
           enabled: true
         # Common Apps
