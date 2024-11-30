@@ -63,15 +63,6 @@ data:
         #  enabled: false
         #- name: password_policy
         #  enabled: false
-        #- name: photos
-        #  enabled: false
-        #- name: passwords
-        #  enabled: false
-        - name: contacts
-          enabled: true
-          version: "v6.1.2"
-          release_filename: "contacts-{{ .version }}.tar.gz"
-          github_repository: nextcloud/contacts
         - name: files_external
           enabled: true
         # Common Apps
@@ -84,19 +75,15 @@ data:
         #  #unsure - maybe redundant to forms?
         #- name: forms
         #  enabled: true
-          #- name: spreed
-          #  enabled: false
-          # redundant to Zulip & Jitsi
-        - name: appointments
-          enabled: true
+        #- name: spreed
+        #  enabled: false
+        # redundant to Zulip & Jitsi
         # Management
         #- name: deck
         #  enabled: true
         #- name: tasks
         #  enabled: true
         # Convenience
-        - name: metadata
-          enabled: true
         - name: previewgenerator
           enabled: true
           # TODO handy but abendoned - https://apps.nextcloud.com/apps/extract
