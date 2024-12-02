@@ -85,7 +85,7 @@ data:
         #  enabled: true
         # Convenience
         - name: previewgenerator
-          enabled: false
+          enabled: false #TEMP
           #version: "v5.7.0"
           #github_repository: nextcloud/previewgenerator
           #release_filename: "previewgenerator-{{ .version }}.tar.gz"
@@ -121,6 +121,8 @@ data:
         #  enabled: false
         - name: side_menu
           enabled: true
+          version: "v4.0.1"
+          raw_url: "https://gitnet.fr/deblan/side_menu/releases/download/{{ .version }}/side_menu_{{ .version }}.tar.gz"
         - name: breezedark
           enabled: true
           version: "v29.0.0"
@@ -131,7 +133,7 @@ data:
           #  enabled: true
         # Flow
         - name: analytics
-          enabled: true
+          enabled: false #TEMP
           #- name: workflow_pdf_converter
           #  enabled: true
           #- name: files_accesscontrol
@@ -146,7 +148,7 @@ data:
         #- name: event_update_notification
         #  enabled: false
         - name: google_synchronization
-          enabled: true
+          enabled: false #TEMP
         #- name: calendar_resource_management
         #  enabled: true
         # TODO install via CLI
