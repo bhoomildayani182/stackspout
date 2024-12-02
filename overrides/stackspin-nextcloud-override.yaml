@@ -109,7 +109,7 @@ data:
         #  enabled: true
         - name: maps
           enabled: true
-          version: "1.5.0"
+          version: "v1.5.0"
           release_filename: "maps-{{ .version }}.tar.gz"
           github_repository: nextcloud/maps
           #raw_url: "https://github.com/nextcloud/maps/releases/download/v{{ .version }}/maps-{{ .version }}.tar.gz"
