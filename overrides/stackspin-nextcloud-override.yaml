@@ -124,7 +124,7 @@ data:
           version: "v4.0.1"
           raw_url: "https://gitnet.fr/deblan/side_menu/releases/download/{{ .version }}/side_menu_{{ .version }}.tar.gz"
         - name: breezedark
-          enabled: true
+          enabled: false #TEMP
           version: "v29.0.0"
           release_filename: "breezedark.tar.gz"
           github_repository: mwalbeck/nextcloud-breeze-dark
