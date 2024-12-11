@@ -42,8 +42,6 @@ data:
                       authurl: "https://${hydra_domain}/"
                       clientid: "${client_id}"
                       clientsecret: "${client_secret}"
-                local:
-                  enabled: false
               mailer:
                 enabled: "${outgoing_mail_enabled}"
                 host: "${outgoing_mail_smtp_host}"
