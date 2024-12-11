@@ -10,8 +10,7 @@ data:
       image:
         repository: vikunja/vikunja
         tag: unstable
-        pullPolicy: always
-        imagePullPolicy: Always
+        pullPolicy: Always
       persistence:
         data:
           existingClaim: vikunja-test-files
