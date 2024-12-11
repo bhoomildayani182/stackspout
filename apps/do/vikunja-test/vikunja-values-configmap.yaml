@@ -11,6 +11,7 @@ data:
         repository: vikunja/vikunja
         tag: unstable
         pullPolicy: always
+        imagePullPolicy: Always
       persistence:
         data:
           existingClaim: vikunja-test-files
