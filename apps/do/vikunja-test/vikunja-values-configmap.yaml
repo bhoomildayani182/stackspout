@@ -7,10 +7,10 @@ data:
   # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
   values.yaml: |
     api:
-      image:
-        repository: vikunja/vikunja
-        tag: unstable
-        pullPolicy: Always
+      #image:
+      #  repository: vikunja/vikunja
+      #  tag: unstable
+      #  pullPolicy: Always
       persistence:
         data:
           existingClaim: vikunja-test-files
@@ -42,6 +42,7 @@ data:
                       authurl: "https://${hydra_domain}/"
                       clientid: "${client_id}"
                       clientsecret: "${client_secret}"
+                      scope: openid profile email name
               mailer:
                 enabled: "${outgoing_mail_enabled}"
                 host: "${outgoing_mail_smtp_host}"
@@ -54,6 +55,7 @@ data:
                 frontendurl: "https://test.${vikunja_domain}"
                 timezone: "CET"
                 JWTSecret: "${jwt}"
+                motd: "This is a test instance, do not use for production data as it can vanish without notice!"
               database:
                 type: postgres
                 host: vikunja-test-postgresql
