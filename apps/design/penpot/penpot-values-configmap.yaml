@@ -18,25 +18,32 @@ data:
       existingClaim: "penpot-data"
 
     ingress:
-      main:
-        enabled: true
-        annotations:
-          kubernetes.io/tls-acme: "true"
-        hosts:
-          - host: "${penpot_domain}"
-            paths:
-               - path: /
-                 pathType: Prefix
-        tls:
-          - secretName: penpot-tls
-            hosts:
-              - "${penpot_domain}"
-        integrations:
-          certManager:
-            enabled: true
-    penpot:
-      public_uri: "https://${penpot_domain}"
-      #registration_domain_whitelist: []
+      enabled: true
+      annotations:
+        kubernetes.io/tls-acme: "true"
+      hosts: ["${penpot_domain}"]
+      #  - host: "${penpot_domain}"
+      #    paths:
+      #       - path: /
+      #         pathType: Prefix
+      tls:
+        - secretName: penpot-tls
+          hosts:
+            - "${penpot_domain}"
+      integrations:
+        certManager:
+          enabled: true
+
+    config:
+      publicUri: "https://${penpot_domain}"
+      #apiSecretKey: "W8oErul6XcazLUhpsP_y0zttNSx_EkItWmD0TKTEvJuWSsjvkfEHxk9uNmrCOZ-p_Y6gIRV7yqQ4j04JcQX3xg"
+      apiSecretKey: "${api_key}"
+      # -- Comma separated list of allowed domains to register. Empty to allow all domains.
+      registrationDomainWhitelist: "ftt.gmbh"
+      telemetryEnabled: false
+      # -- The feature flags to enable. Check [the official docs](https://help.penpot.app/technical-guide/configuration/) for more info.
+      # @section -- Configuration parameters
+      #flags: "enable-registration enable-login-with-password disable-email-verification enable-smtp"
       #flags:
       #  backend_api_doc: false
       #  cors: false
@@ -50,24 +57,23 @@ data:
       #  registration: true
       #  secure_session_cookies: true
       #  user_feedback: false
-      identity_providers:
-        oidc:
-          enabled: true
-          client_id: "${client_id}"
-          client_secret: "${client_secret}"
-          base_uri: "https://${hydra_domain}"
-          #autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'
       smtp:
         enabled: "${outgoing_mail_enabled}"
         host: "${outgoing_mail_smtp_host}"
         port: "${outgoing_mail_smtp_port}"
         username: "${outgoing_mail_smtp_user}"
-        pass: "${outgoing_mail_smtp_password}"
-        default_from: "${outgoing_mail_from_address}"
-        default_reply_to: "${outgoing_mail_from_address}"
+        password: "${outgoing_mail_smtp_password}"
+        defaultFrom: "${outgoing_mail_from_address}"
+        defaultReplyTo: "${outgoing_mail_from_address}"
+      providers:
+        oidc:
+          enabled: true
+          clientID: "${client_id}"
+          clientSecret: "${client_secret}"
+          baseURI: "https://${hydra_domain}"
+          #autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'
 
     persistence:
       assets:
         enabled: true
-        mountPath: /opt/data/assets
-        targetSelectAll: true
+        existingClaim: "penpot-assets"

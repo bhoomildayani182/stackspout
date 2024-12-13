@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: penpot-data
+  name: penpot-assets
   namespace: stackspout
   labels:
     stackspin.net/backupSet: "penpot"

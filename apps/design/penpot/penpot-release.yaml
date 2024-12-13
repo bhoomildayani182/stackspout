@@ -8,10 +8,10 @@ spec:
   chart:
     spec:
       chart: penpot
-      version: 4.0.12
+      version: 0.5.0
       sourceRef:
         kind: HelmRepository
-        name: truecharts
+        name: penpot
         namespace: flux-system
   interval: 5m
   valuesFrom:

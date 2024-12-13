@@ -6,4 +6,4 @@ metadata:
   namespace: flux-system
 spec:
   fields:
-  - fieldName: password
+  - fieldName: api_key
