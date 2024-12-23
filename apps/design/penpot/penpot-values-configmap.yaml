@@ -5,27 +5,31 @@ metadata:
   namespace: stackspout
 data:
   values.yaml: |
-    # TODO verify structure matches chart
-    commonLabels:
-      stackspin.net/backupSet: "penpot"
-    podLabels:
-      stackspin.net/backupSet: "penpot"
-    # TODO Configure PVC for data & database including backup labels
-    podAnnotations:
-      backup.velero.io/backup-volumes: "data"
+    global:
+      postgresqlEnabled: true
+      redisEnabled: true
+
+    frontend:
+      podLabels:
+        stackspin.net/backupSet: "penpot"
+    backend:
+      podLabels:
+        stackspin.net/backupSet: "penpot"
+    exporter:
+      podLabels:
+        stackspin.net/backupSet: "penpot"
+    backend:
+      podAnnotations:
+        backup.velero.io/backup-volumes: "app-data"
     persistence:
-      enabled: true
-      existingClaim: "penpot-data"
+      assets:
+        existingClaim: "penpot-data"
 
     ingress:
       enabled: true
       annotations:
         kubernetes.io/tls-acme: "true"
       hosts: ["${penpot_domain}"]
-      #  - host: "${penpot_domain}"
-      #    paths:
-      #       - path: /
-      #         pathType: Prefix
       tls:
         - secretName: penpot-tls
           hosts:
@@ -72,8 +76,3 @@ data:
           clientSecret: "${client_secret}"
           baseURI: "https://${hydra_domain}"
           #autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'
-
-    persistence:
-      assets:
-        enabled: true
-        existingClaim: "penpot-assets"
