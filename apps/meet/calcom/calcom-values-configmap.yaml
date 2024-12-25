@@ -27,9 +27,7 @@ data:
       #image:
       #  tag: v4.5.10
       secretRef: "stackspin-calcom-keys"
-      commonLabels:
-        stackspin.net/backupSet: "calcom"
-      podLabels:
+      labels:
         stackspin.net/backupSet: "calcom"
       ingress:
         enabled: true
