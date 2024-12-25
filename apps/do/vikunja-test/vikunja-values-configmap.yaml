@@ -6,11 +6,10 @@ metadata:
 data:
   # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
   values.yaml: |
-    api:
-      #image:
-      #  repository: vikunja/vikunja
-      #  tag: unstable
-      #  pullPolicy: Always
+    vikunja:
+      image:
+        tag: latest
+        pullPolicy: Always
       persistence:
         data:
           existingClaim: vikunja-test-files
