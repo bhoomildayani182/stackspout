@@ -7,8 +7,8 @@ stringData:
   # https://github.com/calcom/cal.com/blob/main/.env.example
   DATABASE_URL: "postgresql://calcom:${postgresql_password}@calcom-postgresql/calcom"
   NEXT_PUBLIC_WEBAPP_URL: "https://${calcom_domain}"
-  #ALLOWED_HOSTNAMES: '"${calcom_domain}"'
   #NEXT_PUBLIC_API_V2_URL: "https://${calcom_domain}/api/v2"
+  ALLOWED_HOSTNAMES: '"${calcom_domain}"'
   CALCOM_TELEMETRY_DISABLED: 1
   SEND_FEEDBACK_EMAIL: "${admin_email}"
 
@@ -16,7 +16,7 @@ stringData:
   NEXT_PUBLIC_SUPPORT_MAIL_ADDRESS: "${admin_email}"
   NEXT_PUBLIC_COMPANY_NAME: "${org_name}"
   # Set this to true in to disable new signups
-  # NEXT_PUBLIC_DISABLE_SIGNUP=true
+  NEXT_PUBLIC_DISABLE_SIGNUP: true
 
   NEXTAUTH_SECRET: "${nextauth_secret}"
   CALENDSO_ENCRYPTION_KEY: "${calendso_key}"
