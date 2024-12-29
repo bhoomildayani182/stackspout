@@ -18,17 +18,18 @@ data:
           #'logo_url' => 'https://example.org',
           defaults.config.php: |-
             <?php
-            $CONFIG = array (
+            $CONFIG = [
               'default_phone_region' => 'DE',
               'default_locale' => 'en-gb',
               'default_timezone' => 'Europe/Berlin',
-
               'allow_user_to_change_display_name' => false,
               'lost_password_link' => 'https://dashboard.${domain}/web/recovery',
               'simpleSignUpLink.shown' => false,
-
               'skeletondirectory' => '',
-
+            ]
+          previews.config.php: |-
+            <?php
+            $CONFIG = [
               'enable_previews' => true,
               'enabledPreviewProviders' => [
                   'OC\\Preview\\BMP',
@@ -40,14 +41,12 @@ data:
                   'OC\\Preview\\PNG',
                   'OC\\Preview\\TXT',
                   'OC\\Preview\\XBitmap',
-          
                   'OC\\Preview\\MSOfficeDoc',
                   'OC\\Preview\\MSOffice2003',
                   'OC\\Preview\\MSOffice2007',
                   'OC\\Preview\\OpenDocument',
                   'OC\\Preview\\StarOffice',
                   'OC\\Preview\\EMF',
-
                   'OC\\Preview\\SVG',
                   'OC\\Preview\\TIFF',
                   'OC\\Preview\\PDF',
@@ -58,10 +57,9 @@ data:
                   'OC\\Preview\\HEIC',
                   'OC\\Preview\\TGA',
                   'OC\\Preview\\SGI',
-
                   'OC\\Preview\\Movie'
                 ]
-            );
+            ];
           # https://help.nextcloud.com/t/preview-settings-not-described-well/197952/9
       extraVolumes:
         - name: nas-media
