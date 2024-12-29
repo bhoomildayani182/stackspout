@@ -4,8 +4,9 @@ metadata:
   namespace: stackspin-apps
   name: stackspin-nextcloud-override
 data:
+  # https://artifacthub.io/packages/helm/nextcloud/nextcloud#configuration
   values.yaml: |
-# https://artifacthub.io/packages/helm/nextcloud/nextcloud#configuration
+
     nextcloud:
       nextcloud:
         configs:
@@ -37,11 +38,17 @@ data:
                   'OC\Preview\Krita',
                   'OC\Preview\MarkDown',
                   'OC\Preview\MP3',
-                  'OC\Preview\OpenDocument',
                   'OC\Preview\PNG',
                   'OC\Preview\TXT',
                   'OC\Preview\XBitmap',
           
+                  'OC\Preview\MSOfficeDoc',
+                  'OC\Preview\MSOffice2003',
+                  'OC\Preview\MSOffice2007',
+                  'OC\Preview\OpenDocument',
+                  'OC\Preview\StarOffice',
+                  'OC\Preview\EMF',
+
                   'OC\Preview\SVG',
                   'OC\Preview\TIFF',
                   'OC\Preview\PDF',
@@ -53,7 +60,7 @@ data:
                   'OC\Preview\TGA',
                   'OC\Preview\SGI',
 
-                  'OC\Preview\Movie',
+                  'OC\Preview\Movie'
                 ]
             );
           # https://help.nextcloud.com/t/preview-settings-not-described-well/197952/9
