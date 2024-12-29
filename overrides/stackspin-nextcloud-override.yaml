@@ -5,45 +5,58 @@ metadata:
   name: stackspin-nextcloud-override
 data:
   values.yaml: |
+# https://artifacthub.io/packages/helm/nextcloud/nextcloud#configuration
     nextcloud:
-      # https://artifacthub.io/packages/helm/nextcloud/nextcloud#configuration
-      # https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#user-experience
-      #'defaultapp' => 'dashboard,files',
-      # https://github.com/moment/moment/tree/2.18.1/locale
-      #'default_language' => 'en_de', # https://www.transifex.com/explore/languages/
-      #'theme' => 'dark',
       nextcloud:
         configs:
+          # https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#user-experience
+          #'defaultapp' => 'dashboard,files',
+          # https://github.com/moment/moment/tree/2.18.1/locale
+          #'default_language' => 'en_de', # https://www.transifex.com/explore/languages/
+          #'theme' => 'dark',
+          #'logo_url' => 'https://example.org',
           defaults.config.php: |-
+
             <?php
             $CONFIG = array (
-              'allow_user_to_change_display_name' => false,
               'default_phone_region' => 'DE',
               'default_locale' => 'en-gb',
+              'default_timezone' => 'Europe/Berlin',
+
+              'allow_user_to_change_display_name' => false,
               'lost_password_link' => 'https://dashboard.${domain}/web/recovery',
               'simpleSignUpLink.shown' => false,
+
+              'skeletondirectory' => '',
+
               'enable_previews' => true,
-              'preview_libreoffice_path' => '/usr/bin/libreoffice',
-              'enabledPreviewProviders' =>
-                array (
-                   0 => 'OC\\Preview\\TXT',
-                   1 => 'OC\\Preview\\MarkDown',
-                   2 => 'OC\\Preview\\OpenDocument',
-                   3 => 'OC\\Preview\\PDF',
-                   4 => 'OC\\Preview\\MSOffice2003',
-                   5 => 'OC\\Preview\\MSOfficeDoc',
-                   6 => 'OC\\Preview\\Image',
-                   7 => 'OC\\Preview\\Photoshop',
-                   8 => 'OC\\Preview\\TIFF',
-                   9 => 'OC\\Preview\\SVG',
-                  10 => 'OC\\Preview\\Font',
-                  11 => 'OC\\Preview\\MP3',
-                  12 => 'OC\\Preview\\Movie',
-                  13 => 'OC\\Preview\\MKV',
-                  14 => 'OC\\Preview\\MP4',
-                  15 => 'OC\\Preview\\AVI',
-                )
+              'enabledPreviewProviders' => [
+                  'OC\Preview\BMP',
+                  'OC\Preview\GIF',
+                  'OC\Preview\JPEG',
+                  'OC\Preview\Krita',
+                  'OC\Preview\MarkDown',
+                  'OC\Preview\MP3',
+                  'OC\Preview\OpenDocument',
+                  'OC\Preview\PNG',
+                  'OC\Preview\TXT',
+                  'OC\Preview\XBitmap',
+          
+                  'OC\Preview\SVG',
+                  'OC\Preview\TIFF',
+                  'OC\Preview\PDF',
+                  'OC\Preview\Illustrator',
+                  'OC\Preview\Photoshop',
+                  'OC\Preview\Postscript',
+                  'OC\Preview\Font',
+                  'OC\Preview\HEIC',
+                  'OC\Preview\TGA',
+                  'OC\Preview\SGI',
+
+                  'OC\Preview\Movie',
+                ]
             );
+          # https://help.nextcloud.com/t/preview-settings-not-described-well/197952/9
       #extraVolumes:
       #  - name: nextcloud-poststart
       #    configMap:
@@ -84,19 +97,14 @@ data:
         #- name: tasks
         #  enabled: true
         # Convenience
-        - name: previewgenerator
-          enabled: false #TEMP
-          #version: "v5.7.0"
-          #github_repository: nextcloud/previewgenerator
-          #release_filename: "previewgenerator-{{ .version }}.tar.gz"
-          # TODO handy but abendoned - https://apps.nextcloud.com/apps/extract
-          #- name: extract
-          #  enabled: false
-          # Collaborative apps
-          #- name: files_markdown
-          #  enabled: false
-          #- name: files_texteditor
-          #  enabled: true
+        # TODO handy but abendoned - https://apps.nextcloud.com/apps/extract
+        #- name: extract
+        #  enabled: false
+        # Collaborative apps
+        #- name: files_markdown
+        #  enabled: false
+        #- name: files_texteditor
+        #  enabled: true
         - name: notes
           enabled: true
         - name: drawio
@@ -156,18 +164,3 @@ data:
         # disable tasks soon
         # configure firstrunwizard
         # preconfigured: share by mail - https://apps.nextcloud.com/apps/socialsharing_email
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: stackspin-apps
-  name: stackspin-nextcloud-setup
-data:
-  setup.sh: |
-    #!/bin/bash
-    set -e
-    exec > /var/www/tmp/setup-$(date +"%s").log
-    exec 2> /var/www/tmp/setup-$(date +"%s")_error.log
-
-    apt update
-    apt install --yes ffmpeg imagemagick ghostscript libreoffice libreoffice-l10n-de libreoffice-help-de
