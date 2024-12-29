@@ -66,14 +66,14 @@ data:
                 ]
             ];
           # https://help.nextcloud.com/t/preview-settings-not-described-well/197952/9
-      extraVolumes:
-        - name: nas-media
-          nfs:
-            server: 172.16.0.2
-            path: /mnt/b/media
-      extraVolumeMounts:
-        - name: nas-media
-          mountPath: /var/www/html/data/nfs/nas-media
+        extraVolumes:
+          - name: nas-media
+            nfs:
+              server: 172.16.0.2
+              path: /mnt/b/media
+        extraVolumeMounts:
+          - name: nas-media
+            mountPath: /var/www/html/data/nfs/nas-media
       #lifecycle:
       #  postStartCommand:
       #    - '/bin/bash'
