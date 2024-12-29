@@ -17,7 +17,6 @@ data:
           #'theme' => 'dark',
           #'logo_url' => 'https://example.org',
           defaults.config.php: |-
-
             <?php
             $CONFIG = array (
               'default_phone_region' => 'DE',
@@ -32,45 +31,46 @@ data:
 
               'enable_previews' => true,
               'enabledPreviewProviders' => [
-                  'OC\Preview\BMP',
-                  'OC\Preview\GIF',
-                  'OC\Preview\JPEG',
-                  'OC\Preview\Krita',
-                  'OC\Preview\MarkDown',
-                  'OC\Preview\MP3',
-                  'OC\Preview\PNG',
-                  'OC\Preview\TXT',
-                  'OC\Preview\XBitmap',
+                  'OC\\Preview\\BMP',
+                  'OC\\Preview\\GIF',
+                  'OC\\Preview\\JPEG',
+                  'OC\\Preview\\Krita',
+                  'OC\\Preview\\MarkDown',
+                  'OC\\Preview\\MP3',
+                  'OC\\Preview\\PNG',
+                  'OC\\Preview\\TXT',
+                  'OC\\Preview\\XBitmap',
           
-                  'OC\Preview\MSOfficeDoc',
-                  'OC\Preview\MSOffice2003',
-                  'OC\Preview\MSOffice2007',
-                  'OC\Preview\OpenDocument',
-                  'OC\Preview\StarOffice',
-                  'OC\Preview\EMF',
+                  'OC\\Preview\\MSOfficeDoc',
+                  'OC\\Preview\\MSOffice2003',
+                  'OC\\Preview\\MSOffice2007',
+                  'OC\\Preview\\OpenDocument',
+                  'OC\\Preview\\StarOffice',
+                  'OC\\Preview\\EMF',
 
-                  'OC\Preview\SVG',
-                  'OC\Preview\TIFF',
-                  'OC\Preview\PDF',
-                  'OC\Preview\Illustrator',
-                  'OC\Preview\Photoshop',
-                  'OC\Preview\Postscript',
-                  'OC\Preview\Font',
-                  'OC\Preview\HEIC',
-                  'OC\Preview\TGA',
-                  'OC\Preview\SGI',
+                  'OC\\Preview\\SVG',
+                  'OC\\Preview\\TIFF',
+                  'OC\\Preview\\PDF',
+                  'OC\\Preview\\Illustrator',
+                  'OC\\Preview\\Photoshop',
+                  'OC\\Preview\\Postscript',
+                  'OC\\Preview\\Font',
+                  'OC\\Preview\\HEIC',
+                  'OC\\Preview\\TGA',
+                  'OC\\Preview\\SGI',
 
-                  'OC\Preview\Movie'
+                  'OC\\Preview\\Movie'
                 ]
             );
           # https://help.nextcloud.com/t/preview-settings-not-described-well/197952/9
-      #extraVolumes:
-      #  - name: nextcloud-poststart
-      #    configMap:
-      #      name: nextcloud-poststart-config
-      #extraVolumeMounts:
-      #  - name: nextcloud-poststart
-      #    mountPath: /opt
+      extraVolumes:
+        - name: nas-media
+          nfs:
+            server: 172.16.0.2
+            path: /mnt/b/media
+      extraVolumeMounts:
+        - name: nas-media
+          mountPath: /var/www/html/data/nfs/nas-media
       #lifecycle:
       #  postStartCommand:
       #    - '/bin/bash'
