@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: stackspin-vikunja-values
+  name: stackspin-vikunja-extra-values
   namespace: stackspout
 data:
   # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
