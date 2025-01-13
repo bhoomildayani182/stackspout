@@ -5,3 +5,4 @@ metadata:
   namespace: flux-system
 data:
   vikunja_domain: do.${domain}
+  vikunja_extra_domain: do.${domain_extra}
