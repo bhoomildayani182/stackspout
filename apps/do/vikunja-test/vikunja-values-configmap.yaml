@@ -74,13 +74,11 @@ data:
                 timezone: CET
     postgresql:
       enabled: true
-      global:
-        postgresql:
-          auth:
-            database: vikunja
-            username: vikunja
-            password: "${postgresql_password}"
-            postgresPassword: "${postgresql_admin_password}"
+      auth:
+        database: vikunja
+        username: vikunja
+        password: "${postgresql_password}"
+        postgresPassword: "${postgresql_admin_password}"
       primary:
         persistence:
           existingClaim: vikunja-test-postgres
