@@ -20,7 +20,7 @@ data:
               paths:
                  - path: /api
           tls:
-            - secretName: vikunja-tls
+            - secretName: vikunja-extra-tls
               hosts:
                 - "${vikunja_extra_domain}"
       configMaps:
@@ -56,7 +56,7 @@ data:
                 motd: "Welcome to ${domain_extra}!"
               database:
                 type: postgres
-                host: vikunja-postgresql
+                host: vikunja-extra-postgresql
                 password: "${postgresql_password}"
               # https://vikunja.io/docs/config-options/#log
               log:
