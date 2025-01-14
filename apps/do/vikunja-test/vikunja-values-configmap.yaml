@@ -27,7 +27,7 @@ data:
               hosts:
                 - "test.${vikunja_domain}"
       configMaps:
-        config:
+        api-config:
           data:
             config.yml: |-
               auth:
