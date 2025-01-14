@@ -18,7 +18,7 @@ data:
           hosts:
             - host: "${vikunja_extra_domain}"
               paths:
-                 - path: /api
+                 - path: /
           tls:
             - secretName: vikunja-extra-tls
               hosts:
