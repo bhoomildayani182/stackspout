@@ -8,15 +8,22 @@ metadata:
   namespace: flux-system
 data:
   vikunja: |
-    name: "Vikunja Tasks"
+    name: "Vikunja ${org_name} Tasks"
     version: "0.22"
-    external: true
     url: "https://do.${domain}"
+  vikunja-extra: |
+    name: "Vikunja ${domain_extra} Tasks"
+    version: "0.25"
+    url: "https://do.${domain_extra}"
   forgejo: |
-    name: "Forgejo Git"
+    name: "Forgejo Git Repositories"
     version: "1.21"
-    external: true
     url: "https://forge.${domain}"
+  gatus: |
+    name: "Gatus Monitoring"
+    version: "5.11.0"
+    external: true
+    url: "https://status.${domain}"
   invoiceninja: |
     name: "Invoiceninja Billing"
     version: "5.9"
@@ -32,11 +39,6 @@ data:
     version: "1.47.3"
     external: true
     url: "https://flow.${domain}"
-  gatus: |
-    name: "Gatus Monitoring"
-    version: "5.11.0"
-    external: true
-    url: "https://status.${domain}"
   zammad: |
     name: "Zammad Customer Support"
     version: "6.2.0"
@@ -57,5 +59,6 @@ metadata:
   namespace: flux-system
 data:
   vikunja: vikunja
+  vikunja-extra: vikunja-extra
   forgejo: forgejo
   gatus: gatus
