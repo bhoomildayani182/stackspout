@@ -9,7 +9,7 @@ spec:
     spec:
       # https://codeberg.org/forgejo-contrib/-/packages/container/forgejo
       chart: forgejo
-      version: 5.0.1
+      version: 11.0.1
       sourceRef:
         kind: HelmRepository
         name: forgejo

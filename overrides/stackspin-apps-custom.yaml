@@ -17,36 +17,30 @@ data:
     url: "https://do.${domain_extra}"
   forgejo: |
     name: "Forgejo Git Repositories"
-    version: "1.21"
+    version: "10.0.0"
     url: "https://forge.${domain}"
   gatus: |
     name: "Gatus Monitoring"
     version: "5.11.0"
-    external: true
     url: "https://status.${domain}"
   invoiceninja: |
     name: "Invoiceninja Billing"
-    version: "5.9"
-    external: true
+    version: "5.11"
     url: "https://ninja.${domain}"
   cal: |
     name: "Cal Appointment Booking"
     version: "3.7.11"
-    external: true
     url: "https://meet.${domain}"
   n8n: |
     name: "n8n Integrations"
     version: "1.47.3"
-    external: true
     url: "https://flow.${domain}"
   zammad: |
     name: "Zammad Customer Support"
     version: "6.2.0"
-    external: true
     url: "https://support.${domain}"
   handbook: |
     name: "FTT Handbook"
-    external: true
     url: "https://about.${domain}"
 ---
 # This list of OAuth clients with their corresponding apps is loaded by the

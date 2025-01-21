@@ -21,6 +21,7 @@ data:
         - secretName: forgejo-tls
           hosts:
             - "${forgejo_domain}"
+
     gitea:
       admin:
         username: "forgejo"
