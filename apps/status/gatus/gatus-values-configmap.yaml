@@ -61,10 +61,11 @@ data:
           target: 1.1.1.1:53
           interval: 60s
       ui:
-        header: "${org_name} Monitor"
+        header: "${org_name} Toolstatus"
         title: "${org_name} Monitoring"
+
       default-endpoint: &defaults
-        group: FTT
+        group: ${org_name}
         interval: 2m
         conditions:
           - "[STATUS] == 200"
@@ -93,6 +94,10 @@ data:
           url: "https://do.${domain}/api/v1/info"
           conditions:
             - "len([BODY].auth.openid_connect.providers) > 0"
+        - name: "Vikunja Tasks ${domain_extra}"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://do.${domain_extra}"
         - name: "HedgeDoc Notes"
           <<: *defaults
           group: "Stackspout"
@@ -139,18 +144,19 @@ data:
           conditions:
             - "[CONNECTED] == true"
 
-        - name: "FTT Homepage"
+        - name: "${org_name} Homepage"
           url: "https://${domain}"
           <<: *defaults
-          group: "FTT"
-        - name: "FTT Teampage"
+          group: "${org_name}"
+        - name: "${org_name} Teampage"
           url: "https://${domain}/team"
           <<: *defaults
-          group: "FTT"
-        - name: "FTT Teampage EN"
+          group: "${org_name}"
+        - name: "${org_name} Teampage EN"
           url: "https://${domain}/en/team"
           <<: *defaults
-          group: "FTT"
+          group: "${org_name}"
+
         - name: "Main Admin Panel"
           url: "https://main.iridion.it:999"
           <<: *defaults
