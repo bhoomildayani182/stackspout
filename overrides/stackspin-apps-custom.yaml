@@ -37,7 +37,6 @@ data:
     url: "https://flow.${domain}"
   zammad: |
     name: "Zammad Customer Support"
-    external: true
     version: "6.2.0"
     url: "https://support.${domain}"
   handbook: |
