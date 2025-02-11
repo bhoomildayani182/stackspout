@@ -24,7 +24,7 @@ spec:
       - kind: Secret
         name: stackspin-cluster-variables
       - kind: ConfigMap
-        name: stackspin-vikunja-kustomization-variables
+        name: stackspin-vikunja-extra-kustomization-variables
       - kind: Secret
         name: stackspin-vikunja-variables
       # OIDC
