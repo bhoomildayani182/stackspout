@@ -37,10 +37,12 @@ data:
     url: "https://flow.${domain}"
   zammad: |
     name: "Zammad Customer Support"
+    external: true
     version: "6.2.0"
     url: "https://support.${domain}"
   handbook: |
     name: "FTT Handbook"
+    external: true
     url: "https://about.${domain}"
 ---
 # This list of OAuth clients with their corresponding apps is loaded by the
