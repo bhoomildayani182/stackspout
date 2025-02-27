@@ -7,7 +7,8 @@ data:
   values.yaml: |
     global:
       postgresqlEnabled: true
-      redisEnabled: true
+      #redisEnabled: true
+    #redis:
 
     frontend:
       podLabels:
