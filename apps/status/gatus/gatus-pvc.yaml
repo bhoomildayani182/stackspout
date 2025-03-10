@@ -3,8 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: gatus-data
   namespace: stackspout
-  labels:
-    stackspin.net/backupSet: "gatus"
 spec:
   accessModes:
     - ReadWriteOnce
