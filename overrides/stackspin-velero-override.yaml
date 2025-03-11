@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: stackspin
+  name: stackspin-velero-override
+data:
+  values.yaml: |
+    extraArgs:
+      - --restic-timeout=20h
