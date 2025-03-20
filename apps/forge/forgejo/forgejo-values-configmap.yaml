@@ -64,6 +64,7 @@ data:
           ROOT_URL: "https://${forgejo_domain}"
           LFS_START_SERVER: true
           LFS_JWT_SECRET: "${lfs_jwt}"
+          OFFLINE_MODE: false
         openid:
           ENABLE_OPENID_SIGNUP: true
         service:
