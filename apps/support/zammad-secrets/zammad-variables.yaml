@@ -6,7 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   fields:
-  - fieldName: minio_password
   - fieldName: redis_password
   - fieldName: postgresql_password
   - fieldName: postgresql_postgres_password

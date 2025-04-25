@@ -32,16 +32,15 @@ Below list is formatted as:
 - status: Gatus (minicloudlabs)
 #### No SSO
 - ninja: InvoiceNinja
-- support: Zammad [needs PVC fixed]
+- support: Zammad
 - flow: n8n (8gears)
 - meet: cal.com (pyrrha)
 #### Planned
-- design: penpot (truecharts, waiting on PR)
+- design: penpot
 - sprint: taiga (nemonik)
-- video: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneNoir/peertube-helm)
-)
+- video: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneNoir/peertube-helm))
 - call: Jitsi Meet / OpenTalk / Element Call
-- wiki: Wiki (maybe wikijs, but I'd like something that integrates with Nextcloud and Markdown/Orgdown)
+- wiki/know: Wiki (maybe wikijs, but I'd like something that integrates with Nextcloud and Markdown/Orgdown)
 #### Ideas
 - link: URL Shortener
 - connect: Bonfire

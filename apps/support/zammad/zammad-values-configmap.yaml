@@ -6,13 +6,10 @@ metadata:
 data:
   values.yaml: |
     # https://github.com/zammad/zammad-helm/blob/main/zammad/values.yaml
-    # TODO https://github.com/zammad/zammad-helm/issues/259
     commonLabels:
       stackspin.net/backupSet: "zammad"
     podLabels:
       stackspin.net/backupSet: "zammad"
-    podAnnotations:
-      backup.velero.io/backup-volumes: "zammad-var"
 
     ingress:
       enabled: true
@@ -52,25 +49,17 @@ data:
         backup.velero.io/backup-volumes: "data"
       primary:
         persistence:
-          existingClaim: zammad-postgres
-
-    minio:
-      auth:
-        rootUser: "zammadadmin"
-        rootPasswort: "${minio_password}"
+          existingClaim: zammad-postgres-data
 
     redis:
       auth:
         password: "${redis_password}"
 
-    persistence:
-      enabled: true
-      existingClaim: zammad-data
-
     autoWizard:
       enabled: false
 
-    # TODO Adjust zammad Mailing config
+    # Zammad has no option for SMTP pre-config and no OIDC support so far
+    # Adjust zammad Mailing config
     #    mailer:
     #      enabled: "${outgoing_mail_enabled}"
     #      host: "${outgoing_mail_smtp_host}"
@@ -78,7 +67,7 @@ data:
     #      username: "${outgoing_mail_smtp_user}"
     #      password: "${outgoing_mail_smtp_password}"
     #      fromemail: "${outgoing_mail_from_address}"
-    # TODO Adjust zammad OpenID Connect Single Sign-On Configuration
+    # Adjust zammad OpenID Connect Single Sign-On Configuration
     #    - name: Stackspin
     #      key: "${client_id}"
     #      secret: "${client_secret}"
