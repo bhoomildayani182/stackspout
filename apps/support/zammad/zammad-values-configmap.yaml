@@ -8,8 +8,6 @@ data:
     # https://github.com/zammad/zammad-helm/blob/main/zammad/values.yaml
     commonLabels:
       stackspin.net/backupSet: "zammad"
-    podLabels:
-      stackspin.net/backupSet: "zammad"
 
     ingress:
       enabled: true
