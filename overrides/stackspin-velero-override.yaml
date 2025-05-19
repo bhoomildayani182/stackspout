@@ -5,5 +5,7 @@ metadata:
   name: stackspin-velero-override
 data:
   values.yaml: |
-    extraArgs:
-      - --restic-timeout=20h
+    configuration:
+      #backupSyncPeriod: 1h
+      uploaderType: restic
+      fsBackupTimeout: "20h"
