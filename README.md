@@ -26,21 +26,28 @@ they come in one package with the repository.
 Below list is formatted as:
 > subdomain: Service (helmrepo, if not by the application authors themselves)
 
+#### Stackspin Tools
+- dashboard: Toolübersicht von Stackspin
+- files: Nextcloud - Tools Hub, Dokumentation, Filesharing, Kalender, Kontakte
+- chat: Zulip - WIP-Updates und Kommunikation
+- note: Hedgedoc - Lebende, kollaborative Dokumente
 #### Stable including Single-Sign-On
-- forge: Forgejo
-- do: Vikunja [needs upgrade]
+- forge: Forgejo - Code Repositories
+- do: Vikunja - Projektmanagement
 - status: Gatus (minicloudlabs)
 #### No SSO
-- ninja: InvoiceNinja
-- support: Zammad
+- ninja: InvoiceNinja - Rechnungsstellung, Angebote, ggf. Zeiterfassung, Auslagenerfassung
+- support: Zammad - Kundensupport, Login-Codes
 - flow: n8n (8gears)
 - meet: cal.com (pyrrha)
+- board: openproject (https://www.openproject.org/docs/installation-and-operations/installation/helm-chart/)
 #### Planned
 - design: penpot
 - sprint: taiga (nemonik)
 - video: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneNoir/peertube-helm))
 - call: Jitsi Meet / OpenTalk / Element Call
 - wiki/know: Wiki (maybe wikijs, but I'd like something that integrates with Nextcloud and Markdown/Orgdown)
+- sign: https://github.com/zekker6/helm-charts/tree/main/charts/apps/docuseal
 #### Ideas
 - link: URL Shortener
 - connect: Bonfire
