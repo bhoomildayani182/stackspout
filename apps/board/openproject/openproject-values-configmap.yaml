@@ -15,9 +15,10 @@ data:
       backup.velero.io/backup-volumes: "data"
     persistence:
       enabled: true
-      accessModes:
-        - "ReadWriteMany"
-      existingClaim: "openproject-data"
+      # local-path does not support ReadWriteMany
+      #accessModes:
+      #  - "ReadWriteMany"
+      #existingClaim: "openproject-data"
 
     ingress:
       enabled: true
