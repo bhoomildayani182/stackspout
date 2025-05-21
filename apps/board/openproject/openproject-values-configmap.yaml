@@ -47,6 +47,19 @@ data:
         podAnnotations:
           backup.velero.io/backup-volumes: "data"
 
+    containerSecurityContext:
+      #enabled: true
+      #runAsUser: 1000
+      #runAsGroup: 1000
+      #allowPrivilegeEscalation: false
+      #capabilities:
+      #  drop:
+      #    - "ALL"
+      #seccompProfile:
+      #  type: "RuntimeDefault"
+      readOnlyRootFilesystem: false
+      #runAsNonRoot: true
+
     openproject:
       admin_user:
         password: "${admin_password}"
