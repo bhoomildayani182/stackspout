@@ -25,6 +25,7 @@ data:
         backup.velero.io/backup-volumes: "app-data"
     persistence:
       assets:
+        enabled: true
         existingClaim: "penpot-assets"
 
     ingress:
