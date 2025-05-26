@@ -106,6 +106,9 @@ data:
         #  enabled: true
         - name: tasks
           enabled: true
+          version: "v0.16.1"
+          release_filename: "tasks.tar.gz"
+          github_repository: nextcloud/tasks
         # Convenience
         # TODO handy but abendoned - https://apps.nextcloud.com/apps/extract
         #- name: extract
