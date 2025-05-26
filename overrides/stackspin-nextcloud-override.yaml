@@ -104,8 +104,8 @@ data:
         # Management
         #- name: deck
         #  enabled: true
-        #- name: tasks
-        #  enabled: true
+        - name: tasks
+          enabled: true
         # Convenience
         # TODO handy but abendoned - https://apps.nextcloud.com/apps/extract
         #- name: extract
