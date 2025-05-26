@@ -8,7 +8,8 @@ data:
     global:
       postgresqlEnabled: true
       redisEnabled: true
-    #redis:
+    redis:
+      architecture: standalone
 
     frontend:
       podLabels:
