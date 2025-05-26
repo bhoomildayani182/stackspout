@@ -48,6 +48,7 @@ data:
           backup.velero.io/backup-volumes: "data"
 
     containerSecurityContext:
+      readOnlyRootFilesystem: false
       #enabled: true
       #runAsUser: 1000
       #runAsGroup: 1000
@@ -57,12 +58,12 @@ data:
       #    - "ALL"
       #seccompProfile:
       #  type: "RuntimeDefault"
-      readOnlyRootFilesystem: false
       #runAsNonRoot: true
 
     openproject:
+      #useTmpVolumes: false
       admin_user:
-        password: "${admin_password}"
+        password: "${userbackend_admin_password}"
         password_reset: "false"
         name: "${org_name} Admin"
         mail: "${admin_email}"

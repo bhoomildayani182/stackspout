@@ -6,6 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   fields:
-  - fieldName: admin_password
   - fieldName: postgresql_password
   - fieldName: postgresql_postgres_password
+  - fieldName: admin_password # FIXME delete

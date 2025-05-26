@@ -27,9 +27,13 @@ spec:
         name: stackspin-invoiceninja-kustomization-variables
       - kind: Secret
         name: stackspin-invoiceninja-variables
+      # OIDC
+      # - kind: Secret
+      #   name: stackspin-invoiceninja-oauth-variables
+      #   optional: true
+      # - kind: ConfigMap
+      #   name: stackspin-single-sign-on-kustomization-variables
+      #   optional: true
+      # For the admin password
       - kind: Secret
-        name: stackspin-invoiceninja-oauth-variables
-        optional: true
-      - kind: ConfigMap
-        name: stackspin-single-sign-on-kustomization-variables
-        optional: true
+        name: stackspin-single-sign-on-variables

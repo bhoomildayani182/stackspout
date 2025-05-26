@@ -26,7 +26,7 @@ data:
       admin:
         username: "forgejo"
         email: "${admin_email}"
-        password: "${forgejo_admin_password}"
+        password: "${userbackend_admin_password}"
       # https://codeberg.org/forgejo-contrib/forgejo-helm#oauth2-settings
       oauth:
         - name: Stackspin

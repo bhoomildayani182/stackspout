@@ -9,6 +9,8 @@ resources:
   - meet-kustomization.yaml
   - status-kustomization.yaml
   - board-kustomization.yaml
-  #- design-kustomization.yaml #
+  - design-kustomization.yaml
+  #- sign-kustomization.yaml
+  #- stirling-kustomization.yaml
   #- sprint-kustomization.yaml #charts outdated
   #- video-kustomization.yaml #missing storage
