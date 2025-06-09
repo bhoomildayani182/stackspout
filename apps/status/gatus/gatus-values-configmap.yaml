@@ -98,6 +98,10 @@ data:
           <<: *defaults
           group: "Stackspout"
           url: "https://do.${domain_extra}"
+        - name: "OpenProject Boards"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://board.${domain}"
         - name: "HedgeDoc Notes"
           <<: *defaults
           group: "Stackspout"
@@ -127,23 +131,6 @@ data:
           <<: *defaults
           group: "Stackspout"
 
-        - name: "Mailserver STARTTLS"
-          url: "starttls://${outgoing_mail_smtp_host}:587"
-          <<: *defaults
-          interval: 10m
-          client:
-            timeout: 5s
-          conditions:
-            - "[CONNECTED] == true"
-        - name: "Mailserver TLS"
-          url: "tls://${outgoing_mail_smtp_host}:465"
-          <<: *defaults
-          interval: 10m
-          client:
-            timeout: 5s
-          conditions:
-            - "[CONNECTED] == true"
-
         - name: "${org_name} Homepage"
           url: "https://${domain}"
           <<: *defaults
@@ -152,10 +139,23 @@ data:
           url: "https://${domain}/team"
           <<: *defaults
           group: "${org_name}"
-        - name: "${org_name} Teampage EN"
-          url: "https://${domain}/en/team"
+
+        - name: "Mailserver STARTTLS"
+          url: "starttls://${outgoing_mail_smtp_host}:587"
           <<: *defaults
-          group: "${org_name}"
+          interval: 7m
+          client:
+            timeout: 5s
+          conditions:
+            - "[CONNECTED] == true"
+        - name: "Mailserver TLS"
+          url: "tls://${outgoing_mail_smtp_host}:465"
+          <<: *defaults
+          interval: 2m
+          client:
+            timeout: 5s
+          conditions:
+            - "[CONNECTED] == true"
 
         - name: "Main Admin Panel"
           url: "https://main.iridion.it:999"
@@ -163,5 +163,9 @@ data:
           group: "Iridion"
         - name: "Second Admin Panel"
           url: "https://ns2.iridion.it:999"
+          <<: *defaults
+          group: "Iridion"
+        - name: "Webmail"
+          url: "https://webmail.iridion.it"
           <<: *defaults
           group: "Iridion"
