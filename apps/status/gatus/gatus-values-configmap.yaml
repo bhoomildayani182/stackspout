@@ -35,6 +35,7 @@ data:
         #  scopes: ["openid"]
         #  #autoDiscoverUrl: 'https://${hydra_domain}/.well-known/openid-configuration'
       alerting:
+        # TODO no emails arriving?
         # https://github.com/TwiN/gatus?tab=readme-ov-file#configuring-email-alerts
         email:
           from: "${outgoing_mail_from_address}"
@@ -42,14 +43,24 @@ data:
           password: "${outgoing_mail_smtp_password}"
           host: "${outgoing_mail_smtp_host}"
           port: ${outgoing_mail_smtp_port}
-          to: "${outgoing_mail_from_address}"
+          to: "${admin_email}"
           client:
             insecure: false
           default-alert:
             enabled: ${outgoing_mail_enabled}
-            description: "health check failed"
+            #description: "health check failed"
             send-on-resolved: true
             failure-threshold: 9
+            success-threshold: 5
+        zulip:
+          bot-email: gatus-bot@${zulip_domain}
+          bot-api-key: ${zulip_monitor_api_key}
+          domain: ${zulip_domain}
+          channel-id: ${zulip_monitor_channel}
+          default-alert:
+            enabled: true
+            send-on-resolved: true
+            failure-threshold: 5
             success-threshold: 3
       maintenance:
         enabled: false
@@ -64,11 +75,17 @@ data:
         header: "${org_name} Toolstatus"
         title: "${org_name} Monitoring"
 
-      default-endpoint: &defaults
+      x-default-endpoint: &defaults
         group: ${org_name}
         interval: 2m
         conditions:
           - "[STATUS] == 200"
+        #alerts:
+        #  - type: zulip
+        #    send-on-resolved: true
+        #  - type: telegram
+        #    send-on-resolved: true
+        #    failure-threshold: 9
       endpoints:
         - name: "Nextcloud Files"
           <<: *defaults

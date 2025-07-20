@@ -18,6 +18,13 @@ spec:
     - kind: ConfigMap
       name: stackspin-gatus-values
       optional: false
+    # Zulip Monitoring Config
+    - kind: Secret
+      name: stackspin-cluster-variables
+      optional: false
+    - kind: ConfigMap
+      name: stackspin-zulip-kustomization-variables
+      optional: true
     # Allow overriding values by ConfigMap or Secret
     - kind: ConfigMap
       name: stackspin-gatus-override
