@@ -6,4 +6,4 @@ metadata:
 spec:
   interval: 60m
   type: "oci"
-  url: oci://ghcr.io/go-vikunja/helm-chart/vikunja
+  url: oci://ghcr.io/go-vikunja/helm-chart
