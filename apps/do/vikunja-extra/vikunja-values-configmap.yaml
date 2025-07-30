@@ -7,21 +7,21 @@ data:
   # https://kolaente.dev/vikunja/helm-chart/src/branch/main/values.yaml
   values.yaml: |
     vikunja:
-      probes:
-        liveness:
-          enabled: true
-          custom: true
-          spec:
-            httpGet: []
-            exec:
-              command:
-              - sh
-              - -c
-              - 'curl -s http://localhost:3456/api/v1/info | grep "Stackspin"'
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 1
-            failureThreshold: 9
+      #probes:
+      #  liveness:
+      #    enabled: true
+      #    custom: true
+      #    spec:
+      #      httpGet:
+      #      exec:
+      #        command:
+      #        - sh
+      #        - -c
+      #        - 'curl -s http://localhost:3456/api/v1/info | grep "Stackspin"'
+      #      initialDelaySeconds: 30
+      #      periodSeconds: 30
+      #      timeoutSeconds: 1
+      #      failureThreshold: 9
 
       persistence:
         data:
@@ -51,7 +51,7 @@ data:
                   redirecturl: "https://${vikunja_extra_domain}/auth/openid/"
                   providers:
                     - name: Stackspin
-                      authurl: "https://${hydra_domain}/"
+                      authurl: "https://${hydra_domain}"
                       clientid: "${client_id}"
                       clientsecret: "${client_secret}"
                 local:
