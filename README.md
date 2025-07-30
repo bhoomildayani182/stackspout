@@ -1,67 +1,110 @@
-# Stackspin Outwards - Stackspout
+# Stackspin Outwards – Stackspout 🚀
 
 This repository extends [Stackspin](https://open.greenhost.net/stackspin/stackspin)
-with extra applications and overrides
-focused on business use.
+with extra applications and overrides focused on business use.
 Once stabilized, the aim is to contribute as much upstream as possible.
 
 Stackspout is used in day-to-day business
 with a double-digit user number,
 so all experiments happen carefully.
-Still, it is an experimental offering.
+Still, it is an experimental offering ⚠
 
-## Customizations
+---
 
-### Overrides
-- Adds many Nextcloud extensions and some configuration
-  -> most notably `external` to add Applications into Nextcloud as hub
-- Allow iFraming of applications into Nextcloud
+## Customizations ⚙
 
-### New Applications
+### Overrides 🔧
+
+* Adds many Nextcloud extensions and some configuration
+* Allow iFraming of applications into Nextcloud
+
+---
+
+## New Applications ➕
 
 Following are the applications Stackspout adds beyond Stackspin.
-Unlike Stackspin, there is currently no mechanism to add those individually,
+Unlike Stackspin, there is currently no mechanism to add those individually —
 they come in one package with the repository.
 
 Below list is formatted as:
+
 > subdomain: Service (helmrepo, if not by the application authors themselves)
 
-#### Stackspin Tools
-- dashboard: Toolübersicht von Stackspin
-- files: Nextcloud - Tools Hub, Dokumentation, Filesharing, Kalender, Kontakte
-- chat: Zulip - WIP-Updates und Kommunikation
-- note: Hedgedoc - Lebende, kollaborative Dokumente
-#### Stable including Single-Sign-On
-- forge: Forgejo - Code Repositories
-- do: Vikunja - Projektmanagement
-- status: Gatus (minicloudlabs)
-#### No SSO
-- ninja: InvoiceNinja - Rechnungsstellung, Angebote, ggf. Zeiterfassung, Auslagenerfassung
-- support: Zammad - Kundensupport, Login-Codes
-- flow: n8n (8gears)
-- meet: cal.com (pyrrha)
-- board: openproject (https://www.openproject.org/docs/installation-and-operations/installation/helm-chart/)
-#### Planned
-- design: penpot
-- sprint: taiga (nemonik)
-- video: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneNoir/peertube-helm))
-- call: Jitsi Meet / OpenTalk / Element Call
-- wiki/know: Wiki (maybe wikijs, but I'd like something that integrates with Nextcloud and Markdown/Orgdown)
-- sign: https://github.com/zekker6/helm-charts/tree/main/charts/apps/docuseal
-#### Ideas
-- link: URL Shortener
-- connect: Bonfire
-#### Stale
-- people: SuiteCRM (bitnami repo)
-- time: Kimai (robjuz repo)
+---
 
-#### Functionally
+### Stackspin included Tools 🧰
+
+* `dashboard`: Toolübersicht von Stackspin
+* `files`: Nextcloud – Tools Hub, Dokumentation, Filesharing, Kalender, Kontakte 📁
+* `chat`: Zulip – Kommunikation und Arbeitsdokumentation 💬
+* `note`: Hedgedoc – Lebende, kollaborative Dokumente 📝
+
+---
+
+### Stable including OpenID Connect Single Sign-On 🔐
+
+* `forge`: Forgejo – Code Repositories
+* `do`: Vikunja – Projektmanagement
+* `status`: Gatus (minicloudlabs) – Status-Überwachung Monitor
+
+---
+
+### No Single Sign-On 🔓
+
+#### LDAP Support
+* `ninja`: InvoiceNinja – Rechnungsstellung, Angebote, ggf. Zeiterfassung 💰 (requires 30$ per year for whitelabeling)
+* `support`: Zammad – Kundensupport & Login-Codes 🧾 (updates pending)
+
+#### Paid Plan required for SSO
+* `flow`: n8n (8gears) – Automatisierungen 🔁
+* `meet`: cal.com (pyrrha) – Terminvereinbarungen 📅 ([Enterprise License for SSO](https://cal.com/docs/self-hosting/sso-setup))
+* `board`: openproject  (https://www.openproject.org/docs/installation-and-operations/installation/helm-chart/) – Projektplanung 📋
+
+---
+
+### Coming Soon 🔜
+
+* `sign`: [Docuseal](https://github.com/zekker6/helm-charts/tree/main/charts/apps/docuseal) / Documenso– Signaturen 🔏
+* `design`: Penpot – Design-Tool 🎨
+* `stirling`: PDF Manipulation Hub / Toolbox
+
+---
+
+### Planned 📌
+
+* `sprint`: Taiga (nemonik) – Agile Boards 🏃
+* `video`: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneN
+oir/peertube-helm)) – Dezentrales Video-Hosting
+
+---
+
+### Ideas 💡
+
+* `wiki/know`: Wiki – evtl. Wiki.js, preferred Integration with Nextcloud + Markdown/Orgdown?
+* `call`: Jitsi Meet / OpenTalk / Element Call
+* `link`: URL Shortener 🔗
+* `connect`: Bonfire – Social & Community Tools
+
+---
+
+### Stale 💤
+
+* `people`: SuiteCRM (bitnami repo)
+* `time`: Kimai (robjuz repo)
+
+---
+
+### Configuration Tasks ☐
+
 - Nextcloud too slow - add Redis?
 - Preconfigure user settings in Nextcloud, Vikunja and more
 
-## Setup
+---
 
-> Warning: Lots of experiments happening here!
+## Setup Instructions 🧭
+
+> **Warning:** This toolset is in active experimentation!
+> Data loss can happen!
 
 First [install Stackspin](https://docs.stackspin.net/en/latest/installation/install_stackspin.html).
 Then apply the configuration to your cluster:
