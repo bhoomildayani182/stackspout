@@ -101,6 +101,16 @@ data:
           <<: *defaults
           group: "Stackspout"
           url: "https://chat.${domain}"
+        - name: "Vikunja Tasks ${domain_extra}"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://do.${domain_extra}"
+        - name: "Vikunja Tasks ${domain_extra} API"
+          <<: *defaults
+          group: "Stackspout"
+          url: "https://do.${domain_extra}/api/v1/info"
+          conditions:
+            - "len([BODY].auth.openid_connect.providers) > 0"
         - name: "Vikunja Tasks"
           <<: *defaults
           group: "Stackspout"
@@ -111,10 +121,6 @@ data:
           url: "https://do.${domain}/api/v1/info"
           conditions:
             - "len([BODY].auth.openid_connect.providers) > 0"
-        - name: "Vikunja Tasks ${domain_extra}"
-          <<: *defaults
-          group: "Stackspout"
-          url: "https://do.${domain_extra}"
         - name: "OpenProject Boards"
           <<: *defaults
           group: "Stackspout"
@@ -162,7 +168,7 @@ data:
           <<: *defaults
           interval: 7m
           client:
-            timeout: 5s
+            timeout: 15s
           conditions:
             - "[CONNECTED] == true"
         - name: "Mailserver TLS"
@@ -170,7 +176,7 @@ data:
           <<: *defaults
           interval: 2m
           client:
-            timeout: 5s
+            timeout: 15s
           conditions:
             - "[CONNECTED] == true"
 
