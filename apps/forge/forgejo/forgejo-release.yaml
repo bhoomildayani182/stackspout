@@ -7,9 +7,10 @@ spec:
   releaseName: forgejo
   chart:
     spec:
-      # https://codeberg.org/forgejo-contrib/-/packages/container/forgejo
+      # app version: https://codeberg.org/forgejo-contrib/forgejo-helm/src/branch/main/Chart.yaml
       chart: forgejo
-      version: 11.0.1
+      # https://codeberg.org/forgejo-contrib/-/packages/container/forgejo
+      version: 13.0.1
       sourceRef:
         kind: HelmRepository
         name: forgejo

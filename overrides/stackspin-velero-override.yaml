@@ -7,5 +7,5 @@ data:
   values.yaml: |
     configuration:
       #backupSyncPeriod: 1h
-      uploaderType: restic
-      fsBackupTimeout: "20h"
+      #uploaderType: restic
+      #fsBackupTimeout: "20h"

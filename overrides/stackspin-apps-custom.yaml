@@ -7,6 +7,14 @@ metadata:
   name: stackspin-apps-custom
   namespace: flux-system
 data:
+  gatus: |
+    name: "Gatus Monitoring"
+    version: "5.18.1"
+    url: "https://status.${domain}"
+  forgejo: |
+    name: "Forgejo Git Repositories"
+    version: "12.0.1"
+    url: "https://forge.${domain}"
   vikunja: |
     name: "Vikunja ${org_name} Tasks"
     version: "0.22"
@@ -15,30 +23,30 @@ data:
     name: "Vikunja ${domain_extra} Tasks"
     version: "0.25"
     url: "https://do.${domain_extra}"
-  forgejo: |
-    name: "Forgejo Git Repositories"
-    version: "10.0.0"
-    url: "https://forge.${domain}"
-  gatus: |
-    name: "Gatus Monitoring"
-    version: "5.11.0"
-    url: "https://status.${domain}"
   invoiceninja: |
-    name: "Invoiceninja Billing"
-    version: "5.11"
+    name: "Invoiceninja Billing (separate account)"
+    version: "5.12"
     url: "https://ninja.${domain}"
-  cal: |
-    name: "Cal Appointment Booking"
-    version: "3.7.11"
-    url: "https://meet.${domain}"
-  n8n: |
-    name: "n8n Integrations"
-    version: "1.47.3"
-    url: "https://flow.${domain}"
   zammad: |
-    name: "Zammad Customer Support"
+    name: "Zammad Customer Support (separate account)"
     version: "6.3.1"
     url: "https://support.${domain}"
+  cal: |
+    name: "Cal Appointment Booking (self-registration)"
+    version: "3.7.11"
+    url: "https://meet.${domain}"
+  openproject: |
+    name: "OpenProject Boards (self-registration)"
+    version: "6.3.1"
+    url: "https://board.${domain}"
+  n8n: |
+    name: "n8n Integrations"
+    version: "1.58.2"
+    url: "https://flow.${domain}"
+  limesurvey: |
+    name: "LimeSurvey ${domain_extra}"
+    external: true
+    url: "https://ask.${domain_extra}"
   handbook: |
     name: "FTT Handbook"
     external: true
