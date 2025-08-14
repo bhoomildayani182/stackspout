@@ -10,7 +10,7 @@ data:
       tag: apache-1.21.0-prod
     kimaiAppSecret: "${secret}"
     kimaiAdminEmail: "${admin_email}"
-    kimaiAdminPassword: "${password}"
+    kimaiAdminPassword: "${userbackend_admin_password}"
     kimaiMailerUrl: "smtp://${outgoing_mail_smtp_user}:${outgoing_mail_smtp_password}@${outgoing_mail_smtp_host}?encryption=tls&auth_mode=plain"
     kimaiMailerFrom: "${outgoing_mail_from_address}"
     ingress:

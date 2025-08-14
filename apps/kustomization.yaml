@@ -10,7 +10,7 @@ resources:
   - status-kustomization.yaml
   - board-kustomization.yaml
   - design-kustomization.yaml
-  #- sign-kustomization.yaml
-  #- stirling-kustomization.yaml
+  # WIP - sign-kustomization.yaml
+  # WIP - stirling-kustomization.yaml
+  # WIP - video-kustomization.yaml #how to handle storage?
   #- sprint-kustomization.yaml #charts outdated
-  #- video-kustomization.yaml #missing storage

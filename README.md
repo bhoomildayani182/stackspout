@@ -127,15 +127,25 @@ kubectl -n stackspout get pods
 
 But there are also ConfigMaps, Secrets, StatefulSets, PVCs, Helmrepos and more...
 
-### Tools
+## Tools and Guides
 
 Useful tools for administration:
 - my `stack` CLI helper, currently part of my dotfiles:
-  https://git.jfischer.org/xeruf/dotfiles/src/branch/main/.config/shell/server#L11
+  https://forge.ftt.gmbh/janek/dotfiles/src/branch/main/.config/shell/server#L21
 - stackspin docs:
   https://docs.stackspin.net/en/v2/system_administration/customizing.html
+  
+### Adding a new app
 
-### Guide: Creating OAuth Credentials for an external service
+Also see https://open.greenhost.net/stackspin/stackspin/-/blob/main/.gitlab/issue_templates/new_app.md?ref_type=heads#source-helmrepository--gitrepository
+
+A template for most of these steps can be generated using https://forge.ftt.gmbh/janek/dotfiles/src/branch/main/.local/bin/scripts/stack-template
+
+- create the HelmRepository in [`infrastructure/sources`](./infrastructure/sources)
+- create a folder with app configuration files under [`apps`](./apps)
+- add a kustomization for the app into [`apps`](./apps) and add it to [`apps/kustomization.yaml`](./apps/kustomization.yaml) when the app is ready
+
+### Creating OAuth Credentials for an External Service
 - push an OAuth2Client definition like for the apps,
   adjusting `metadata.name` and `spec.secretName` as well as `spec.redirectUris`
 - obtain the generated `client_secret` for your application from kubernetes:
