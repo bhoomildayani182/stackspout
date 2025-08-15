@@ -144,6 +144,7 @@ A template for most of these steps can be generated using https://forge.ftt.gmbh
 - create the HelmRepository in [`infrastructure/sources`](./infrastructure/sources)
 - create a folder with app configuration files under [`apps`](./apps)
 - add a kustomization for the app into [`apps`](./apps) and add it to [`apps/kustomization.yaml`](./apps/kustomization.yaml) when the app is ready
+- add an entry in [`overrides/stackspin-apps-custom.yaml`](./overrides/stackspin-apps-custom.yaml)
 
 ### Creating OAuth Credentials for an External Service
 - push an OAuth2Client definition like for the apps,
