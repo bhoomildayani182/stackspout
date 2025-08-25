@@ -9,16 +9,12 @@ with a double-digit user number,
 so all experiments happen carefully.
 Still, it is an experimental offering ⚠
 
----
-
 ## Customizations ⚙
 
 ### Overrides 🔧
 
 * Adds many Nextcloud extensions and some configuration
 * Allow iFraming of applications into Nextcloud
-
----
 
 ## New Applications ➕
 
@@ -30,8 +26,6 @@ Below list is formatted as:
 
 > subdomain: Service (helmrepo, if not by the application authors themselves)
 
----
-
 ### Stackspin included Tools 🧰
 
 * `dashboard`: Toolübersicht von Stackspin
@@ -39,15 +33,11 @@ Below list is formatted as:
 * `chat`: Zulip – Kommunikation und Arbeitsdokumentation 💬
 * `note`: Hedgedoc – Lebende, kollaborative Dokumente 📝
 
----
-
 ### Stable including OpenID Connect Single Sign-On 🔐
 
 * `forge`: Forgejo – Code Repositories
 * `do`: Vikunja – Projektmanagement
 * `status`: Gatus (minicloudlabs) – Status-Überwachung Monitor
-
----
 
 ### No Single Sign-On 🔓
 
@@ -55,12 +45,10 @@ Below list is formatted as:
 * `ninja`: InvoiceNinja – Rechnungsstellung, Angebote, ggf. Zeiterfassung 💰 (requires 30$ per year for whitelabeling)
 * `support`: Zammad – Kundensupport & Login-Codes 🧾 (updates pending)
 
-#### Paid Plan required for SSO
+#### Paid plan required for SSO
 * `flow`: n8n (8gears) – Automatisierungen 🔁
 * `meet`: cal.com (pyrrha) – Terminvereinbarungen 📅 ([Enterprise License for SSO](https://cal.com/docs/self-hosting/sso-setup))
-* `board`: openproject  (https://www.openproject.org/docs/installation-and-operations/installation/helm-chart/) – Projektplanung 📋
-
----
+* `board`: openproject (https://www.openproject.org/docs/installation-and-operations/installation/helm-chart/) – Projektplanung 📋
 
 ### Coming Soon 🔜
 
@@ -68,15 +56,10 @@ Below list is formatted as:
 * `design`: Penpot – Design-Tool 🎨
 * `stirling`: PDF Manipulation Hub / Toolbox
 
----
-
 ### Planned 📌
 
 * `sprint`: Taiga (nemonik) – Agile Boards 🏃
-* `video`: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneN
-oir/peertube-helm)) – Dezentrales Video-Hosting
-
----
+* `video`: Peertube ([LecygneNoir](https://git.lecygnenoir.info/LecygneNoir/peertube-helm)) – Dezentrales Video-Hosting
 
 ### Ideas 💡
 
@@ -85,14 +68,10 @@ oir/peertube-helm)) – Dezentrales Video-Hosting
 * `link`: URL Shortener 🔗
 * `connect`: Bonfire – Social & Community Tools
 
----
-
 ### Stale 💤
 
 * `people`: SuiteCRM (bitnami repo)
 * `time`: Kimai (robjuz repo)
-
----
 
 ### Configuration Tasks ☐
 
