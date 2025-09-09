@@ -51,6 +51,10 @@ data:
     name: "FTT Handbook"
     external: true
     url: "https://about.${domain}"
+  documenso: |
+    name: "Documenso Document Signing"
+    version: "0.0.6"
+    url: "https://sign.${domain}"
 ---
 # This list of OAuth clients with their corresponding apps is loaded by the
 # Stackspin dashboard on startup, and it will insert any missing entries into
@@ -65,3 +69,4 @@ data:
   vikunja-extra: vikunja-extra
   forgejo: forgejo
   gatus: gatus
+  documenso: documenso

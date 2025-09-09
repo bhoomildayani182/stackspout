@@ -6,6 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   fields:
-  # TODO if using postgresql
   - fieldName: postgresql_password
-  - fieldName: postgresql_postgres_password
+  - fieldName: postgresql_admin_password
